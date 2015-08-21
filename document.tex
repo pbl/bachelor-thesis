@@ -1,4 +1,4 @@
-\documentclass{cslthse-msc}
+\documentclass{./tex/cslthse-msc}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{amsmath}
@@ -161,7 +161,7 @@ To conform to this modularisation, the architecture as figure \ref{caption-andro
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=120mm,natwidth=800,natheight=600]{../img/androidStructure.png}
+    \includegraphics[width=120mm,natwidth=800,natheight=600]{./img/androidStructure.png}
     \caption{Architecture of the android application\label{caption-android-architecture}}
 \end{figure}
 
@@ -170,7 +170,7 @@ To conform to this modularisation, the architecture as figure \ref{caption-andro
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=120mm,natwidth=720,natheight=540]{../img/androidFlow.png}
+    \includegraphics[width=120mm,natwidth=720,natheight=540]{./img/androidFlow.png}
     \caption{Function flow of the android application\label{caption-android-flow}}
 \end{figure}
 
@@ -208,7 +208,7 @@ An overview of the recommended architecture for the web application can be seen 
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=140mm,natwidth=800,natheight=600]{../img/webAppFlow.jpg}
+    \includegraphics[width=140mm,natwidth=800,natheight=600]{./img/webAppFlow.jpg}
     \caption{Web application function calling flow \label{caption-web-flow}}
 \end{figure}
 
@@ -222,7 +222,7 @@ Another functionality raising concerns regarding dependency is the communication
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=120mm,natwidth=800,natheight=600]{../img/phonegap.jpg}
+    \includegraphics[width=120mm,natwidth=800,natheight=600]{./img/phonegap.jpg}
     \caption{The PhoneGap layer encapsulating the web application\label{overflow}}
 \end{figure}
 
@@ -249,7 +249,7 @@ Adapter.deviceCallback(nativeData, calbackName);
 This way the PhoneGap layer only need to know in which format the data should be in, nothing else. 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=120mm,natwidth=800,natheight=600]{../img/phoneGapFlow.jpg}
+    \includegraphics[width=120mm,natwidth=800,natheight=600]{./img/phoneGapFlow.jpg}
     \caption{PhoneGap function calling flow \label{caption-phonegap-flow}}
 \end{figure}
 \newline
