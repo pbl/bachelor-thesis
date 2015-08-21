@@ -8,13 +8,12 @@
 %\usepackage{makeidx}
 \usepackage{graphicx}
 \usepackage[titletoc, header, page]{appendix}
+\usepackage{hyperref}
 \usepackage{parskip}
 \usepackage[nopar]{lipsum}
-\usepackage{url}
 
-
-
-
+% to higlight with a black rectangle when a overfull hbox occurs to make it easy to spot
+\overfullrule=2cm
 %\geometry{showframe}
 \input{./tex/preface.tex}
 
@@ -28,10 +27,9 @@
 
 \begin{document}
 \makefrontmatter
-asd
-%\input{./tex/introduction.tex}
-%\input{./tex/approach.tex}
-%\input{./tex/evaluation.tex}
-%\input{./tex/discussion.tex}
-%\input{./tex/conclusions.tex}
+\input{./tex/introduction.tex}
+\input{./tex/approach.tex}
+\input{./tex/evaluation.tex}
+\input{./tex/discussion.tex}
+\input{./tex/conclusions.tex}
 \end{document}

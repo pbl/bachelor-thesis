@@ -1,4 +1,3 @@
-
 \chapter{Evaluation}
 The evaluation has been divided into two different parts, one for each development method being evaluated. In 
 \section{Native android} \label{android}
@@ -36,7 +35,7 @@ Calling javascript functions from Java is done using the function loadUrl on the
 
 (Add section containing example test here)
 
-When calling java functions on the exposed javaScriptInterface object from javascript, the behavior of the function call is a bit more obscure. Due to the single-threaded nature of javascript, function calls are synchronous when called in a normal fashion.
+When calling Java functions on the exposed javaScriptInterface object from JavaScript, the behavior of the function call is a bit more obscure. Due to the single-threaded nature of javascript, function calls are synchronous when called in a normal fashion.
 
 (Add section containing example test here)
 
@@ -116,7 +115,7 @@ The web application sends a message which is received by the listener in the Pho
 
 inAppBrowser is a PhoneGap plugin which basically opens a browser “in the application”. By using this plugin to embed the remote web application, communication between the windows becomes different than when using an iFrame. Sending data from the PhoneGap-layer to the web application can be done by using the inAppBrowser function “executeScript”, which, in the inAppBrowser, executes the javascript passed as argument.
 
-The communication back from the web application is more complicated. One example of how to do it is by the use of polling variables in the web application using executeScript. For further reading the following blog article: “Cross Window Communication With Cordova’s inAppBrowser” (http://blogs.telerik.com/appbuilder/posts/13-12-23/cross-window-communication-with-cordova\%27s-inappbrowser) by TJ VanToll is recommended. 
+The communication back from the web application is more complicated. One example of how to do it is by the use of polling variables in the web application using executeScript. For further reading the following blog article: “Cross Window Communication With Cordova’s inAppBrowser” (\url{http://blogs.telerik.com/appbuilder/posts/13-12-23/cross-window-communication-with-cordova\%27s-inappbrowser}) by TJ VanToll is recommended. 
 
 Other ways requires deeper technical web development knowledge. For more suggested methods read the support request https://issues.apache.org/jira/browse/CB-4897.
 
@@ -126,7 +125,7 @@ PhoneGap supports custom plugins. This opens up the ability for companies to wri
 There is a PhoneGap plugin written by the corporation Wizcorp which claims it enables communication between the PhoneGap layer and web application. However despite extensive effort it never worked in this project. A ananswered support question (25/3-2015) can be seen at https://github.com/Wizcorp/phonegap-plugin-wizViewManager/issues/77. 
 
 \subsection{Demo}
-The demo code can be found at https://github.com/DavidNorrestam/pollux-phonegap. In the demo the communication between the PhoneGap layer and the web application is done by using an iFrame and postMessage, see chapter above. The most interesting files in the repository are found in:
+The demo code can be found at \url{https://github.com/DavidNorrestam/pollux-phonegap}. In the demo the communication between the PhoneGap layer and the web application is done by using an iFrame and postMessage, see chapter above. The most interesting files in the repository are found in:
 
 \begin{description}
   \item[www/js/receiver.js] \hfill \\
