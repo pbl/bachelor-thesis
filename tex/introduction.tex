@@ -1,21 +1,21 @@
 \chapter{Introduction}
 % Add text here that motivates this thesis, perhaps a quick intro 
 \section{Background}
+% gives warning because the table of contents thinks the line gets to long..
 \subsection{A brief explanation of Android, hybrid applications and PhoneGap}
+
 Android is operating system used on a wide range of devices, such as a mobile device or tv device. Coding android applications is done in the programming language Java. Code for android can be written in the official Android development environment, Android studio, but other development environment is also available. 
-\newline
-\newline
+
 Android software development kit (SDK) provides the programmer with a number of tools. Such as a debugger, library, device emulator, and documentation.  
-\newline
-\newline
+
 A hybrid application is a native application which is partially written with web technologies. I.e HTML5, CSS and JavaScript. The part of the application written with web technologies runs within a browsers engine in a so called WebView. A web application running in a browser does not have access to a device native functions such as the bluetooth. However a website running within a WebView can through interaction with the application's native code access a device native functions.
-\newline
-\newline
+
 PhoneGap is a framework for developing mobile applications. The code is written with web technologies, the code is compiled to different platform, such as Android or IOs, specific code. The resulting application is a hybrid application. An example of a mobile application built in PhoneGap is wikipedia's mobile application.  
 
 \section{Problem formulation}
+
 The aim of this project is to evaluate two different development methods for encapsulating an existing web application in an Android mobile application, in order to give the web application access to the mobile's native functions. An example of such a native function would be accessing the camera of a mobile phone. It is important that the logic on the web application can be written in a general way (non-platform dependant) adapting to the device accessing the web application. This way, the method used to encapsulate the web application is easy to replace, with minimum effect on the logic of the web application. 
-\newline\newline
+
 As the first development method, the mobile application will be built natively (in Java for android). As the second method, the mobile development framework PhoneGap will be used. The methods will be evaluated and compared from a developers perspective, with the preconditions defined section \ref{section-preconditions}
 
 \subsection{Preconditions}\label{section-preconditions}

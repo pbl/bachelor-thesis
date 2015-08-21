@@ -1,35 +1,32 @@
-
 \chapter{Discussion}
-\subsection{Developing in Android}
-\subsubsection{Getting started}
-\subsubsection{Debugging}
+\section{Developing in Android}
+\subsection{Getting started}
+\subsection{Debugging}
 Debugging when using the Android Studio IDE is a fairly simple process. For developers familiar with Java-debugging, the process is as good as similar, apart from the fact that the code is run on an emulator, or real device, rather than on directly by the JVM. Complications do occur when the application contains a WebView or other browser and the aim is the debug both the web and java code. However, with the help of the chrome inspect tool, the web code is easily debugged, and debugging of communication in between Java and JavaScript is easiest made by a combination of this tool and the built-in debugger. 
-\subsection{Developing in PhoneGap}
-\subsubsection{Getting started}
+\section{Developing in PhoneGap}
+\subsection{Getting started}
 Getting familliar with PhoneGap is quite confusing. This resulting in that it took around two days to set up a working development environment that felt comfortable. There were a few reasons for this. You need to install a lot dependencies such as nodejs, a server-side runtime environment, and Apache Cordova. Apache Cordova can be described as the engine of PhoneGap. There is also several different ways to develop the mobile application. You can compile and build the app for testing yourself or use a cloud service like https://build.phonegap.com/ to compile your code for you. The relationship between Apache Cordova and PhoneGap is also initially confusing. It was also very difficult to find a good “Getting started” guide.
 
-\subsubsection{Adding and debbuging native functionality}
+\subsection{Adding and debbuging native functionality}
 The documenation is clear and feels complete. If you require extra help the PhoneGap community is very active and there is lots of help to get from blog posts and Q\&A sites such as stackoverflow.com. This make’s it very simple to make use of the mobile’s native functions. 
-\newline
-\newline
+
 When using mobile native function a plugin need to be added to the project. The plugin can be supported by PhoneGap, a third party plugin or a plugin you write yourself. A PhoneGap plugin for using the mobile’s cambera is added by writing the following bash command in your project root folder:
 \begin{verbatim}
 $ cordova plugin add org.apache.cordova.camera
 \end{verbatim}
 The code for taking a picture with the camera in your mobile application is:
 \begin{verbatim}
-navigator.camera.getPicture( cameraSuccess, cameraError, cameraOptions );
+navigator.camera.getPicture(cameraSuccess, cameraError, cameraOptions);
 \end{verbatim}
 Where “cameraSucess” and “cameraError” is a callback function. 
-\newline
-\newline
+
 To build and run the project on your mobile for testing you run in the root folder of your project:
 \begin{verbatim}
 $ cordova build android; 
 $ cordova run android;
 \end{verbatim}
 
-For the debbuging the mobile application you can open desktop browser and where you can see the HTML, CSS and JavScript code and debugg the same way as a web application debugging is done in a web browser inspector. More can be read about debugging a PhoneGap application at https://github.com/phonegap/phonegap/wiki/Debugging-in-PhoneGap.  
+For the debbuging the mobile application you can open desktop browser and where you can see the HTML, CSS and JavScript code and debugg the same way as a web application debugging is done in a web browser inspector. More can be read about debugging a PhoneGap application at \url{https://github.com/phonegap/phonegap/wiki/Debugging-in-PhoneGap}.
 
 
 

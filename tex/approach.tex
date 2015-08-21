@@ -4,30 +4,28 @@ This chapter begins with a presentation of the method used in this thesis, follo
 \section{Method}
 In order to compare the two development methods (described in problem formulation), we have tried using them both to 
 In order to research the problem formulation of this paper, a practical approach has been used. The two different development methods (as described in problem formulation) have been used in a practical development process. The aim of the development has been to develop an architecture allowing independent web application code and mobile-application code to be written.
-\newline\newline
+
 Apart from just developing architectures using the different methods, a demo-application was developed. The application had the same function requirements for both development methods. 
 
 This also put requirements on the web application, it had to confirm to a certain standard for communication with the mobile application in order for both applications to be able to use it. 
-\newline\newline
+
 Another important aspect of the method, and a major part of the results found in this paper is the process of researching questions arising during the process. Examples of this can be questions regarding strengths and weaknesses of the method at hand, but also questions of a more basic nature, such as the behavior of function calls between the layers (web and mobile), are they synchronous?
 
 \subsection{Demo application}
 The demo application consists two mobile applications developed using the different development methods. The web application which is used in the mobile applicaitons is a simple form with a text field, an image field and a location field.
-\newline\newline
+
 When running on a computer in a web browser the web application make use of the computer's camera and the web browser's own function to get the computers location. To see the web application please visit: https://pollux-server.herokuapp.com/
-\newline\newline
+
 The two mobile applications make use of the web application described above. To get the image for the web application form the mobile application makes use of the mobile's native camera function or uploads an image from the mobile's memory storage. To get the location the mobile applications makes use of the mobile's native GPS function. 
-\newline\newline
-Aplication source code can be found at:
-\newline
-Web application: https://github.com/Albin-trialbee/pollux-server
-\newline
-PhoneGap application: https://github.com/DavidNorrestam/pollux-phonegap
-\newline
-Native Android mobile application: https://github.com/buren-trialbee/pollux/
+
+Application source code can be found at:
+\begin{itemize}
+  \item Web application: \url{https://github.com/Albin-trialbee/pollux-server}
+  \item PhoneGap application: \url{https://github.com/DavidNorrestam/pollux-phonegap}
+  \item Native Android mobile application: \url{https://github.com/buren-trialbee/pollux/}
+\end{itemize}
 
 \subsection{Recent work}
-In “Native vs Hybrid / PhoneGap App Development Comparsion” (http://www.comentum.com/phonegap-vs-native-app-development.html), research made by Comentum 360, they estimate the development cost for a small to medium size project in Android native development and in PhoneGap. They estimate that both methods would cost the same, about 10-20 thousand dollars. They also mention the limitations of using PhoneGap, describing that hybrid apps (like PhoneGap) relies on a development framework and the provided features when building a mobile application. Hence, if the framework is not up to date with the latest new features, the developer will not be able to partake of the features until the framework is updated. Their conclusion of this is that if an application is dependent on many native features a hybrid application may have limitations. 
-\newline
-\newline
-TJ VanToll author of the book "JQuery UI in Action" writes amongst other things in the article, “The State of Hybrid Mobile Development” (http://developer.telerik.com/featured/the-state-of-hybrid-mobile-development/), about the history of hybrid mobile development using web technologies. He points out that there has been a lot of issues such as debugging and lack of tools. Two things which made companies like Facebook and LinkedIn abandon developing native applications with web technologies. Troubles, he today believes mostly are solved with all the progress which has been made the recent years.
+In “Native vs Hybrid / PhoneGap App Development Comparsion” (\url{http://www.comentum.com/phonegap-vs-native-app-development.html}), research made by Comentum 360, they estimate the development cost for a small to medium size project in Android native development and in PhoneGap. They estimate that both methods would cost the same, about 10-20 thousand dollars. They also mention the limitations of using PhoneGap, describing that hybrid apps (like PhoneGap) relies on a development framework and the provided features when building a mobile application. Hence, if the framework is not up to date with the latest new features, the developer will not be able to partake of the features until the framework is updated. Their conclusion of this is that if an application is dependent on many native features a hybrid application may have limitations. 
+
+TJ VanToll author of the book "JQuery UI in Action" writes amongst other things in the article, “The State of Hybrid Mobile Development” (\url{http://developer.telerik.com/featured/the-state-of-hybrid-mobile-development/}), about the history of hybrid mobile development using web technologies. He points out that there has been a lot of issues such as debugging and lack of tools. Two things which made companies like Facebook and LinkedIn abandon developing native applications with web technologies. Troubles, he today believes mostly are solved with all the progress which has been made the recent years.

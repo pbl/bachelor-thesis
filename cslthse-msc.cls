@@ -30,7 +30,7 @@
 	   	\setsansfont{TeX Gyre Heros}
     	\setmonofont{TeX Gyre Cursor}
 	\else
-		\ClassWarning{cslthse-msc}{Use XeTeX for better fonts!}		
+%		\ClassWarning{cslthse-msc}{Use XeTeX for better fonts!}		
 		\usepackage[T1]{fontenc}
 %		\usepackage{qtxmath}	
 %		\usepackage{tgtermes}

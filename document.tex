@@ -1,4 +1,4 @@
-\documentclass{./tex/cslthse-msc}
+\documentclass{cslthse-msc}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{amsmath}
@@ -9,8 +9,11 @@
 \usepackage{graphicx}
 \usepackage[titletoc, header, page]{appendix}
 \usepackage{hyperref}
+\usepackage{parskip}
+\usepackage[nopar]{lipsum}
 
-
+% to higlight with a black rectangle when a overfull hbox occurs to make it easy to spot
+\overfullrule=2cm
 %\geometry{showframe}
 \input{./tex/preface.tex}
 
@@ -19,6 +22,8 @@
 \newcommand\thefontsize[1]{{#1 \f@size pt\par}}
 \makeatother
 %%%%%%%%%%
+
+
 
 \begin{document}
 \makefrontmatter
