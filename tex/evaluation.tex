@@ -33,13 +33,13 @@ To conform to this modularisation, the architecture as figure \ref{caption-andro
 
 \subsection {Function calls between Java and JavaScript}
 Calling javascript functions from Java is done using the function loadUrl on the WebView containing the web application. This was deducted to be an asynchronous method call, through practical tests in the development phase of this paper. 
-\newline\newline
+
 (Add section containing example test here)
-\newline\newline
+
 When calling java functions on the exposed javaScriptInterface object from javascript, the behavior of the function call is a bit more obscure. Due to the single-threaded nature of javascript, function calls are synchronous when called in a normal fashion.
-\newline\newline
+
 (Add section containing example test here)
-\newline\newline
+
 ( However, by the usage of AJAX, the function calls may behave asynchronous on the web application side. Then the question arises, can two functions be executed in parallel on the android side, or is the execution of the jsInterface functions limited to being handled by a single thread. )<--Needs to be researched to stay here.
 
 Utvärdering (Evaluation) bör beskriva den metod som används för att utvärdera din metod, inklusive experimentuppställning.
@@ -115,13 +115,14 @@ The web application sends a message which is received by the listener in the Pho
 \subsubsection{Using polling in the PhoneGap plugin inAppBrowser}
 
 inAppBrowser is a PhoneGap plugin which basically opens a browser “in the application”. By using this plugin to embed the remote web application, communication between the windows becomes different than when using an iFrame. Sending data from the PhoneGap-layer to the web application can be done by using the inAppBrowser function “executeScript”, which, in the inAppBrowser, executes the javascript passed as argument.
+
 The communication back from the web application is more complicated. One example of how to do it is by the use of polling variables in the web application using executeScript. For further reading the following blog article: “Cross Window Communication With Cordova’s inAppBrowser” (http://blogs.telerik.com/appbuilder/posts/13-12-23/cross-window-communication-with-cordova\%27s-inappbrowser) by TJ VanToll is recommended. 
-\newline\newline
+
 Other ways requires deeper technical web development knowledge. For more suggested methods read the support request https://issues.apache.org/jira/browse/CB-4897.
 
 \subsubsection{Using a third party plugin}
 PhoneGap supports custom plugins. This opens up the ability for companies to write their own plugins or make use of other third party plugins.
-\newline\newline
+
 There is a PhoneGap plugin written by the corporation Wizcorp which claims it enables communication between the PhoneGap layer and web application. However despite extensive effort it never worked in this project. A ananswered support question (25/3-2015) can be seen at https://github.com/Wizcorp/phonegap-plugin-wizViewManager/issues/77. 
 
 \subsection{Demo}
