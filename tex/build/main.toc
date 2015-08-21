@@ -1,0 +1,36 @@
+\select@language {english}
+\contentsline {chapter}{\numberline {1}Introduction}{7}{chapter.1}
+\contentsline {section}{\numberline {1.1}Background}{7}{section.1.1}
+\contentsline {subsection}{\numberline {1.1.1}A brief explanation of Android, hybrid applications and PhoneGap}{7}{subsection.1.1.1}
+\contentsline {section}{\numberline {1.2}Problem formulation}{8}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}Preconditions}{8}{subsection.1.2.1}
+\contentsline {section}{\numberline {1.3}Contribution statement}{8}{section.1.3}
+\contentsline {section}{\numberline {1.4}Terminology}{9}{section.1.4}
+\contentsline {chapter}{\numberline {2}Approach}{11}{chapter.2}
+\contentsline {section}{\numberline {2.1}Method}{11}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Demo application}{12}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Recent work}{12}{subsection.2.1.2}
+\contentsline {chapter}{\numberline {3}Evaluation}{13}{chapter.3}
+\contentsline {section}{\numberline {3.1}Native android}{13}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Modularisation}{13}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Function calls between Java and JavaScript}{14}{subsection.3.1.2}
+\contentsline {section}{\numberline {3.2}Web application}{15}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Results}{15}{subsection.3.2.1}
+\contentsline {subsubsection}{Separating business logic from device specific logic}{15}{subsubsection*.5}
+\contentsline {subsubsection}{Encapsulating the web application in native Android application}{15}{subsubsection*.6}
+\contentsline {subsubsection}{Encapsulating the web application in a PhoneGap application}{16}{subsubsection*.7}
+\contentsline {subsubsection}{Communication between web application and mobile application}{16}{subsubsection*.9}
+\contentsline {section}{\numberline {3.3}PhoneGap}{17}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Communicatating between PhoneGap (native) layer and the web application}{17}{subsection.3.3.1}
+\contentsline {subsubsection}{Encupsulating the web application in an iFrame}{17}{subsubsection*.11}
+\contentsline {subsubsection}{Using polling in the PhoneGap plugin inAppBrowser}{18}{subsubsection*.13}
+\contentsline {subsubsection}{Using a third party plugin}{19}{subsubsection*.14}
+\contentsline {subsection}{\numberline {3.3.2}Demo}{19}{subsection.3.3.2}
+\contentsline {chapter}{\numberline {4}Discussion}{21}{chapter.4}
+\contentsline {subsection}{\numberline {4.0.3}Developing in Android}{21}{subsection.4.0.3}
+\contentsline {subsubsection}{Getting started}{21}{subsubsection*.15}
+\contentsline {subsubsection}{Debugging}{21}{subsubsection*.16}
+\contentsline {subsection}{\numberline {4.0.4}Developing in PhoneGap}{21}{subsection.4.0.4}
+\contentsline {subsubsection}{Getting started}{21}{subsubsection*.17}
+\contentsline {subsubsection}{Adding and debbuging native functionality}{22}{subsubsection*.18}
+\contentsline {chapter}{\numberline {5}Conclusions}{23}{chapter.5}
