@@ -3,13 +3,13 @@ Imagine a smaller company with a well developed web application. The company has
 
 The company can choose to develop a mobile application from the ground up and integrate the application with their current web application. That will cost them a huge amount of development time and also a lot of time maintaining several platforms.
 
-Another less costly alternative is to create the mobile application using the existing web application. The web application is run within a shell of the mobile application. The web application can then access the mobile’s native functions such as the accelerometer. This will save the company time developing the mobile application and instead of maintaining several platforms for every feature the mobile application only need to maintained in regards of the use of the accelerometer. 
+Another less costly alternative is to create the mobile application using the existing web application. The web application is run within a shell of the mobile application. The web application can then access the mobile’s native functions such as the accelerometer. This will save the company time developing the mobile application and instead of maintaining several platforms for every feature the mobile application only need to be maintained in regards of the use of the accelerometer. 
 
 The aim of this thesis is to evaluate two different development methods for encapsulating an existing web application in a mobile application to utilize native functions. With focus on decreasing development and maintenance costs.
 
 
 \section{Background}
-Android is an operating system used on a wide range of devices. For example a mobile device or tv device. Developing Android applications are written in the programming language Java. The official Android development environment, Android studio, can be used when developing an Android application. But there are also other development environments available. 
+Android is an operating system used on a wide range of devices. For example a mobile device or tv device. Developing Android applications are written in the programming language Java. 
 
 A hybrid application is a native application which is partially written with web technologies. I.e HTML5, CSS and JavaScript. The part of the application written with web technologies runs within a browsers engine in a so called WebView. A web application running in a browser does not have access to a device native functions such as the bluetooth. However a website running within a WebView can through interaction with the application's native code access a device native functions.
 
@@ -24,14 +24,17 @@ PhoneGap is a framework for developing mobile applications. The code is written 
   \item[Development methods] \hfill \\
     Refers (in the context of this paper) to the methods of mobile application development methods being evaluated. I.e developing the mobile application with PhoneGap or natively in Android.
   \item[Native function] \hfill \\
-     A hardware function which a device has. For example mobile with a camera and GPS have native functions when writing mobile software or applications to get access to the camera or it's GPS.
+     A hardware function which a device has. Lets say a mobile has a camera and an accelerator. When writing software for that mobile there are functions to interact with the camera and accelerator. Those functions are called native functions.
 \end{description}
 
 \section{Problem formulation}
 %% this paragraph can more or less be taken away since the same thing is more ore less said in the introduction
-The aim of this project is to evaluate two different development methods for encapsulating an existing web application in an Android mobile application. The purpose of the mobile application is to give the web application access to the mobile's native functions. An example of such a native function would be accessing the mobile's accelerometer. It is important that the logic of the web application can be written in a general way (non-platform dependant) adapting to the device accessing the web application. This way, the method used to encapsulate the web application is easy to replace, with minimum effect on the logic of the web application. 
+The aim of this project is to evaluate two different development methods for encapsulating an existing web application in an Android mobile application. The purpose of the mobile application is to give the web application access to the mobile's native functions. An example of such a native function would be accessing the mobile's accelerometer. It is important that the logic of the web application can be written in a general way (non-platform dependant) adapting to the device accessing the web application. So that the same web application code is used for the web application and mobile application.
 
-To limit the scope of the research the development methods is only evaluted for the mobile operating system Android. Android was choosen since it the most widely used today. 
+
+Antoher goal is that the mobile application only provides data from native functions. In order to achieve that the web application and mobile application should have a master slave relationship. Where the web application acts as the master and the mobile application as the slave. To get data from the mobiles native functions the web application asks for the data and the mobile application passes the data back. 
+
+To limit the scope of the research the development methods is only evaluted for the mobile operating system Android. Android was choosen since it is the most widely used today for mobiles. 
 
 There are two development methods of creating an Android application that will be evaluated. The first development method, the mobile application will be built natively in Android. As the second method, the mobile development framework PhoneGap will be used. The methods will be evaluated and compared from a developers perspective, with the preconditions defined section \ref{section-preconditions}.
 
@@ -41,14 +44,13 @@ The study is done from a company's perspective and is based on the following pre
 \item There are only a few developers, three or less.
 \item There is already an existing web-application that is to be used by the mobile-application.
 \item The company has a need and/or desire to extend the functionality of it's web-application with native functions.
-\item The company's developer or developers has no prior knowledge of mobile application development.
 \end{itemize}
 
 When examining the methods, the focus has been restrained to the following developing aspects:
 \begin{itemize}
-\item Modularisation in the sense so that its easy to add functionality.
-\item The web application should be loosely coupled with native code.
-\item Maintainability in the sense so that is cost effective in development time to update in case of API change.
+\item Development time.
+\item Maintainability when the application has been created. 
+\item Programming productivity when the application has been created.
 \end{itemize}
 \section{Contribution statement}
 Throughout this work we have been working together very closely. We have reviewed and improved each others work continuously. During development we often been pair programming. With that said we can attribute parts of our work to one of us more then the other. Even though most of the work has been created together. 
