@@ -1,7 +1,25 @@
 
 \chapter{Approach}
-This chapter begins with a presentation of the method used in this thesis, followed by a section explaining the demo application developed as part of the method. The last section contains a presentation of recent articles on the subject. 
-\section{Method}
+In order to research the problem formulation of this paper, a practical approach has been used. To evaluate and compare the two different methods (as described in problem formulation) a mobile application with same requirements has been developed in each method. Both of the mobile applications make use of the same web application. 
+
+\section{The mobile applications}
+The web application that is used composes of a single page and functions in Google Chrome. The page displays a form with a text field, an image field and a location field. To get the image or the location value for the form the user can only press a button. When the image or location button is pressed the web application uses the Google Chrome’s built in ability to take a picture or get the location.
+
+The mobile applications consists of two parts. The web application described above and the mobile application encapsulating the web application. The mobile application must encapsulate the web application and display the web application exactly the same as it is displayed in a browser. The mobile application must use the mobile’s native functions to get the value for the image and the location. For the image the mobile application must give the user the option to use an existing image from the image gallery or take a picture using the camera on the phone. The image that is passed back to the web application must be of in Base64 format. The location must be obtained using the mobile’s GPS. When the user interacts with the mobile application the interaction must be directly with the web application encapsulated within the mobile application. 
+
+In the project the following was used for developing and testing:
+\begin{itemize}
+\item Android SDK version 21
+\item PhoneGap version 2.9.1
+\item Apache Cordova CLI 4.0
+\item Google Chrome 44.0.2403.157
+\item Nexus 5
+\item Android version: 5.1.1
+\item Kernel version: 3.4.0-gbebb36b
+\end{itemize}
+\section{Measuring method}
+\section{Analyzing the result}
+% old segment 
 ??
 In order to compare the two development methods (described in problem formulation), we have tried using them both to 
 
@@ -14,12 +32,15 @@ This also put requirements on the web application, it had to confirm to a certai
 Another important aspect of the method, and a major part of the results found in this paper is the process of researching questions arising during the process. Examples of this can be questions regarding strengths and weaknesses of the method at hand, but also questions of a more basic nature, such as the behavior of function calls between the layers (web and mobile), are they synchronous?
 
 \subsection{Demo application}
-The demo application consists two mobile applications developed using the different development methods. The web application which is used in the mobile applicaitons is a simple form with a text field, an image field and a location field.
+The demo application consists two mobile applications developed using the different development methods. 
+
+The web application which is used in the mobile applicaitons is a simple form with a text field, an image field and a location field.
 
 When running on a computer in a web browser the web application make use of the computer's camera and the web browser's own function to get the computers location.
 
 The two mobile applications make use of the web application described above. To get the image for the web application form the mobile application makes use of the mobile's native camera function or uploads an image from the mobile's memory storage. To get the location the mobile applications makes use of the mobile's native GPS function. 
 
+%Should this be in the result??
 Application source code can be found at:
 \begin{itemize}
   \item Web application: \url{https://github.com/Albin-trialbee/pollux-server}
