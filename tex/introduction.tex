@@ -5,7 +5,7 @@ The company can choose to develop a mobile application from the ground up and in
 
 Another less costly alternative is to create the mobile application using the existing web application. The web application is run within a shell of the mobile application. The web application can then access the mobile’s native functions such as the accelerometer. This will save the company time developing the mobile application and instead of maintaining several platforms for every feature the mobile application only need to be maintained in regards of the use of the accelerometer. 
 
-The aim of this thesis is to evaluate two different development methods for encapsulating an existing web application in a mobile application to utilize native functions. With focus on decreasing development and maintenance costs.
+The aim of this thesis is to evaluate two different development methods for encapsulating an existing web application in a mobile application to utilize native functions. With focus on evaluating development and maintenance costs.
 
 
 \section{Background}
@@ -50,6 +50,18 @@ When examining the methods, the focus has been restrained to the following devel
 \item Maintainability when the application has been created. 
 \item Programming productivity when the application has been created.
 \end{itemize}
+
+\section{Litterature study}
+In the book “Software Sizing, Estimation, and Risk.Management” Daniel D. Galorath and Michael W. Evans writes about source lines of code as a measurement tool. Source lines of code, also abbreviated as SLOC, is very easy to obtain and is a fairly accurate predictor of development effort\cite[p.~63]{galorath2006}. There are many different ways to measure SLOC, such as Halsted’s approach, function points, physical SLOC and Logical SLOC. 
+
+Physical SLOC is the length of the code excluding comments and blanks. Function points measure functionality and can therefore be measured before the design and coding if the requirement specification complete\cite[p.~187]{galorath2006}. Halsted’s uses measurable properties such as operands and operators and uses them to identify properties of software. Such as the length of the program, difficulty and effort\cite[p.~345]{fenton2015}. Fenton and Bieman describes Halstead’s software science measures as a confused and inadequate measurement. Particularly for other attributes then size.
+
+Logical SLOC measures the number of statements that carry over one or more several physical lines.  For languages with terminators this can be done more easily and quickly. As an example in Java you could count the logical SLOC by counting the number of line-terminating semicolons and closing curly brackets. Logical SLOC represents the programming instructions and data declarations which are converted into executable instructions i.e. the implementation of the software design. Another positive aspect of of logical SLOC is that it better handles differences in formatting and style conventions than physical SLOC\cite[p.~155]{galorath2006}.
+
+To compare size between two different languages a size conversion table can be used. The table can be used to estimate how many SLOC a program coded one programming language would have to be written in another language. You can compare a third generation language, a fourth generation language, Ada, Assembly or Pascal. A third generation language compared to another third generation language would have no conversion rate\cite[p.~163]{galorath2006}. 
+
+
+
 \section{Contribution statement}
 Throughout this work we have been working together very closely. We have reviewed and improved each others work continuously. During development we often been pair programming. With that said we can attribute parts of our work to one of us more then the other. Even though most of the work has been created together. 
 
