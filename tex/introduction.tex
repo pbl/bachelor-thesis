@@ -25,16 +25,22 @@ PhoneGap is a framework for developing mobile applications. The code is written 
     Refers (in the context of this paper) to the methods of mobile application development methods being evaluated. I.e developing the mobile application with PhoneGap or natively in Android.
   \item[Native function] \hfill \\
      A hardware function which a device has. Lets say a mobile has a camera and an accelerator. When writing software for that mobile there are functions to interact with the camera and accelerator. Those functions are called native functions.
+  \item[Web/Mobile application layer] \hfill \\
+  	Refers to the application layer belonging specifically to the mobile application or the web application. A mobile application can encapsulate a web application which then is a a part of the mobile application. This makes it hard to refer to the part of the mobile application encapsulating the web application. That is therfore refered to as the mobile application layer. The web application within the mobile application is refered to as the web application layer.
 \end{description}
 
 \section{Problem formulation}
-The goal of this project is to evaluate two different development methods for encapsulating an existing web application in an Android mobile application. The purpose of the mobile application is to give the web application access to the mobile's native functions. An example of such a native function would be accessing the mobile's accelerometer. It is important that the logic of the web application can be written in a general way (non-platform dependant) adapting to the device accessing the web application. So that the same web application code is used for the web application and mobile application.
+The goal of this project is to evaluate two different development methods for encapsulating an existing web application in an Android mobile application. When evaluating the methods the focus is on development effort. The purpose of the mobile application is to give the web application access to the mobile's native functions. An example of such a native function would be accessing the mobile's accelerometer. It is important that the logic of the web application can be written in a general way (non-platform dependant) adapting to the device accessing the web application. So that the same web application code is used for the web application and mobile application.
 
-Antoher goal is that the mobile application only provides data from native functions. In order to achieve that the web application and mobile application should have a master slave relationship. Where the web application acts as the master and the mobile application as the slave. To get data from the mobiles native functions the web application asks for the data and the mobile application passes the data back. 
+Antoher goal is that the mobile application only provides data from native functions. In order to achieve that the web application and mobile application should have a master slave relationship. Where the web application acts as the master and the mobile application as the slave. To get data from the mobiles native functions the web application asks for the data and the mobile application passes the data back.
 
-To limit the scope of the research the development methods is only evaluted for the mobile operating system Android. Android was choosen since it is the most widely used today for mobiles. 
+To enbale this master and slave relationship the mobile and web application layer must be able to communicate. Passing commands and data between the layers. It is important the mobile and web application layers has a way of communicating. 
 
-There are two development methods of creating an Android application that will be evaluated. The first development method, the mobile application will be built natively in Android. As the second method, the mobile development framework PhoneGap will be used. The methods will be evaluated and compared from a developers perspective, with the preconditions defined section \ref{section-preconditions}.
+To limit the scope of the research the development methods is only evaluted for the mobile operating system Android. Android was choosen since it is the most widely used today for mobiles.
+
+There are two development methods of creating an Android application that will be evaluated. The first development method is to develop natively in Android. The second method is to develop using the framework PhoneGap.
+
+The methods will be evaluated and compared from a developers perspective, with the preconditions defined section \ref{section-preconditions}.
 
 \subsection{Preconditions} \label{section-preconditions}
 The study is done from a company's perspective and is based on the following prerequisites:
@@ -43,8 +49,6 @@ The study is done from a company's perspective and is based on the following pre
 \item There is already an existing web-application that is to be used by the mobile-application.
 \item The company has a need and/or desire to extend the functionality of it's web-application with native functions.
 \end{itemize}
-
-When examining the methods, the focus has been restrained to the following developing aspect of development effort.
 
 \section{Source lines of code}
 Source lines of code is a measurement tool for software development. Source lines of code, also abbreviated as SLOC, is very easy to obtain and is a fairly accurate predictor of development effort\cite[p.~63]{galorath2006}. Measuring SLOC simply means you count the number of lines of code. There are many different ways to measure SLOC, such as Halsted’s approach, function points, physical SLOC and Logical SLOC. 
