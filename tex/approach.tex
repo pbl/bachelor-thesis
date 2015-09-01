@@ -23,45 +23,15 @@ In the project the following was used for developing and testing:
 \item Kernel version: 3.4.0-gbebb36b
 \end{itemize}
 
-\section{Measuring method}
+\section{Measuring lines of code}
 The resulting mobile applications are measured using the software metric logical lines of code. The count that is used is:
 % here we have a bullet list of what's included and what's excluded
 
 The development methods are written in two different programming languages in the mobile application layer. Natively in Android is in Java and PhoneGap is in JavaScript. To compare the measurement result of logical lines of code we use the conversion table described by Galorath and Evans\cite[p.~163]{galorath2006}. JavaScript and Java is both third generation languages and therefore no conversion is needed. 
 
-The logical lines of code written in the web application layer is also measured in both methods. To give an correct result we measure the added logical lines of code that has been written as a result of the mobile application. 
+The logical lines of code written in the web application layer is also measured in both developing methods. To give an correct result we measure the added logical lines of code that has been written as a result of the mobile application. The resulting lines in the mobile and web application layer is added to give a total result for the developing method. 
 
-The resulting lines in the mobile and web application layer is added to give a total result for the developing method. To analyse the result of lines code is combined with our personal developing experience. 
+The architecture of the mobile applications impact the amount of lines of code. The measurement result is therefore analysed using the measurement data and our personal development experience.
 
-\section{Communication and master slave relationship}
-A goal with the mobile application is to have a developer friendly way of communicating between the mobile and web application layer. A flow diagram of the web layer sending a request for native data and the mobile application layer responding with data is evaluated. The diagram acts an suggestion in how developer friendly the communication is and is combined with personal developing experiences.
-
-% old segment 
-\section{Measuring method}
-??
-In order to compare the two development methods (described in problem formulation), we have tried using them both to 
-
-In order to research the problem formulation of this paper, a practical approach has been used. The two different development methods (as described in problem formulation) have been used in a practical development process. The aim of the development has been to develop an architecture allowing independent web application code and mobile-application code to be written.
-
-Apart from just developing architectures using the different methods, a demo-application was developed. The application had the same function requirements for both development methods.
-
-This also put requirements on the web application, it had to confirm to a certain standard for communication with the mobile application in order for both applications to be able to use it. 
-
-Another important aspect of the method, and a major part of the results found in this paper is the process of researching questions arising during the process. Examples of this can be questions regarding strengths and weaknesses of the method at hand, but also questions of a more basic nature, such as the behavior of function calls between the layers (web and mobile), are they synchronous?
-
-\subsection{Demo application}
-The demo application consists two mobile applications developed using the different development methods. 
-
-The web application which is used in the mobile applicaitons is a simple form with a text field, an image field and a location field.
-
-When running on a computer in a web browser the web application make use of the computer's camera and the web browser's own function to get the computers location.
-
-The two mobile applications make use of the web application described above. To get the image for the web application form the mobile application makes use of the mobile's native camera function or uploads an image from the mobile's memory storage. To get the location the mobile applications makes use of the mobile's native GPS function. 
-
-%Should this be in the result??
-Application source code can be found at:
-\begin{itemize}
-  \item Web application: \url{https://github.com/Albin-trialbee/pollux-server}
-  \item PhoneGap application: \url{https://github.com/DavidNorrestam/pollux-phonegap}
-  \item Native Android mobile application: \url{https://github.com/buren-trialbee/pollux/}
-\end{itemize}
+\section{Layer communication}
+A goal with the mobile application is to have a developer friendly way of communicating between the mobile and web application layer. The web and mobile application has a master slave relationship. Where the web application layer acts as the master and the mobile application layer acts as the slave. To evaluate this communication a flow diagram of the web layer sending a request for native data and the mobile application layer responding with data is constructed. The diagram acts an suggestion in how developer friendly the communication is and is combined with our personal developing experiences.
