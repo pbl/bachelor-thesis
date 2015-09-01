@@ -8,30 +8,32 @@ The mobile applications consists of two parts. The web application described abo
 
 The text field  in the web application form must function the same way as it functions in Google Chrome. 
 
-For the image the mobile application must give the user the option to use an existing image from the image gallery or take a picture using the camera on the phone. The image that is passed back to the web application must be of in Base64 format. 
+For getting the image value in the form the mobile application must give the user the option to use an existing image from the image gallery or take a picture using the camera on the phone. The image that is passed back to the web application must be of in Base64 format. 
 
-The location must be obtained using the mobile’s GPS. When the user interacts with the mobile application the interaction must be directly with the web application encapsulated within the mobile application. 
+The location must be obtained using the mobile’s GPS. 
+
+When the user interacts with the mobile application the interaction must be directly with the web application encapsulated within the mobile application. 
 
 In the project the following was used for developing and testing:
 \begin{itemize}
 \item Android SDK version 21
-\item PhoneGap version 2.9.1
-\item Apache Cordova CLI 4.0
-\item Google Chrome 44.0.2403.157
+\item Apache Cordova CLI version 4.0
+\item Google Chrome version 44.0.2403.157
 \item Nexus 5
 \item Android version: 5.1.1
 \item Kernel version: 3.4.0-gbebb36b
 \end{itemize}
 
 \section{Measuring lines of code}
-The resulting mobile applications are measured using the software metric logical lines of code. The count that is used is:
-% here we have a bullet list of what's included and what's excluded
+The resulting mobile applications are measured using the software metric logical lines of code. The logical lines of code have been counted including and excluding the following:
 
-The development methods are written in two different programming languages in the mobile application layer. Natively in Android is in Java and PhoneGap is in JavaScript. To compare the measurement result of logical lines of code we use the conversion table described by Galorath and Evans\cite[p.~163]{galorath2006}. JavaScript and Java is both third generation languages and therefore no conversion is needed. 
+(here we have a bullet list of what's included and what's excluded)
 
-The logical lines of code written in the web application layer is also measured in both developing methods. To give an correct result we measure the added logical lines of code that has been written as a result of the mobile application. The resulting lines in the mobile and web application layer is added to give a total result for the developing method. 
+The mobile application are written in two different programming languages, Java and JavaScript. To compare the measurement result of logical lines of code we use the conversion table described by Galorath and Evans\cite[p.~163]{galorath2006}. JavaScript and Java is both third generation languages and therefore no conversion is needed. 
+
+The logical lines of code written in the web application layer is also measured in both developing methods. To give an correct result we measured the added logical lines of code that has been written as a result of the mobile application. The resulting lines in the mobile and web application layer is added to give a total result. 
 
 The architecture of the mobile applications impact the amount of lines of code. The measurement result is therefore analysed using the measurement data and our personal development experience.
 
 \section{Layer communication}
-A goal with the mobile application is to have a developer friendly way of communicating between the mobile and web application layer. The web and mobile application has a master slave relationship. Where the web application layer acts as the master and the mobile application layer acts as the slave. To evaluate this communication a flow diagram of the web layer sending a request for native data and the mobile application layer responding with data is constructed. The diagram acts an suggestion in how developer friendly the communication is and is combined with our personal developing experiences.
+A goal with the mobile application is to have a developer friendly way of communicating between the mobile and web application layer. The web and mobile application has a master and slave relationship. Where the web application layer acts as the master and the mobile application layer acts as the slave. To evaluate this communication a flow diagram of the web layer sending a request for native data and the mobile application layer responding with data is constructed. The diagram acts an suggestion in how developer friendly the communication is and is combined with our personal developing experiences.
