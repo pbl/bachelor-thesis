@@ -1,5 +1,5 @@
 \chapter{Evaluation}
-The evaluation has been divided into two different parts, one for each development method being evaluated. In 
+The evaluation has been divided into three different sections, one for each development method being evaluated. Furthermore, the sections are divided into subsections, one for each aspect to evaluate. Lastly for each development method there is a subsection presenting results found during development not fitting into any of the previous subsections. 
 \section{Native android} \label{android}
 \subsection{Modularisation}
 The android application has a lot of different responsibilities, apart from communicating with the native API and web application, it also has to contain the necessary activity threads to function as an application. A modularisation of the code into as small sections as possible has been the goal of the architecture being developed. The different responsibilities can be summarized as:
@@ -13,7 +13,6 @@ The android application has a lot of different responsibilities, apart from comm
 
 
 To conform to this modularisation, the architecture as figure \ref{caption-android-architecture} has been proposed. This divides the application into separate modules with a single responsibility, where the bridges responsibility is to handle communication between modules and add necessary logic for simple tasks such as casting of objects or performing calculations. 
-
 
 \begin{figure}[ht!]
     \centering
@@ -30,7 +29,7 @@ To conform to this modularisation, the architecture as figure \ref{caption-andro
     \caption{Function flow of the android application\label{caption-android-flow}}
 \end{figure}
 
-\subsection {Function calls between Java and JavaScript}
+\subsection{Function calls between Java and JavaScript}
 Calling javascript functions from Java is done using the function loadUrl on the WebView containing the web application. This was deducted to be an asynchronous method call, through practical tests in the development phase of this paper. 
 
 (Add section containing example test here)
@@ -42,6 +41,11 @@ When calling Java functions on the exposed javaScriptInterface object from JavaS
 ( However, by the usage of AJAX, the function calls may behave asynchronous on the web application side. Then the question arises, can two functions be executed in parallel on the android side, or is the execution of the jsInterface functions limited to being handled by a single thread. )<--Needs to be researched to stay here.
 
 Utvärdering (Evaluation) bör beskriva den metod som används för att utvärdera din metod, inklusive experimentuppställning.
+
+\subsection{Dependence between web and native}
+
+\subsection{Maintainability}
+
 \section{Web application} 
 \subsection{Results}
 \subsubsection{Separating business logic from device specific logic}
@@ -123,6 +127,10 @@ Other ways requires deeper technical web development knowledge. For more suggest
 PhoneGap supports custom plugins. This opens up the ability for companies to write their own plugins or make use of other third party plugins.
 
 There is a PhoneGap plugin written by the corporation Wizcorp which claims it enables communication between the PhoneGap layer and web application. However despite extensive effort it never worked in this project. A ananswered support question (25/3-2015) can be seen at https://github.com/Wizcorp/phonegap-plugin-wizViewManager/issues/77. 
+
+\subsection{Dependence between web and native}
+
+\subsection{Maintainability}
 
 \subsection{Demo}
 The demo code can be found at \url{https://github.com/DavidNorrestam/pollux-phonegap}. In the demo the communication between the PhoneGap layer and the web application is done by using an iFrame and postMessage, see chapter above. The most interesting files in the repository are found in:
