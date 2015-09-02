@@ -1,28 +1,39 @@
-
 \chapter{Approach}
-This chapter begins with a presentation of the method used in this thesis, followed by a section explaining the demo application developed as part of the method. The last section contains a presentation of recent articles on the subject. 
-\section{Method}
-??
-In order to compare the two development methods (described in problem formulation), we have tried using them both to 
+In order to research the problem formulation of this paper, a practical approach has been used. To evaluate and compare the two different methods (as described in problem formulation) a mobile application with the same requirements has been developed in each method. Both of the mobile applications make use of the same web application. 
+  
+\section{The mobile applications}
+The web application that is used composes of a single page and is functional for the web browser Google Chrome. The page displays a form with a text field, an image field and a location field. To get the image or the location value for the form the user can only press a button. When the image or location button is pressed the web application uses the Google Chrome’s built in ability to take a picture or get the location.
 
-In order to research the problem formulation of this paper, a practical approach has been used. The two different development methods (as described in problem formulation) have been used in a practical development process. The aim of the development has been to develop an architecture allowing independent web application code and mobile-application code to be written.
+The mobile applications consists of two parts. The web application described above and the mobile application encapsulating the web application. The mobile application must encapsulate the web application and display the web application exactly the same as it is displayed in a browser. The mobile application must use the mobile’s native functions to get the value for the image and the location.
 
-Apart from just developing architectures using the different methods, a demo-application was developed. The application had the same function requirements for both development methods.
+The text field  in the web application form must function the same way as it functions in Google Chrome. 
 
-This also put requirements on the web application, it had to confirm to a certain standard for communication with the mobile application in order for both applications to be able to use it. 
+For getting the image value in the form the mobile application must give the user the option to use an existing image from the image gallery or take a picture using the camera on the phone. The image that is passed back to the web application must be of in Base64 format. 
 
-Another important aspect of the method, and a major part of the results found in this paper is the process of researching questions arising during the process. Examples of this can be questions regarding strengths and weaknesses of the method at hand, but also questions of a more basic nature, such as the behavior of function calls between the layers (web and mobile), are they synchronous?
+The location must be obtained using the mobile’s GPS. 
 
-\subsection{Demo application}
-The demo application consists two mobile applications developed using the different development methods. The web application which is used in the mobile applicaitons is a simple form with a text field, an image field and a location field.
+When the user interacts with the mobile application the interaction must be directly with the web application encapsulated within the mobile application. 
 
-When running on a computer in a web browser the web application make use of the computer's camera and the web browser's own function to get the computers location.
-
-The two mobile applications make use of the web application described above. To get the image for the web application form the mobile application makes use of the mobile's native camera function or uploads an image from the mobile's memory storage. To get the location the mobile applications makes use of the mobile's native GPS function. 
-
-Application source code can be found at:
+In the project the following was used for developing and testing:
 \begin{itemize}
-  \item Web application: \url{https://github.com/Albin-trialbee/pollux-server}
-  \item PhoneGap application: \url{https://github.com/DavidNorrestam/pollux-phonegap}
-  \item Native Android mobile application: \url{https://github.com/buren-trialbee/pollux/}
+\item Android SDK version 21
+\item Apache Cordova CLI version 4.0
+\item Google Chrome version 44.0.2403.157
+\item Nexus 5
+\item Android version: 5.1.1
+\item Kernel version: 3.4.0-gbebb36b
 \end{itemize}
+
+\section{Measuring lines of code}
+The resulting mobile applications are measured using the software metric logical lines of code. The logical lines of code have been counted including and excluding the following:
+
+(here we have a bullet list of what's included and what's excluded)
+
+The mobile application are written in two different programming languages, Java and JavaScript. To compare the measurement result of logical lines of code we use the conversion table described by Galorath and Evans\cite[p.~163]{galorath2006}. JavaScript and Java is both third generation languages and therefore no conversion is needed. 
+
+The logical lines of code written in the web application layer is also measured in both developing methods. To give an correct result we measured the added logical lines of code that has been written as a result of the mobile application. The resulting lines in the mobile and web application layer is added to give a total result. 
+
+The architecture of the mobile applications impact the amount of lines of code. The measurement result is therefore analysed using the measurement data and our personal development experience.
+
+\section{Layer communication}
+A goal with the mobile application is to have a developer friendly way of communicating between the mobile and web application layer. The web and mobile application has a master and slave relationship. Where the web application layer acts as the master and the mobile application layer acts as the slave. To evaluate this communication a flow diagram of the web layer sending a request for native data and the mobile application layer responding with data is constructed. The diagram acts an suggestion in how developer friendly the communication is and is combined with our personal developing experiences.
