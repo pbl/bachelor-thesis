@@ -6,3 +6,5 @@ build/
 *.out
 *.toc
 *.gz
+.nfs[.]*
+.Rhistory
