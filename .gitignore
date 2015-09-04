@@ -5,6 +5,7 @@ build/
 *.log
 *.out
 *.toc
-*.gz
-.nfs[.]*
+*.gzhttp://www.effectiveui.com/company/newsroom/press-releases/11-10-2010/
+.nfs*
 .Rhistory
+*.cls
