@@ -1,0 +1,16 @@
+% example exists at http://www.texample.net/tikz/examples/tree/
+\begin{figure}
+\centering
+\begin{tikzpicture}[sibling distance=10em,
+  every node/.style = {shape=rectangle, rounded corners,
+    draw, align=center,
+    top color=white, bottom color=blue!20}]]
+  \node {PhoneGap}
+    child { node {Android} }
+    child { node {IOs} }
+    child { node {Blackberry} }
+    child { node {Windows Phone} };
+\end{tikzpicture}
+\medskip
+\caption{PhoneGap can be compiled into multiple plattoforms.} 
+\end{figure}
