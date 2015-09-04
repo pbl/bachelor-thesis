@@ -1,0 +1,41 @@
+\section{Terminology}
+\begin{description}
+  \item[Mobile application] \hfill \\
+    Refers to the application being developed, excluding code loaded from remote websites.
+  \item[Web application] \hfill \\
+    If nothing else is specified it refers to the client-side of the web application.
+  \item[Development methods] \hfill \\
+    Refers (in the context of this paper) to the methods of mobile application development methods being evaluated. I.e developing the mobile application with PhoneGap or natively in Android.
+  \item[Native function] \hfill \\
+     A hardware function which a device has. Lets say a mobile has a camera and an accelerator. When writing software for that mobile there are functions to interact with the camera and accelerator. Those functions are called native functions.
+  \item[Web/Mobile application layer] \hfill \\
+	Refers to the application layer belonging specifically to the mobile application or the web application. A mobile application can encapsulate a web application which then is a a part of the mobile application. The mobile application then consists of a mobile and web application layer.
+\end{description}
+
+\section{Background}
+Android is an operating system used on a wide range of devices. For example a mobile device or tv device. Developing Android applications are written in the programming language Java. 
+
+A hybrid application is a native application which is partially written with web technologies. I.e HTML5, CSS and JavaScript. The part of the application written with web technologies runs within a browsers engine in a so called WebView. A web application running in a browser does not have access to a device native functions such as the bluetooth. However a website running within a WebView can through interaction with the application's native code access a device native functions.
+
+PhoneGap is a framework for developing mobile applications. The code is written with web technologies. The code can be compiled to different platforms, such as Android or IOs specific code. The resulting application is a hybrid application. An example of a mobile application built in PhoneGap is Wikipedia's mobile application.
+
+\section{Source lines of code}
+Source lines of code is a measurement tool for software development. Source lines of code, also abbreviated as SLOC, is very easy to obtain and is a fairly accurate predictor of development effort\cite[p.~63]{galorath2006}. Measuring SLOC simply means you count the number of lines of code. There are many different ways to measure SLOC, such as Halsted’s approach, function points, physical SLOC and Logical SLOC. 
+
+Physical SLOC is the length of the code excluding comments and blanks. Function points measure functionality and can therefore be measured before the design and coding if the requirement specification is complete\cite[p.~187]{galorath2006}. Halstead’s uses measurable properties such as operands and operators and uses them to identify properties of software. Such as the length, difficulty and effort of the program. Fenton and Bieman describes Halstead’s software science measures as a confused and inadequate measurement. Particularly for other attributes then size\cite[p.~345]{fenton2015}.
+
+Logical SLOC measures the number of statements that carry over one or more physical lines.  For languages with terminators, this can be counted more easily and quickly. As an example, in Java you could count the logical SLOC by counting the number of line-terminating semicolons and closing curly brackets. Logical SLOC represents the programming instructions and data declarations which are converted into executable instructions, i.e. the implementation of the software design. Another positive aspect of of logical SLOC is that it better handles differences in formatting and style conventions than physical SLOC\cite[p.~155]{galorath2006}.
+
+To compare size between two different languages a size conversion table can be used. The table can be used to estimate how many SLOC a program coded in one programming language would have in another language. In the table constructed by Galorath and Evans you can compare a third generation language, a fourth generation language, Ada, Assembly or Pascal\cite[p.~163]{galorath2006}. A third generation language compared to another third generation language would have no conversion rate. 
+
+Source lines of code is a measurement tool for software development. Source lines of code, also abbreviated as SLOC, is very easy to obtain and is a fairly accurate predictor of development effort\cite[p.~63]{galorath2006}. Measuring SLOC simply means you count the number of lines of code. There are many different ways to measure SLOC, such as Halsted’s approach, function points, physical SLOC and Logical SLOC. 
+
+Physical SLOC is the length of the code excluding comments and blanks. Function points measure functionality and can therefore be measured before the design and coding if the requirement specification is complete\cite[p.~187]{galorath2006}. Halstead’s uses measurable properties such as operands and operators and uses them to identify properties of software. Such as the length, difficulty and effort of the program. Fenton and Bieman describes Halstead’s software science measures as a confused and inadequate measurement. Particularly for other attributes then size\cite[p.~345]{fenton2015}.
+
+Logical SLOC measures the number of statements that carry over one or more physical lines.  For languages with terminators, this can be counted more easily and quickly. As an example, in Java you could count the logical SLOC by counting the number of line-terminating semicolons and closing curly brackets. Logical SLOC represents the programming instructions and data declarations which are converted into executable instructions, i.e. the implementation of the software design. Another positive aspect of of logical SLOC is that it better handles differences in formatting and style conventions than physical SLOC\cite[p.~155]{galorath2006}.
+
+To compare size between two different languages a size conversion table can be used. The table can be used to estimate how many SLOC a program coded in one programming language would have in another language. In the table constructed by Galorath and Evans you can compare a third generation language, a fourth generation language, Ada, Assembly or Pascal\cite[p.~163]{galorath2006}. A third generation language compared to another third generation language would have no conversion rate. 
+
+\section{Related work}
+
+% if anyone asks for a deeper research or surroundin topic here the work that we can reco

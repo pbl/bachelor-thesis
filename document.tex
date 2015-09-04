@@ -8,9 +8,16 @@
 \usepackage{makeidx}
 \usepackage{graphicx}
 \usepackage[titletoc, header, page]{appendix}
+%for line break in url
 \usepackage{hyperref}
+%line break in compiled document for line break in tex documents
 \usepackage{parskip}
 \usepackage[nopar]{lipsum}
+%for drawing figures
+\usepackage{tikz}
+% for the web and mobile app with backend figures
+\usetikzlibrary{arrows,positioning}
+
 
 % to higlight with a black rectangle when a overfull hbox occurs to make it easy to spot
 \overfullrule=2cm
@@ -26,11 +33,13 @@
 
 
 \begin{document}
-\makeFrontMatter
-\input{./tex/introduction.tex}
-\input{./tex/approach.tex}
+%\makeFrontMatter
+%\input{./tex/introduction.tex}
+%\input{./tex/background.tex}
+%\input{./tex/approach.tex}
 %\input{./tex/evaluation.tex}
 %\input{./tex/discussion.tex}
 %\input{./tex/conclusions.tex}
-%\input{./tex/references.tex}
+\input{./tex/references.tex}
+%\input{./tex/figures.tex}
 \end{document}
