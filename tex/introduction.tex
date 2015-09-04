@@ -1,11 +1,61 @@
 \chapter{Introduction}
-Imagine a smaller company with a well developed web application. The company has a few developers and has the want to extend their web applications features for their users. They want to track their users activity for making a health profile. To track the user's activity they need to use the mobile accelerometer. The accelerometer can be accessed through a mobile application but not through a web application. 
+A web application has a lot of advantages compared to mobile applications. They run on all plattforms have instant updates and are simple to maintain \cite{michaels2013}. However, a web application can't access some native mobile features such as the mobile's accelorometer. A company who want to access such native features need to develop a mobile application. In addition as much as 76\% mobile applications users agree that all companies should have mobile applications to make interacting with the companies easier \cite{harris2010}. 
 
+Developing a mobile application can be very expensive. Small to medium sized project for an Android mobile is estimated to cost from 20 000 - 40 000 dollars \cite{kohan2015}. 
 
+If a company has a web application they can choose to develop a mobile application from the ground up. The users activity in the mobile and web application can be synchronized with by the use of the same back-end interface, see figure \ref{figure-common-backend}. That will cost them a huge amount of development time and also a lot of time maintaining several platforms.
+% example exists at http://www.texample.net/tikz/examples/marketing-distribution-channel/
+\begin{figure}\label{figure-common-backend}
+\centering
+\begin{tikzpicture}[node distance=1cm, auto]  
+\tikzset{
+    mynode/.style={rectangle,rounded corners,draw=black, top color=white, bottom color=yellow!50,very thick, inner sep=1em, minimum size=3em, text centered},
+    myarrow/.style={->, >=latex', shorten >=1pt, thick},
+    mylabel/.style={text width=7em, text centered} 
+}  
+\node[mynode] (backend) {Backend};  
+\node[below=3cm of backend] (dummy) {}; 
+\node[mynode, left=of dummy] (mobile) {Mobile application};  
+\node[mynode, right=of dummy] (web) {Web application};
 
-The company can choose to develop a mobile application from the ground up and integrate the application with their current web application. That will cost them a huge amount of development time and also a lot of time maintaining several platforms.
+\draw[myarrow] (backend.south)  -- ++(0,-1) -|  (mobile.north);
+\draw[myarrow] (mobile.north)  -- ++(0,1.506) -|  (backend.south);
+\draw[myarrow] (backend.south)  -- ++(0,-1) -|  (web.north);
+\draw[myarrow] (web.north)  -- ++(0,1.506) -|  (backend.south);
+% There is a slight overlap of the arrows with the (manufacturer) south edge
+% because creating the offset in another way didn't compile. 
 
-Another less costly alternative is to create the mobile application using the existing web application. The web application is run within a shell of the mobile application. The web application can then access the mobile’s native functions such as the accelerometer. This will save the company time developing the mobile application and instead of maintaining several platforms for every feature the mobile application only need to be maintained in regards of the use of the accelerometer. 
+\end{tikzpicture} 
+\medskip
+\caption{Seperate mobile and web application connected with a common backend.} 
+\end{figure}
+
+Another, less costly alternative, is to create a mobile application using the existing web application. The web application is run within a shell of the mobile application, see figure \ref{figure-encapsulated-web}. The web application can then access the mobile’s native functions. This will save development time and instead of maintaining several platforms for every feature the mobile application only need to be maintained in regards of the use of the native functions. 
+
+\begin{figure}\label{figure-encapsulated-web}
+\centering
+\begin{tikzpicture}[node distance=1cm, auto]  
+\tikzset{
+    mynode/.style={rectangle,rounded corners,draw=black, top color=white, bottom color=yellow!50,very thick, inner sep=1em, minimum size=3em, text centered},
+    myarrow/.style={->, >=latex', shorten >=1pt, thick},
+    mylabel/.style={text width=7em, text centered} 
+}  
+\node[mynode] (backend) {Backend};  
+\node[below=3cm of backend] (dummy) {}; 
+\node[mynode, left=of dummy] (mobile) {Mobile application};  
+\node[mynode, right=of dummy] (web) {Web application};
+
+\draw[myarrow] (backend.south)  -- ++(0,-1) -|  (web.north);
+\draw[myarrow] (web.north)  -- ++(0,1.506) -|  (backend.south);
+\draw[myarrow] (web.west)  -- (mobile.east);
+\draw[myarrow] (mobile.east)  -- (web.west);
+% There is a slight overlap of the arrows with the (manufacturer) south edge
+% because creating the offset in another way didn't compile. 
+
+\end{tikzpicture} 
+\medskip
+\caption{Seperate mobile and web application connected with a common backend.} 
+\end{figure}
 
 The aim of this thesis is to evaluate two different development methods for encapsulating an existing web application in a mobile application to utilize native functions. With focus on evaluating development effort.
 
