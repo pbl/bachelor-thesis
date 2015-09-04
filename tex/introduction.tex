@@ -1,51 +1,50 @@
 \chapter{Introduction}
-% Add text here that motivates this thesis, perhaps a quick intro 
-\section{Background}
-% gives warning because the table of contents thinks the line gets to long..
-\subsection{A brief explanation of Android, hybrid applications and PhoneGap}
+Imagine a smaller company with a well developed web application. The company has a few developers and has the want to extend their web applications features for their users. They want to track their users activity for making a health profile. To track the user's activity they need to use the mobile accelerometer. The accelerometer can be accessed through a mobile application but not through a web application. 
 
-Android is operating system used on a wide range of devices, such as a mobile device or tv device. Coding android applications is done in the programming language Java. Code for android can be written in the official Android development environment, Android studio, but other development environment is also available. 
 
-Android software development kit (SDK) provides the programmer with a number of tools. Such as a debugger, library, device emulator, and documentation.  
 
-A hybrid application is a native application which is partially written with web technologies. I.e HTML5, CSS and JavaScript. The part of the application written with web technologies runs within a browsers engine in a so called WebView. A web application running in a browser does not have access to a device native functions such as the bluetooth. However a website running within a WebView can through interaction with the application's native code access a device native functions.
+The company can choose to develop a mobile application from the ground up and integrate the application with their current web application. That will cost them a huge amount of development time and also a lot of time maintaining several platforms.
 
-PhoneGap is a framework for developing mobile applications. The code is written with web technologies, the code is compiled to different platform, such as Android or IOs, specific code. The resulting application is a hybrid application. An example of a mobile application built in PhoneGap is wikipedia's mobile application.  
+Another less costly alternative is to create the mobile application using the existing web application. The web application is run within a shell of the mobile application. The web application can then access the mobile’s native functions such as the accelerometer. This will save the company time developing the mobile application and instead of maintaining several platforms for every feature the mobile application only need to be maintained in regards of the use of the accelerometer. 
+
+The aim of this thesis is to evaluate two different development methods for encapsulating an existing web application in a mobile application to utilize native functions. With focus on evaluating development effort.
+
+\section{Motivation}
+There are a number of researches of developing a native or hybrid mobile application using different methods. The researches focuses on aspects such as cost, effort and advantages and disadvantages for developing an entirely new mobile application. However, it is very hard to find research on extending an existing web application with mobile native features. 
+
+The cost for developing a small to medium sized project in native Android or PhoneGap is estimated to cost around 20 000 - 40 000 dollars\cite{kohan2015}. 
+
+One of the huge advantages developing in PhoneGap compared with developing natively is that PhoneGap can be compiled to multiple platforms. Making PhoneGap an attractive development framework for companies with less development resources. If a mobile application is developed natively for Android, IOs and Windows Phone, maintaining the mobile application must be done in three different native applications. If the mobile application is instead developed in PhoneGap only one application needs to be maintained. 
+
+A disadvantage of developing in PhoneGap is when their is a use of many native features. PhoneGap relies on a development framework and the provided features when building a mobile application. Hence, if the framework is not up to date with the latest new features, the developer will not be able to partake of the features until the framework is updated. If the application is dependent on many native features a hybrid application may have limitations\cite{kohan2015}.   
 
 \section{Problem formulation}
+The goal of this project is to evaluate two different development methods for encapsulating an existing web application in an Android mobile application. When evaluating the methods the focus is on development effort. The purpose of the mobile application is to give the web application access to the mobile's native functions. An example of such a native function would be accessing the mobile's accelerometer. It is important that the logic of the web application can be written in a general way (non-platform dependant) adapting to the device accessing the web application. So that the same web application code is used for the web application and mobile application.
 
-The aim of this project is to evaluate two different development methods for encapsulating an existing web application in an Android mobile application, in order to give the web application access to the mobile's native functions. An example of such a native function would be accessing the camera of a mobile phone. It is important that the logic on the web application can be written in a general way (non-platform dependant) adapting to the device accessing the web application. This way, the method used to encapsulate the web application is easy to replace, with minimum effect on the logic of the web application. 
+Antoher goal is that the mobile application only provides data from native functions. In order to achieve that the web application and mobile application should have a master slave relationship. Where the web application acts as the master and the mobile application as the slave. To get data from the mobiles native functions the web application asks for the data and the mobile application passes the data back.
 
-As the first development method, the mobile application will be built natively (in Java for android). As the second method, the mobile development framework PhoneGap will be used. The methods will be evaluated and compared from a developers perspective, with the preconditions defined section \ref{section-preconditions}
+To enable this master and slave relationship the mobile and web application layer must be able to communicate. Passing commands and data between the layers. It is important the mobile and web application layers has a way of communicating that is developer friendly. 
 
-\subsection{Preconditions}\label{section-preconditions}
+To limit the scope of the research the development methods is only evaluted for the mobile operating system Android. Android was choosen since it is the most widely used today for mobiles.
+
+There are two development methods of creating an Android application that will be evaluated. The first development method is to develop natively in Android. The second method is to develop using the framework PhoneGap.
+
+The methods will be evaluated and compared from a developers perspective, with the preconditions defined section \ref{section-preconditions}.
+
+\subsection{Preconditions} \label{section-preconditions}
 The study is done from a company's perspective and is based on the following prerequisites:
 \begin{itemize}
-\item There are only a few developers, three or less
-\item There is already an existing web-application that is to be used by the mobile-application
-\item The company has a need and/or desire to extend the functionality of it's web-application with native functions
-\item The company's developer or developers has no prior knowledge of mobile application development
+\item There are only a few developers, three or less.
+\item There is already an existing web-application that is to be used by the mobile-application.
+\item The company has a need and/or desire to extend the functionality of it's web-application with native functions.
 \end{itemize}
 
-When examining the methods, the focus has been restrained to the following developing aspects
-\begin{itemize}
-\item Modularisation in a way so that its easy to add functionality
-\item The web application should be loosely coupled with native code
-\item Maintainability (easy to update in case of API change)
-\end{itemize}
 \section{Contribution statement}
-Throughout this work we have been working together all the time. When writing code we often been pair programming and if not we have reviewed each others code afterwards. Researching has also been done together. It is therefore impossible to point to whom has done what in this thesis since all our work has been done together. 
+Throughout this work we have been working together very closely. We have reviewed and improved each others work continuously. During development we often been pair programming. With that said we can attribute parts of our work to one of us more then the other. Even though most of the work has been created together. 
 
-%Om du har utför examensarbetet tillsammans med en annan student ska det i rapporten tydligt framgå vem av er som har gjort vad, både i fråga om arbetet och rapporten.
+Philip designed the code of the web application and the mobile application built natively in Android. David designed the code for the PhoneGap application. David researched different techniques for the communication between the PhoneGap layer and the web application layer. David wrote the Approach section and Philip wrote the Introduction section in this paper. 
 
-\section{Terminology}
-\begin{description}
-  \item[Mobile application] \hfill \\
-    Refers to the application being developed, excluding code loaded from remote        websites.
-  \item[Web application] \hfill \\
-    If nothing else is specified it refers to the client-side of the web application.
-  \item[Development methods] \hfill \\
-    Refers (in the context of this paper) to the methods of mobile application          development being evaluated, i.e. using the development framework PhoneGap or       writing native Android code.
-  \item[Native function] \hfill \\
-     A hardware function which a device has. For example mobile with a camera and GPS have native functions when writing mobile software or applications to get access to the camera or it's GPS.
-\end{description}
+% here we also write what we achieved with this work
+
+\section{Report organization}
+%explain what the following chapters contain and how they fit together (one sentence each)
