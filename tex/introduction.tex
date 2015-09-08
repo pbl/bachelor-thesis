@@ -1,9 +1,11 @@
-\chapter{Introduction}
-A web application has a lot of advantages compared to mobile applications. They run on all plattforms have instant updates and are simple to maintain \cite{michaels2013}. However, a web application can't access some native mobile features such as the mobile's accelorometer. A company who want to access such native features need to develop a mobile application. In addition as much as 76\% mobile applications users agree that all companies should have mobile applications to make interacting with the companies easier \cite{harris2010}. 
+\chapter{Introduction}\label{chapter-introduction}
+The first section, Motivation \ref{section-motivation}, of this chapter gives a motivation for the research. Explaining why the research and in which context this is relevant. Thereafter the problem formulation \ref{section-problem-formulation} section is stated which describes the problem that is researched<<. In the Problem formulation section the scope of the study and the development goals are also stated. Development goals describes development goals that are important to make the research result applicable>>. The following section Contribution statement \ref{section-contribution-statement} contains the contribution to the research made by the researchers. The section also describes the knowledge gained by this research. Lastly the section Report organization \ref{section-report-organization} explains what the following chapters contain and how they fit together.
 
-Developing a mobile application can be very expensive. Small to medium sized project for an Android mobile is estimated to cost from 20 000 - 40 000 dollars \cite{kohan2015}. 
+\section{Motivation}\label{section-motivation}
+A web application has a lot of advantages compared to mobile applications. They run on all plattforms have instant updates and are simple to maintain \cite{michaels2013}. However, a web application can't access some native mobile features such as the mobile's accelorometer. A company who want to access such native features need to develop a mobile application. Developing a mobile application can be very expensive. Small to medium sized project for an Android mobile is estimated to cost from 20 000 - 40 000 dollars \cite{kohan2015}.
 
 If a company has a web application they can choose to develop a mobile application from the ground up. The users activity in the mobile and web application can be synchronized with by the use of the same back-end interface, see figure \ref{figure-common-backend}. That will cost them a huge amount of development time and also a lot of time maintaining several platforms.
+
 % example exists at http://www.texample.net/tikz/examples/marketing-distribution-channel/
 \begin{figure}\label{figure-common-backend}
 \centering
@@ -23,7 +25,6 @@ If a company has a web application they can choose to develop a mobile applicati
 \draw[myarrow] (backend.south)  -- ++(0,-1) -|  (web.north);
 \draw[myarrow] (web.north)  -- ++(0,1.506) -|  (backend.south);
 % There is a slight overlap of the arrows with the (manufacturer) south edge
-% because creating the offset in another way didn't compile. 
 
 \end{tikzpicture} 
 \medskip
@@ -57,18 +58,11 @@ Another, less costly alternative, is to create a mobile application using the ex
 \caption{Seperate mobile and web application connected with a common backend.} 
 \end{figure}
 
+There are a number of researches of developing a mobile application using different methods. The researches focuses on aspects such as cost, effort and advantages and disadvantages for developing an entirely new mobile application. However, it is very hard to find research on extending an existing web application with mobile native features. 
+
 The aim of this thesis is to evaluate two different development methods for encapsulating an existing web application in a mobile application to utilize native functions. With focus on evaluating development effort.
 
-\section{Motivation}
-There are a number of researches of developing a native or hybrid mobile application using different methods. The researches focuses on aspects such as cost, effort and advantages and disadvantages for developing an entirely new mobile application. However, it is very hard to find research on extending an existing web application with mobile native features. 
-
-The cost for developing a small to medium sized project in native Android or PhoneGap is estimated to cost around 20 000 - 40 000 dollars\cite{kohan2015}. 
-
-One of the huge advantages developing in PhoneGap compared with developing natively is that PhoneGap can be compiled to multiple platforms. Making PhoneGap an attractive development framework for companies with less development resources. If a mobile application is developed natively for Android, IOs and Windows Phone, maintaining the mobile application must be done in three different native applications. If the mobile application is instead developed in PhoneGap only one application needs to be maintained. 
-
-A disadvantage of developing in PhoneGap is when their is a use of many native features. PhoneGap relies on a development framework and the provided features when building a mobile application. Hence, if the framework is not up to date with the latest new features, the developer will not be able to partake of the features until the framework is updated. If the application is dependent on many native features a hybrid application may have limitations\cite{kohan2015}.   
-
-\section{Problem formulation}
+\section{Problem formulation}\label{section-problem-formulation}
 The goal of this project is to evaluate two different development methods for encapsulating an existing web application in an Android mobile application. When evaluating the methods the focus is on development effort. The purpose of the mobile application is to give the web application access to the mobile's native functions. An example of such a native function would be accessing the mobile's accelerometer. It is important that the logic of the web application can be written in a general way (non-platform dependant) adapting to the device accessing the web application. So that the same web application code is used for the web application and mobile application.
 
 Antoher goal is that the mobile application only provides data from native functions. In order to achieve that the web application and mobile application should have a master slave relationship. Where the web application acts as the master and the mobile application as the slave. To get data from the mobiles native functions the web application asks for the data and the mobile application passes the data back.
@@ -89,12 +83,18 @@ The study is done from a company's perspective and is based on the following pre
 \item The company has a need and/or desire to extend the functionality of it's web-application with native functions.
 \end{itemize}
 
-\section{Contribution statement}
+\subsection{Scope} \label{subsection-scope}
+%the scope of the research
+
+\subsection{Development goals} \label{subsection-development-goals}
+%the development goals
+
+\section{Contribution statement}\label{section-contribution-statement}
 Throughout this work we have been working together very closely. We have reviewed and improved each others work continuously. During development we often been pair programming. With that said we can attribute parts of our work to one of us more then the other. Even though most of the work has been created together. 
 
 Philip designed the code of the web application and the mobile application built natively in Android. David designed the code for the PhoneGap application. David researched different techniques for the communication between the PhoneGap layer and the web application layer. David wrote the Approach section and Philip wrote the Introduction section in this paper. 
 
 % here we also write what we achieved with this work
 
-\section{Report organization}
+\section{Report organization}\label{section-report-organization}
 %explain what the following chapters contain and how they fit together (one sentence each)
