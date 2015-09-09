@@ -61,3 +61,11 @@ To compare size between two different languages a size conversion table can be u
 \section{Related work}
 
 % if anyone asks for a deeper research or surroundin topic here the work that we can reco
+
+%not really sure what to do with this section. I think actually might belong in approach
+\subsection{Development goals} \label{subsection-development-goals}
+Antoher goal is that the mobile application only provides data from native functions. In order to achieve that the web application and mobile application should have a master slave relationship. Where the web application acts as the master and the mobile application as the slave. To get data from the mobiles native functions the web application asks for the data and the mobile application passes the data back.
+
+To enable this master and slave relationship the mobile and web application layer must be able to communicate. Passing commands and data between the layers. It is important the mobile and web application layers has a way of communicating that is developer friendly. 
+
+It is important that the logic of the web application can be written in a general way (non-platform dependant) adapting to the device accessing the web application. So that the same web application code is used for the web application and mobile application.
