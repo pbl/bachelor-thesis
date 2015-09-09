@@ -65,34 +65,23 @@ Another alternative, is to create a mobile application using the existing web ap
 
 There are a number of researches of developing a mobile application using different methods. The researches focuses on aspects such as cost, effort and advantages and disadvantages for developing an entirely new mobile application. However, it is very hard to find research on extending an existing web application with mobile native features. 
 
-The aim of this thesis is to evaluate two different development methods for encapsulating an existing web application in a mobile application to utilize native functions. With focus on evaluating development effort.
-
 \section{Problem formulation}\label{section-problem-formulation}
-The goal of this project is to evaluate two different development methods for encapsulating an existing web application in an Android mobile application. When evaluating the methods the focus is on development effort. The purpose of the mobile application is to give the web application access to the mobile's native functions. An example of such a native function would be accessing the mobile's accelerometer. It is important that the logic of the web application can be written in a general way (non-platform dependant) adapting to the device accessing the web application. So that the same web application code is used for the web application and mobile application.
+It can be very expensive for companies or organizations to develop a mobile application \cite{kohan2015}. To investigate an alternative to develop an mobile application from the ground up is therefore interesting.
+What is the advantages and disadvantages for two different development methods for encapsulating an existing web application in a mobile application to utilize native functions? An example of such a native function would be accessing the mobile's accelerometer. The advantages and disadvantages will be evaluated by looking at development effort and how the code can be structured in the mobile and web application. 
 
+\subsection{Scope} \label{subsection-scope}
+To limit the scope of the research the development methods is only evaluted for the mobile operating system Android. Android was choosen since it has a market share of 80.7\% of all smartphone sales \ref{gartner2015}.
+
+The development methods that is researched is the PhoneGap framework and developing with the Android SDK. The methods will be evaluated and compared from a developers perspective. It is assumed that there is an existing web application and that there is a need/or desire to extend the functionality of it's web-application with native functions.
+
+\subsection{Development goals} \label{subsection-development-goals}
+
+% to make the result more feasable a few development goals has been set up.
 Antoher goal is that the mobile application only provides data from native functions. In order to achieve that the web application and mobile application should have a master slave relationship. Where the web application acts as the master and the mobile application as the slave. To get data from the mobiles native functions the web application asks for the data and the mobile application passes the data back.
 
 To enable this master and slave relationship the mobile and web application layer must be able to communicate. Passing commands and data between the layers. It is important the mobile and web application layers has a way of communicating that is developer friendly. 
 
-To limit the scope of the research the development methods is only evaluted for the mobile operating system Android. Android was choosen since it is the most widely used today for mobiles.
-
-There are two development methods of creating an Android application that will be evaluated. The first development method is to develop natively in Android. The second method is to develop using the framework PhoneGap.
-
-The methods will be evaluated and compared from a developers perspective, with the preconditions defined section \ref{section-preconditions}.
-
-\subsection{Preconditions} \label{section-preconditions}
-The study is done from a company's perspective and is based on the following prerequisites:
-\begin{itemize}
-\item There are only a few developers, three or less.
-\item There is already an existing web-application that is to be used by the mobile-application.
-\item The company has a need and/or desire to extend the functionality of it's web-application with native functions.
-\end{itemize}
-
-\subsection{Scope} \label{subsection-scope}
-%the scope of the research
-
-\subsection{Development goals} \label{subsection-development-goals}
-%the development goals
+It is important that the logic of the web application can be written in a general way (non-platform dependant) adapting to the device accessing the web application. So that the same web application code is used for the web application and mobile application.
 
 \section{Contribution statement}\label{section-contribution-statement}
 Throughout this work we have been working together very closely. We have reviewed and improved each others work continuously. During development we often been pair programming. With that said we can attribute parts of our work to one of us more then the other. Even though most of the work has been created together. 
