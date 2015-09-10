@@ -69,26 +69,46 @@ A more detailed view of the program flow when the web application requests an im
 \end{enumerate}
 
 \subsection{Code evaluation}
-Evaluation of the developed application was performed as described in [...], and a summary of the results  can be seen in table ~\ref{tab:lloc1}.
+Evaluation of the developed application was performed as described in [...], and a summary of the results  can be seen in the table below.
 
-\begin{table}[!htb]
-    \centering
-        \begin{tabular}{lrc}\hline
-			\end{tabular}
-    \caption{Code evaluation - Native application}\label{tab:lloc1}
-\end{table}
+\begin{tabular}{ | l | c | r | }
+    \hline
+    \multicolumn{3}{|c|}{Quantitative metrics} \\
+    \hline
+	Metric & Android application &  Web application \\
+	\hline
+	Files & 10 & 2\\
+	Logical Lines of Code LLoC & 200 & 173\\	
+	Single Line Comments & 28 & 19\\
+	Multi Line Comments & 9 & 1\\
+	High Quality Comments & 37 & 16\\
+	Strings & 38 & 66\\
+	Numeric Constants & 3 & 9 \\
+	\hline
+	\multicolumn{3}{c}{\emph{Result of code evaluation using ProjectCodeMeter}}
+\end{tabular}
 
 \section{PhoneGap}
-The application developed in PhoneGap can 
+The developed PhoneGap application can be cloned from Github at [..], also a compressed version of all source code used in the thesis can be found at [..]. An overview of the application structure and functionality follows in section ~\ref{sec:phonegapstructure}. 
 
-\subsection{Application structure}
-
+\subsection{Application structure} \label{sec:phonegapstructure}
+A UML-diagram representing the PhoneGap application can be seen in figure ~\ref{fig:phonegapuml}, with the classes summarized below.
 \begin{figure}[h!]
 	\centering
     \includegraphics[width=120mm,natwidth=800,natheight=600]{./img/phonegapuml.png}
     \caption{Structure of the phonegap application}
     \label{fig:phonegapuml}
 \end{figure}
+
+\begin{description}
+	\item[Receiver] listens to messages posted to the browser window PhoneGap is running in. Receives messages from web application and calls the requested methods in the PhoneGap application.
+	\item[LocalDevice] is used to load the web application and initialize the device in the web application to the correct adapter.
+	\item[DeviceCamera] contains logic for invoking, and receiving results from the device camera. Also forwards the results to the web application.
+	\item[geolocation] contains logic for accessing the phones geo location (GPS-position) and forwarding the results to the web application.
+\end{description}
+
+
+In order to simplify development of the web application with support for both web browsers and the PhoneGap application, part of the logic follows the adapter pattern. The business logic of the web application stays the same, and only the communication with the unit (web browser or application), for example when uploading a picture, differs. Figure ~\ref{fig:phonegapwebuml} displays the basic structure of the web application. 
 
 \begin{figure}[h!]
 	\centering
@@ -102,13 +122,33 @@ The application developed in PhoneGap can
     \includegraphics[width=120mm,natwidth=800,natheight=600]{./img/phonegapfunctionflow.png}
     \caption{Function flowchart, single call in web application}
 \end{figure}
+\begin{enumerate}
+	\item User action invokes a request for an image from the mobile camera 
+	\item Current device adapter (PhoneGapDeviceAdapter) forwards the request to the PhoneGap application using postMessage
+	\item The message gets processed by the PhoneGap receiver which forwards the call to DeviceCamera via the getPicture function
+	\item DeviceCamera uses PhoneGap library code to start the camera application
+	\item User takes picture, and the result is received by DeviceCamera
+	\item DeviceCamera returns the result to the browser by invoking DeviceCallback on the exposed javascript object, in PhoneGap known as PolluxDevice
+	\item DeviceCallback calls the javascript callback function specified in its argument
+	\item The captured image is displayed to the user in the browser	
+\end{enumerate}
 
 \subsection{Code evaluation}
-Evaluation of the developed application was performed as described in [...], and a summary of the results  can be seen in table ~\ref{tab:lloc2}.
+Evaluation of the developed application was performed as described in [...], and a summary of the results  can be seen in the table below.
 
-\begin{table}[!htb]
-    \centering
-        \begin{tabular}{lrc}\hline
-			\end{tabular}
-    \caption{Code evaluation - PhoneGap application}\label{tab:lloc2}
-\end{table}
+\begin{tabular}{ | l | c | r | }
+    \hline
+    \multicolumn{3}{|c|}{Quantitative metrics} \\
+    \hline
+	Metric & PhoneGap application &  Web application \\
+	\hline
+	Files & 3 & 2\\
+	Logical Lines of Code LLoC & 86 & 175\\	
+	Single Line Comments & 27 & 19\\
+	Multi Line Comments & 2 & 1\\
+	High Quality Comments & 27 & 16\\
+	Strings & 49 & 68\\
+	Numeric Constants & 1 & 9 \\
+	\hline
+	\multicolumn{3}{c}{\emph{Result of code evaluation using ProjectCodeMeter}}
+\end{tabular}
