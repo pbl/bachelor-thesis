@@ -1,5 +1,5 @@
 \chapter{Background}\label{chapter-background}
-The first section of this chapter \ref
+The first section of this chapter, terminology \ref{section-terminology}, explains terms that are used throughout this thesis. The next section, Android development methods \ref{section-android-development-methods}, explains different methods of developing an Android mobile application. The following section, lines of code \ref{section-lines-of-code}, describes lines of code as a software metric and what it measures. Lastly the section, related work \ref{section-related-work}, suggests related work to this thesis for further reading. 
 
 \section{Terminology}\label{section-terminology}
 \begin{description}
@@ -13,11 +13,33 @@ The first section of this chapter \ref
      A hardware function which a device has. Lets say a mobile has a camera and an accelerator. When writing software for that mobile there are functions to interact with the camera and accelerator. Those functions are called native functions.
   \item[Web/Mobile application layer] \hfill \\
 	Refers to the application layer belonging specifically to the mobile application or the web application. A mobile application can encapsulate a web application which then is a a part of the mobile application. The mobile application then consists of a mobile and web application layer.
+	\item[Native application] \hfill \\
+	A native application is an application that is developed to be used on a particular device or plattform. For example, a native application for Android is an application that is written to run on the Android operating system. 
+\item[Hybrid application] \hfill \\
+	A hybrid application is a native application which is partially written with web technologies. I.e HTML5, CSS and JavaScript. The part of the application written with web technologies runs within a browsers engine. The browser engine in Android is called WebView. A web application running in a web browser on a mobile does not have access to the mobiles native functions such as the bluetooth. However a web application running within a WebView can access a device native functions. 
 \end{description}
 
-
-% i don't know where to put this section yet but i ought the be in this chapter
 \section{Android development methods}\label{section-android-development-methods}
+Android is an operating system used on a wide range of devices \cite{dell2011}. For example a mobile device or tv device. Developing Android applications are usually written in the 	programming language Java using the Android SDK.
+
+A software library for a system is a set of functions which can be used when developing applications for that system. A framework is a layered structure to help or simplify for the developer to develop software for a system. A framework differs from a library in the following way \cite{riehle2000}:
+
+\begin{itemize}
+\item The programs flow of control is dictated by the framework instead of the caller.
+\item A framework has a useful default behavior.
+\item The framework can be extended by the user.
+\end{itemize}
+
+\subsection{Android application framework} 
+The Android SDK includes a set of tools \cite{sdk2015}. Tools such as virtual device tools, development tools, debugging tools and buid tools. An Android application that is developed natively is an application that is developed using the Android SDK. The year 2012 60\% of all open source developers writing Android or IOs applications only used the official SDK \cite{eclipse2012}. For developing Android applications Android provides an application framework \cite{android-framework2015}.
+
+
+\subsection{Other frameworks}
+% here I write 
+
+\subsection{PhoneGap framework}
+PhoneGap is a framework for developing mobile applications. The code is written with web technologies. The code can be compiled to different platforms, such as Android or IOs specific code. The resulting application is a hybrid application. An example of a mobile application built in PhoneGap is Wikipedia's mobile application.
+
 One of the huge advantages developing in PhoneGap compared with developing natively is that PhoneGap can be compiled to multiple platforms, see figure \ref{figure-phonegap-plattoforms}. Making PhoneGap an attractive development framework for companies with less development resources. If a mobile application is developed natively for Android, IOs and Windows Phone, maintaining the mobile application must be done in three different native applications. If the mobile application is instead developed in PhoneGap only one application needs to be maintained. 
 
 \begin{figure}\label{figure-phonegap-plattforms}
@@ -36,14 +58,7 @@ One of the huge advantages developing in PhoneGap compared with developing nativ
 \caption{PhoneGap can be compiled into multiple plattoforms.} 
 \end{figure}
 
-A disadvantage of developing in PhoneGap is when their is a use of many native features. PhoneGap relies on a development framework and the provided features when building a mobile application. Hence, if the framework is not up to date with the latest new features, the developer will not be able to partake of the features until the framework is updated. If the application is dependent on many native features a hybrid application may have limitations\cite{kohan2015}.   
-
-%\section{Background}\label{section-background}
-Android is an operating system used on a wide range of devices. For example a mobile device or tv device. Developing Android applications are written in the programming language Java. 
-
-A hybrid application is a native application which is partially written with web technologies. I.e HTML5, CSS and JavaScript. The part of the application written with web technologies runs within a browsers engine in a so called WebView. A web application running in a browser does not have access to a device native functions such as the bluetooth. However a website running within a WebView can through interaction with the application's native code access a device native functions.
-
-PhoneGap is a framework for developing mobile applications. The code is written with web technologies. The code can be compiled to different platforms, such as Android or IOs specific code. The resulting application is a hybrid application. An example of a mobile application built in PhoneGap is Wikipedia's mobile application.
+A disadvantage of developing in PhoneGap is when their is a use of many native features. PhoneGap relies on a development framework and the provided features when building a mobile application. Hence, if the framework is not up to date with the latest new features, the developer will not be able to partake of the features until the framework is updated. If the application is dependent on many native features a hybrid application may have limitations\cite{kohan2015}.
 
 \section{Lines of code}\label{section-lines-of-code}
 Source lines of code is a measurement tool for software development. Source lines of code, also abbreviated as SLOC, is very easy to obtain and is a fairly accurate predictor of development effort\cite[p.~63]{galorath2006}. Measuring SLOC simply means you count the number of lines of code. There are many different ways to measure SLOC, such as Halsted’s approach, function points, physical SLOC and Logical SLOC. 
