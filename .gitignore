@@ -6,3 +6,4 @@ build/
 *.out
 *.toc
 *.gz
+*.pdf
