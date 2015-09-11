@@ -7,5 +7,7 @@ build/
 *.toc
 *.gz
 *.pdf
-.nfs*
-.Rhistory
+*.nfs*
+*.Rhistory
+*.bbl
+*blg
