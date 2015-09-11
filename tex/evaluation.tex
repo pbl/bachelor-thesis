@@ -1,154 +1,154 @@
-\chapter{Evaluation}
-The evaluation has been divided into three different sections, one for each development method being evaluated. Furthermore, the sections are divided into subsections, one for each aspect to evaluate. Lastly for each development method there is a subsection presenting results found during development not fitting into any of the previous subsections. 
+\chapter{Evaluation}	
+The evaluation is divided into two sections, one for each development method used. In each section, the developed application, it's structure and functionality is presented, followed by the results of the code evaluation. 
+
 \section{Native android} \label{android}
-\subsection{Modularisation}
-The android application has a lot of different responsibilities, apart from communicating with the native API and web application, it also has to contain the necessary activity threads to function as an application. A modularisation of the code into as small sections as possible has been the goal of the architecture being developed. The different responsibilities can be summarized as:
+The developed native application can be cloned from Github at [..], also a compressed version of all source code used in the thesis can be found at [..]. An overview of the application structure and functionality follows in section ~\ref{sec:nativestructure}. 
 
-\begin{itemize}
-\item Communication with the Android native API
-\item Communication with the web application
-\item Handling activity lifecycle
-\item Starting activities for results (ex. the camera)
-\end{itemize}
-
-
-To conform to this modularisation, the architecture as figure \ref{caption-android-architecture} has been proposed. This divides the application into separate modules with a single responsibility, where the bridges responsibility is to handle communication between modules and add necessary logic for simple tasks such as casting of objects or performing calculations. 
-
-\begin{figure}[ht!]
-    \centering
-    \includegraphics[width=120mm,natwidth=800,natheight=600]{./img/androidStructure.png}
-    \caption{Architecture of the android application\label{caption-android-architecture}}
-\end{figure}
-
-
-(Add section describing function flow between java and javascript)
-
-\begin{figure}[ht!]
-    \centering
-    \includegraphics[width=120mm,natwidth=720,natheight=540]{./img/androidFlow.png}
-    \caption{Function flow of the android application\label{caption-android-flow}}
-\end{figure}
-
-\subsection{Function calls between Java and JavaScript}
-Calling javascript functions from Java is done using the function loadUrl on the WebView containing the web application. This was deducted to be an asynchronous method call, through practical tests in the development phase of this paper. 
-
-(Add section containing example test here)
-
-When calling Java functions on the exposed javaScriptInterface object from JavaScript, the behavior of the function call is a bit more obscure. Due to the single-threaded nature of javascript, function calls are synchronous when called in a normal fashion.
-
-(Add section containing example test here)
-
-( However, by the usage of AJAX, the function calls may behave asynchronous on the web application side. Then the question arises, can two functions be executed in parallel on the android side, or is the execution of the jsInterface functions limited to being handled by a single thread. )<--Needs to be researched to stay here.
-
-Utvärdering (Evaluation) bör beskriva den metod som används för att utvärdera din metod, inklusive experimentuppställning.
-
-\subsection{Dependence between web and native}
-
-\subsection{Maintainability}
-
-\section{Web application} 
-\subsection{Results}
-\subsubsection{Separating business logic from device specific logic}
-An requirement on the web application is the ability to separate the business logic from device specific logic. This can be done with an adapter pattern. To set the right adapter a different method is used for Android and PhoneGap. The usage of this pattern ensures a natural way of modularising the code and separating all business logic from logic related to device-specific communication, the business logic is thus independent of the running device. 
-
-\subsubsection{Encapsulating the web application in native Android application}
-When encapsulating the web application when writing the mobile application in native Android code is done by the use of a WebView. When the web application is loaded in the native layer through a WebView an object is made available to the web application on which the web application can use to send messages to the native layer. Therefore checking if the web application is running within a WebView can be done by:
-\begin{verbatim}
-if(typeof Android !== 'undefined'){
- adapter = new AndroidAdapter()
-}
-\end{verbatim}
-Where “Android” is the object made available to the web application by the native layer and can be used to invoke native functions.
-
-\subsubsection{Encapsulating the web application in a PhoneGap application}
-Here the same type of text as the chapter above shall be written
-
-
-An overview of the recommended architecture for the web application can be seen below, where the internal structure of the mobile application is irrelevant. 
-
-\begin{figure}[ht!]
-    \centering
-    \includegraphics[width=140mm,natwidth=800,natheight=600]{./img/webAppFlow.jpg}
-    \caption{Web application function calling flow \label{caption-web-flow}}
-\end{figure}
-
-\subsubsection{Communication between web application and mobile application}
-(this chapter shall be rewritten)
-Another functionality raising concerns regarding dependency is the communication between the web application and mobile application. The adapters dependency on the mobile application code is inevitable, unless communication can be made in a standardized way, and all devices expose methods conforming to an interface. The same thing goes for communication back to the web application, however in this case, the web application can expose a javascript function handling device callbacks, and as long as all devices are able to invoke javascripts in the web application, communication is independent apart from the name of the callback function. Ok that was not entirely true, in order for communication to be independent, all calls to the device must include the name of a callback function that will later be passed to the device callback function in the web application, which then relays callback data correctly. Also, the dependency on standardized callback data is still there, however this is a wanted behavior, as the data being sent back should be of the same type.
-
-\section{PhoneGap}
-
-\subsection{Communicatating between PhoneGap (native) layer and the web application}
-
-\begin{figure}[ht!]
-    \centering
-    \includegraphics[width=120mm,natwidth=800,natheight=600]{./img/phonegap.jpg}
-    \caption{The PhoneGap layer encapsulating the web application\label{overflow}}
-\end{figure}
-
-
-\subsubsection{Encupsulating the web application in an iFrame}
-The remote web application is loaded in an iFrame, whilst PhoneGap logic is running in the main view (see picture). The default response header for a web page contains rules regarding same-origin policy, which disallows the webpage from being embedded in an iFrame on another web page, unless they have the same origin. The response header therefore needs to be modified, in order to allow web pages with other origins to load the webpage in an iFrame. 
-This is done differently depending on the web development framework, in the framework Rails this can be done by: 
-
-\begin{verbatim}
-HomeController  < ApplicationController
-  after_action :allow_iframe
-  private
-    def allow_iframe
-      response.headers.except! 'X-Frame-Options'
-     end
-\end{verbatim}
-
-Function calling from the web application is done by the use of postMessage on the parent window, the PhoneGap-layer listens to these messages by the use of an event listener. A request call from the web application is a message containing two key-value pairs: “type” and “callback”. The value of “type” specifies which native function the web application desires data from. The value of “callback” is used by the PhoneGap-layer when sending the data back to the web application. This is done with the predefined method deviceCallback on the adapter in the web application:
-
-\begin{verbatim}
-Adapter.deviceCallback(nativeData, calbackName);
-\end{verbatim}
-
-This way the PhoneGap layer only need to know in which format the data should be in, nothing else. 
-\begin{figure}[ht!]
-    \centering
-    \includegraphics[width=120mm,natwidth=800,natheight=600]{./img/phoneGapFlow.jpg}
-    \caption{PhoneGap function calling flow \label{caption-phonegap-flow}}
-\end{figure}
-\newline
-The web application sends a message which is received by the listener in the PhoneGap application. The listener calls the function specified by the message, and passes on the callback to it. Upon completion the resulting data is passed to the web application, along with the callback, 
-
-\subsubsection{Using polling in the PhoneGap plugin inAppBrowser}
-
-inAppBrowser is a PhoneGap plugin which basically opens a browser “in the application”. By using this plugin to embed the remote web application, communication between the windows becomes different than when using an iFrame. Sending data from the PhoneGap-layer to the web application can be done by using the inAppBrowser function “executeScript”, which, in the inAppBrowser, executes the javascript passed as argument.
-
-The communication back from the web application is more complicated. One example of how to do it is by the use of polling variables in the web application using executeScript. For further reading the following blog article: “Cross Window Communication With Cordova’s inAppBrowser” (\url{http://blogs.telerik.com/appbuilder/posts/13-12-23/cross-window-communication-with-cordova\%27s-inappbrowser}) by TJ VanToll is recommended. 
-
-Other ways requires deeper technical web development knowledge. For more suggested methods read the support request https://issues.apache.org/jira/browse/CB-4897.
-
-\subsubsection{Using a third party plugin}
-PhoneGap supports custom plugins. This opens up the ability for companies to write their own plugins or make use of other third party plugins.
-
-There is a PhoneGap plugin written by the corporation Wizcorp which claims it enables communication between the PhoneGap layer and web application. However despite extensive effort it never worked in this project. A ananswered support question (25/3-2015) can be seen at https://github.com/Wizcorp/phonegap-plugin-wizViewManager/issues/77. 
-
-\subsection{Dependence between web and native}
-
-\subsection{Maintainability}
-
-\subsection{Demo}
-The demo code can be found at \url{https://github.com/DavidNorrestam/pollux-phonegap}. In the demo the communication between the PhoneGap layer and the web application is done by using an iFrame and postMessage, see chapter above. The most interesting files in the repository are found in:
+\subsection{Application structure} \label{sec:nativestructure}
+A UML-diagram representing the Android application can be seen in figure ~\ref{fig:nativeuml}, with the classes summarized below.
 
 \begin{description}
-  \item[www/js/receiver.js] \hfill \\
-    All the logic for receiving a message from the web application
-  \item[www/js/device.js] \hfill \\
-    Logic for some native functions and loading the web application
-  \item[www/index.html] \hfill \\
-    The html code for the mobile application view
+	\item[MainActivity] is the main class of the program, containing Android-specific code related to startup logic, activities to be started and shutdown of the application. It also serves as a messenger, sending back data from native functions upon completion.
+	
+	\item[IntentFactory] provides intents for native functions 
+	
+	\item[AndroidHardware] handles hardware related logic, such as file creation.
+	
+	\item[Bridge] serves as a bridge between the native application and web. When a native function is requested, Bridge requests the corresponding Intent from IntentFactory, and creates a Callback of the corresponding type. The Intent is sent to MainActivity for execution, and the Callback is stored in MainActivity.
+	
+	\item[WebViewDataSender] is the class communicating back to the web application by invoking javascript-functions in the browser.
+	
+	\item[JsInterface] is exposed to the web application as a JavaScriptInterface and acts as a receiver for function calls from the web application. Whenever native functionality is needed, the javascript in the web application can call upon it's methods. JsInterface forwards the function calls to Bridge, which in turn, contains the logic for each function.
+	
+	\item[Callback] contains logic specifying how to send results from a native function back to the web application.
+	
+	\begin{description}
+		\item[ImageCallback] is used when the web application requests an image from the camera.
+		
+		\item[ImagePickCallback] is used when the web application requests an image from the gallery.
+		
+	\end{description}
+	\item[UniqueInteger] is used by MainActivity when storing callbacks. An unique integer is used as an id for an Intent and its related callback. Upon completion of an Intent, the Callback with the same id is executed.
+	
+\end{description}
+
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=120mm,natwidth=800,natheight=600]{./img/polluxuml.png}
+    \caption{Structure of the android application}
+    \label{fig:nativeuml}
+\end{figure}
+
+In order to simplify development of the web application with support for both web browsers and the Android application, part of the logic follows the adapter pattern. The business logic of the web application stays the same, and only the communication with the unit (web browser or application), for example when uploading a picture, differs. Figure ~\ref{fig:nativewebuml} displays the basic structure of the web application. 
+
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=60mm,natwidth=400,natheight=300]{./img/androidwebuml.png}
+    \caption{Structure of the web application}
+	\label{fig:nativewebuml}
+\end{figure}
+
+A more detailed view of the program flow when the web application requests an image can be seen in figure ~\ref{fig:nativeflow}, further explained below.
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=120mm,natwidth=800,natheight=600]{./img/androidfunctionflow.png}
+    \caption{Function flowchart, single call from web application}
+    \label{fig:nativeflow}
+\end{figure}
+\begin{enumerate}
+	\item User action invokes a request for an image from the mobile camera
+	\item Current device adapter (AndroidDeviceAdapter) calls requestCamera on JsInterface, with the function name of the preferred callback function as argument
+	\item JsInterface forwards the function call to Bridge
+	\item Bridge creates the corresponding Intent and Callback, and calls processIntent on MainActivity with Intent and Callback as arguments
+	\item MainActivity Creates gets a unique id from UniqueInteger, stores the callback in a hashmap with the id as key, and starts the intent with the id as requestcode.
+	\item Camera application starts
+	\item When user takes a picture, MainActivity gets notified by the Android system, pulls the Callback with the same id as the processed Intent, and forwards the callback and resulting image data to Bridge through processCallback
+	\item Bridge executes the callback which in turn calls sendData on WebViewDataSender, with the image data and callback name as arguments
+	\item WebViewDataSender executes the javascript callback function in the browser window
+	\item The captured image is displayed to the user in the browser
+\end{enumerate}
+
+\subsection{Code evaluation}
+Evaluation of the developed application was performed as described in [...], and a summary of the results  can be seen in the table below.
+
+\begin{tabular}{ | l | c | r | }
+    \hline
+    \multicolumn{3}{|c|}{Quantitative metrics} \\
+    \hline
+	Metric & Android application &  Web application \\
+	\hline
+	Files & 10 & 2\\
+	Logical Lines of Code LLoC & 200 & 173\\	
+	Single Line Comments & 28 & 19\\
+	Multi Line Comments & 9 & 1\\
+	High Quality Comments & 37 & 16\\
+	Strings & 38 & 66\\
+	Numeric Constants & 3 & 9 \\
+	\hline
+	\multicolumn{3}{c}{\emph{Result of code evaluation using ProjectCodeMeter}}
+\end{tabular}
+
+\section{PhoneGap}
+The developed PhoneGap application can be cloned from Github at [..], also a compressed version of all source code used in the thesis can be found at [..]. An overview of the application structure and functionality follows in section ~\ref{sec:phonegapstructure}. 
+
+\subsection{Application structure} \label{sec:phonegapstructure}
+A UML-diagram representing the PhoneGap application can be seen in figure ~\ref{fig:phonegapuml}, with the classes summarized below.
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=120mm,natwidth=800,natheight=600]{./img/phonegapuml.png}
+    \caption{Structure of the phonegap application}
+    \label{fig:phonegapuml}
+\end{figure}
+
+\begin{description}
+	\item[Receiver] listens to messages posted to the browser window PhoneGap is running in. Receives messages from web application and calls the requested methods in the PhoneGap application.
+	\item[LocalDevice] is used to load the web application and initialize the device in the web application to the correct adapter.
+	\item[DeviceCamera] contains logic for invoking, and receiving results from the device camera. Also forwards the results to the web application.
+	\item[geolocation] contains logic for accessing the phones geo location (GPS-position) and forwarding the results to the web application.
 \end{description}
 
 
-%% extracted from method. I think it better fits the evaluation section...
-%Application source code can be found at:
-%\begin{itemize}
-%  \item Web application: \url{https://github.com/Albin-trialbee/pollux-server}
-%  \item PhoneGap application: \url{https://github.com/DavidNorrestam/pollux-phonegap}
-%  \item Native Android mobile application: \url{https://github.com/buren-trialbee/pollux/}
-%\end{itemize}
+In order to simplify development of the web application with support for both web browsers and the PhoneGap application, part of the logic follows the adapter pattern. The business logic of the web application stays the same, and only the communication with the unit (web browser or application), for example when uploading a picture, differs. Figure ~\ref{fig:phonegapwebuml} displays the basic structure of the web application. 
+
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=60mm,natwidth=400,natheight=300]{./img/phonegapwebuml.png}
+    \caption{Structure of the web application}
+        \label{fig:phonegapwebuml}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=120mm,natwidth=800,natheight=600]{./img/phonegapfunctionflow.png}
+    \caption{Function flowchart, single call in web application}
+\end{figure}
+\begin{enumerate}
+	\item User action invokes a request for an image from the mobile camera 
+	\item Current device adapter (PhoneGapDeviceAdapter) forwards the request to the PhoneGap application using postMessage
+	\item The message gets processed by the PhoneGap receiver which forwards the call to DeviceCamera via the getPicture function
+	\item DeviceCamera uses PhoneGap library code to start the camera application
+	\item User takes picture, and the result is received by DeviceCamera
+	\item DeviceCamera returns the result to the browser by invoking DeviceCallback on the exposed javascript object, in PhoneGap known as PolluxDevice
+	\item DeviceCallback calls the javascript callback function specified in its argument
+	\item The captured image is displayed to the user in the browser	
+\end{enumerate}
+
+\subsection{Code evaluation}
+Evaluation of the developed application was performed as described in [...], and a summary of the results  can be seen in the table below.
+
+\begin{tabular}{ | l | c | r | }
+    \hline
+    \multicolumn{3}{|c|}{Quantitative metrics} \\
+    \hline
+	Metric & PhoneGap application &  Web application \\
+	\hline
+	Files & 3 & 2\\
+	Logical Lines of Code LLoC & 86 & 175\\	
+	Single Line Comments & 27 & 19\\
+	Multi Line Comments & 2 & 1\\
+	High Quality Comments & 27 & 16\\
+	Strings & 49 & 68\\
+	Numeric Constants & 1 & 9 \\
+	\hline
+	\multicolumn{3}{c}{\emph{Result of code evaluation using ProjectCodeMeter}}
+\end{tabular}
