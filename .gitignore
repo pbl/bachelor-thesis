@@ -5,11 +5,7 @@ build/
 *.log
 *.out
 *.toc
-<<<<<<< HEAD
 *.gz
 *.pdf
-=======
-*.gzhttp://www.effectiveui.com/company/newsroom/press-releases/11-10-2010/
 .nfs*
 .Rhistory
->>>>>>> 60fd59c6ddae03217408e84edb32538159dca3e9
