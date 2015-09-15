@@ -8,9 +8,10 @@ The developed native application can be cloned from Github at [..], also a compr
 A UML-diagram representing the Android application can be seen in figure ~\ref{fig:nativeuml}, with the classes summarized below.
 
 \begin{description}
-	\item[MainActivity] is the main class of the program, containing Android-specific code related to startup logic, activities to be started and shutdown of the application. It also serves as a messenger, sending back data from native functions upon completion.
+	\item[MainActivity] is the main activity of the program. It is in charge of starting activities upon request from the web application, and registers 
 	
-	\item[IntentFactory] provides intents for native functions 
+	
+	\item[IntentFactory] provides intents for native functions such as capturing an image or picking an image from gallery. 
 	
 	\item[AndroidHardware] handles hardware related logic, such as file creation.
 	
@@ -78,12 +79,7 @@ Evaluation of the developed application was performed as described in [...], and
 	Metric & Android application &  Web application \\
 	\hline
 	Files & 10 & 2\\
-	Logical Lines of Code LLoC & 200 & 173\\	
-	Single Line Comments & 28 & 19\\
-	Multi Line Comments & 9 & 1\\
-	High Quality Comments & 37 & 16\\
-	Strings & 38 & 66\\
-	Numeric Constants & 3 & 9 \\
+	LLoC & 200 & 173\\	
 	\hline
 	\multicolumn{3}{c}{\emph{Result of code evaluation using ProjectCodeMeter}}
 \end{tabular}
@@ -143,12 +139,7 @@ Evaluation of the developed application was performed as described in [...], and
 	Metric & PhoneGap application &  Web application \\
 	\hline
 	Files & 3 & 2\\
-	Logical Lines of Code LLoC & 86 & 175\\	
-	Single Line Comments & 27 & 19\\
-	Multi Line Comments & 2 & 1\\
-	High Quality Comments & 27 & 16\\
-	Strings & 49 & 68\\
-	Numeric Constants & 1 & 9 \\
+	LLoC & 86 & 175\\	
 	\hline
 	\multicolumn{3}{c}{\emph{Result of code evaluation using ProjectCodeMeter}}
 \end{tabular}
