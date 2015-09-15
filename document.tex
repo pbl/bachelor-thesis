@@ -8,19 +8,31 @@
 \usepackage{makeidx}
 \usepackage{graphicx}
 \usepackage{multirow}
+\usepackage{listings}
 \usepackage[titletoc, header, page]{appendix}
 %for line break in url
 \usepackage{hyperref}
 %line break in compiled document for line break in tex documents
 \usepackage{parskip}
 \usepackage[nopar]{lipsum}
+\usepackage{color}
 %for drawing figures
 \usepackage{tikz}
 % for the web and mobile app with backend figures
 \usetikzlibrary{arrows,positioning}
 
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
 
-% to higlight with a black rectangle when a overfull hbox occurs to make it easy to spot
+\lstset{
+	basicstyle=\footnotesize,
+	language=Java,
+	keywordstyle=\color{blue},
+	commentstyle=\color{mygreen} 
+	}
+
+% to highlight with a black rectangle when a overfull hbox occurs to make it easy to spot
 \overfullrule=2cm
 %\geometry{showframe}
 %\input{./tex/preface.tex}

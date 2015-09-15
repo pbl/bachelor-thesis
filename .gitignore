@@ -10,4 +10,5 @@ build/
 *.nfs*
 *.Rhistory
 *.bbl
-*blg
+*.blg
+*.xoj
