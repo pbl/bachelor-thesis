@@ -62,13 +62,23 @@ A WebView \cite{webview2015} is a View \cite{view2015} that can be used to rende
 \subsubsection{JavaScriptInterface}
 Allows exposing methods to JavaScript, by exposing a Java Object annotated by the @JavaScriptInterface tag. The JavaScriptInterface is added to a single WebView through the addJavaScriptInterface method, and is thus only exposed to JavaScript running in this WebView. For further reading, refer to the Android Developers site \cite{jsi2015}.
 
-\subsection{Other frameworks}
-% here I write 
+\subsection{Development frameworks for Android applications}
+Android has undertaken 15 powerful, open source and cross platform frameworks. The frameworks are usually aimed at web developers and are developed using web technologies \cite{mondal2013}.
 
-\subsection{PhoneGap framework}
-PhoneGap is a framework for developing mobile applications. The code is written with web technologies. The code can be compiled to different platforms, such as Android or iOS specific code. The resulting application is a hybrid application. An example of a mobile application built in PhoneGap is Wikipedia's mobile application.
+\begin{itemize}
+\item PhoneGap
+\item JQuery mobile
+\item Sencha Touch
+\item Dojo Mobile
+\item Titanium
+\end{itemize}
 
-A big advantage when developing in PhoneGap, compared to developing natively, is that PhoneGap can be compiled to multiple platforms, see figure \ref{figure-phonegap-plattoforms}. This makes PhoneGap an attractive development framework for companies with less development resources. If a mobile application is developed natively for Android, iOS and Windows Phone, maintaining the mobile application must be done in three different native applications. If the mobile application is instead developed in PhoneGap only one application needs to be maintained. 
+After using the Android SDK the most widely used mobile framework for Android is JQuery mobile and PhoneGap. In 2012 28.6\% used JQuery mobile and 17.9\% used PhoneGap \cite{eclipse2012}. The frameworks listed above support Android and IOs but often target other platforms such as Blackberry and Windows Phone as well \cite{mondal2013}. 
+
+\subsection{PhoneGap}
+PhoneGap is developed with web technologies. The code can be compiled to different platforms, such as Android or IOs specific code. The resulting application is a hybrid application. An example of a mobile application built in PhoneGap is Wikipedia's mobile application.
+
+One of the huge advantages developing in PhoneGap compared to developing using the Android SDK is that PhoneGap can be compiled to multiple platforms, see figure \ref{figure-phonegap-plattoforms}. Making PhoneGap an attractive development framework for companies with less development resources. If a mobile application is developed natively for Android, IOs and Windows Phone, maintaining the mobile application must be done in three different native applications. If the mobile application is instead developed in PhoneGap only one application needs to be maintained.
 
 \begin{figure}\label{figure-phonegap-plattforms}
 \centering
@@ -90,6 +100,9 @@ A disadvantage of developing in PhoneGap is when there is a use of many native f
 
 \subsection{Inline frame}
 An inline frame, is used to embed another document within the current HTML document. Communication from the parent document to the document inside the inline frame, is easily implemented since it has direct access to the window and can invoke JavaScript functions in the inline frame. Communicating the other way however requires more preparations. An example how to solve it is using the postMessage method of the parent window, and implementing a message listener.
+
+\subsection{JQuery mobile}
+%here we'll write about jquery mobile framework
 
 \section{Lines of code}\label{section-lines-of-code}
 Source lines of code is a measurement tool for software development. Source lines of code, also abbreviated as SLOC, is very easy to obtain and is a fairly accurate predictor of development effort\cite[p.~63]{galorath2006}. Measuring SLOC simply means you count the number of lines of code. There are many different ways to measure SLOC, such as Halsted’s approach, function points, physical SLOC and Logical SLOC. 
