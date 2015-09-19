@@ -1,39 +1,63 @@
 \chapter{Approach}
-In order to research the problem formulation of this paper, a practical approach has been used. To evaluate and compare the two different methods (as described in problem formulation) a mobile application with the same requirements has been developed in each method. Both of the mobile applications make use of the same web application. 
-  
-\section{The mobile applications}
-The web application that is used composes of a single page and is functional for the web browser Google Chrome. The page displays a form with a text field, an image field and a location field. To get the image or the location value for the form the user can only press a button. When the image or location button is pressed the web application uses the Google Chrome’s built in ability to take a picture or get the location.
+The first section Research protocol \ref{section-research-protocol} describes the how the investigation has been made. The following section Measuring Lines of Code \ref{section-measuring-lines-of-code} states how the software metric logical lines of code has been used as a measurement of the result. The last section Layer communication \ref{section-layer-communication} explains how the master and slave relationship between the mobile and web application layer are evaluated. 
 
-The mobile applications consists of two parts. The web application described above and the mobile application encapsulating the web application. The mobile application must encapsulate the web application and display the web application exactly the same as it is displayed in a browser. The mobile application must use the mobile’s native functions to get the value for the image and the location.
 
-The text field  in the web application form must function the same way as it functions in Google Chrome. 
+\section{Research protocol} \label{section-research-protocol}
+%How has a practical approach been used?
+%%explain how the practical approach is used
+%%%our own experiences when developing
+%%%producing the mobile applications ourself to get LLOC, uml diagrams and flow diagrams
+%%develop a web application
+%%use the web application when developing the mobile application
 
-For getting the image value in the form the mobile application must give the user the option to use an existing image from the image gallery or take a picture using the camera on the phone. The image that is passed back to the web application must be of in Base64 format. 
+To carry out the investigation proposed in the problem formulation a practical approach has been used. To evaluate and compare the two different methods a mobile application with the same requirements has been developed in each method. Both of the mobile applications make use of the services offered by the same web application.
+
+\subsection{The mobile applications}
+The used web application comprises of a single page and is compatible with the web browser Google Chrome. The page displays a form with a text field, a take photo button, an upload photo button, a location button and a submit button, see figure \ref{fig:nativeuml}. To get the image or the location value for the form the user presses the corresponding button. When the upload photo or take photo or location button is pressed the web application uses the Google Chrome’s built in ability to take a photo or upload a photo or get the location.
+
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=120mm,natwidth=800,natheight=600]{./img/webAppFrontPage.png}
+    \caption{The web app front page displayed in a browser}
+    \label{fig:nativeuml}
+\end{figure}
+
+The mobile applications consist of two parts. The web application described above and the mobile application encapsulating the web application. The mobile application must encapsulate the web application and display the web application exactly the same way as it is displayed in a browser. The mobile application must use the mobile’s native functions to get the value for the image and the location.
+
+The text field in the web application has no connection to the mobile application layer. 
+
+For taking or uploading the image value in the form the mobile application must an existing image from the image gallery or take a picture using the camera on the phone. The photo passed back to the web application must be in Base64 format. 
 
 The location must be obtained using the mobile’s GPS. 
 
 When the user interacts with the mobile application the interaction must be directly with the web application encapsulated within the mobile application. 
 
-In the project the following was used for developing and testing:
+In the project the following were used for developing and testing:
 \begin{itemize}
-\item Android SDK version 21
-\item Apache Cordova CLI version 4.0
-\item Google Chrome version 44.0.2403.157
-\item Nexus 5
-\item Android version: 5.1.1
-\item Kernel version: 3.4.0-gbebb36b
+\item Version 21 of the Android SDK when developing using the Android application framework.
+\item Apache Cordova CLI version 4.0 when developing using the PhoneGap framework. 
+The mobile that was used when testing the mobile applications was a Nexus 5 mobile with the Android version 5.1.1.
+\item The web application has been tested in the Google Chrome browser version 44.0.2403.157.
 \end{itemize}
 
-\section{Measuring lines of code}
-The resulting mobile applications are measured using the software metric logical lines of code. The logical lines of code have been counted including and excluding the following:
+\section{Measuring lines of code}\label{section-measuring-lines-of-code}
+The resulting mobile applications are measured using a software metric namely logical lines of code. To count logical lines of code Project Code Meter has been used which ignores the following lines of code \cite{project-code-meter2015}
 
-(here we have a bullet list of what's included and what's excluded)
+\begin{itemize}
+\item Auto-generated code lines.
+\item Header files.
+\item Ineffective code statements.
+\item Pragma compiler directives.
+\item Labels.
+\item Switch cases are not statements by themselves (so empty "case").
+\item Several statements on the same physical line are counted as several LLOC.
+\end{itemize}
 
-The mobile application are written in two different programming languages, Java and JavaScript. To compare the measurement result of logical lines of code we use the conversion table described by Galorath and Evans\cite[p.~163]{galorath2006}. JavaScript and Java is both third generation languages and therefore no conversion is needed. 
+The mobile application were written in two different programming languages, Java and JavaScript. To compare the measurement result of logical lines of code we use the conversion table described by Galorath and Evans \cite[p.~163]{galorath2006}. JavaScript and Java are both third generation languages and therefore the conversion is roughly 1 to 1. 
 
-The logical lines of code written in the web application layer is also measured in both developing methods. To give an correct result we measured the added logical lines of code that has been written as a result of the mobile application. The resulting lines in the mobile and web application layer is added to give a total result. 
+The logical lines of code written in the web application layer is also measured in both developing methods. To give an correct result we measured the added logical lines of code that have been written as a result of the mobile application. The resulting lines in the mobile and web application layer is added together to give a total result. 
 
-The architecture of the mobile applications impact the amount of lines of code. The measurement result is therefore analysed using the measurement data and our personal development experience.
+The logical lines of code in the web application layer is also measured in both developing methods. The resulting lines in the mobile and web application layer is added together to give a total result. 
 
-\section{Layer communication}
-A goal with the mobile application is to have a developer friendly way of communicating between the mobile and web application layer. The web and mobile application has a master and slave relationship. Where the web application layer acts as the master and the mobile application layer acts as the slave. To evaluate this communication a flow diagram of the web layer sending a request for native data and the mobile application layer responding with data is constructed. The diagram acts an suggestion in how developer friendly the communication is and is combined with our personal developing experiences.
+\section{Layer communication} \label{section-layer-communication}
+A prerequisite is that the communication between the mobile application and web application layer has a master and slave relationship. To evaluate this communication a flow diagram of the web layer sending a request for native data and the mobile application layer responding with data is constructed. The flow diagram acts as a suggestion in how developer friendly the communication is combined with our personal developing experiences.
