@@ -1,18 +1,13 @@
 \chapter{Approach}
-The first section Research protocol \ref{section-research-protocol} describes the how the investigation has been made. The following section Measuring Lines of Code \ref{section-measuring-lines-of-code} states how the software metric logical lines of code has been used as a measurement of the result. The last section Layer communication \ref{section-layer-communication} explains how the master and slave relationship between the mobile and web application layer are evaluated. 
+The first section Research protocol \ref{section-research-protocol} describes the how the investigation of the problem formulation has been made. The following section Measuring Lines of Code \ref{section-measuring-lines-of-code} states how the software metric logical lines of code has been used as a measurement of the result. The last section Layer communication \ref{section-layer-communication} explains how the master and slave relationship between the mobile and web application layer are evaluated. 
 
 
 \section{Research protocol} \label{section-research-protocol}
-%How has a practical approach been used?
-%%explain how the practical approach is used
-%%%our own experiences when developing
-%%%producing the mobile applications ourself to get LLOC, uml diagrams and flow diagrams
-%%develop a web application
-%%use the web application when developing the mobile application
+To carry out the investigation proposed in the problem formulation a practical approach has been used. To evaluate and compare the two different methods a mobile application described in \ref{subsection-mobile-application} with the same requirements were developed in each method. The mobile application needs an existing web application and therefore a simple web application described in \ref{subsection-web-application} were developed first of all. The web application were developed in the framework Ruby on Rails. 
 
-To carry out the investigation proposed in the problem formulation a practical approach has been used. To evaluate and compare the two different methods a mobile application with the same requirements has been developed in each method. Both of the mobile applications make use of the services offered by the same web application.
+We have used ourself as the developers of the web application and as the developers of the mobile application in both methods. The experiences and thoughts when developing were logged in a journal. After the mobile applications were developed the architecture were visualized in a UML diagram and the different classes were described. The UML diagram shows the methods of the classes but hides the attributes of the classes for the sake of better clarity. 
 
-\subsection{The mobile applications}
+\subsection{The web application} \label{subsection-web-application}
 The used web application comprises of a single page and is compatible with the web browser Google Chrome. The page displays a form with a text field, a take photo button, an upload photo button, a location button and a submit button, see figure \ref{fig:nativeuml}. To get the image or the location value for the form the user presses the corresponding button. When the upload photo or take photo or location button is pressed the web application uses the Google Chrome’s built in ability to take a photo or upload a photo or get the location.
 
 \begin{figure}[h!]
@@ -22,6 +17,7 @@ The used web application comprises of a single page and is compatible with the w
     \label{fig:nativeuml}
 \end{figure}
 
+\subsection{The mobile application} \label{subsection-mobile-application}
 The mobile applications consist of two parts. The web application described above and the mobile application encapsulating the web application. The mobile application must encapsulate the web application and display the web application exactly the same way as it is displayed in a browser. The mobile application must use the mobile’s native functions to get the value for the image and the location.
 
 The text field in the web application has no connection to the mobile application layer. 
