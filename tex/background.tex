@@ -45,22 +45,20 @@ Part of \emph{startActivityForResult()} definition from Android Developers websi
 
 \emph{Example}. Starting an Activity for result using an Intent:
 \begin{lstlisting}
-class MainActivity {
-.
-.
-.
-public void exampleStartActivityForResult(){
-// Create Intent
+
+exampleStartActivityForResult(){
+	// Create Intent
 	Intent intent = createSomeIntent();
-	.
-	.
-	.
+	
+	/* Some code here */
+	
 	// Start activity based on intent
-	startActivityForResult(intent, some_request_code);
+	startActivityForResult(Intent intent, int someRequestCode);
 }
+
 // When activity is completed, handle the returned data
-public void onActivityResult(requestCode, resultCode, data){
-	// Do something with data depending on request/result code
+onActivityResult(int requestCode, int resultCode, Intent data){
+	/* Some code here */
 }
 \end{lstlisting}
 
