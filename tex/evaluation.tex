@@ -1,17 +1,42 @@
 \chapter{Evaluation}	
-The evaluation is divided into two sections, one for each development method used. In each section, the developed application, it's structure and functionality is presented, followed by the results of the code evaluation. 
+The evaluation is divided into three sections, first a section describing the web application developed, followed by one section for each framework used to develop the mobile application. In each section, the developed application, it's structure and functionality is presented, followed by the results of the code evaluation. 
+
+\section{Web Application}
+To simplify the process of making the web application compatible with web browsers as well as the mobile application, the architecture follows the Adapter pattern[INSERT REF]. The structure of the web application can be seen in figure \ref{nativewebuml}. Items within the red(blue) dotted box belong to the structure when Android SDK(PhoneGap) was used for developing the mobile application.
+
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=60mm,natwidth=400,natheight=300]{./img/webuml.png}
+    \caption{Structure of the web application}
+	\label{fig:webuml}
+\end{figure}
 
 \section{Native android} \label{android}
-The developed native application can be cloned from Github at [..], also a compressed version of all source code used in the thesis can be found at [..]. An overview of the application structure and functionality follows in section ~\ref{sec:nativestructure}. 
+The developed native application can be found on Github at [..], or in text form in the appendix. An overview of the application structure and functionality follows in section ~\ref{sec:nativestructure}. 
 
-\subsection{Application structure} \label{sec:nativestructure}
-A UML-diagram representing the Android application can be seen in figure ~\ref{fig:nativeuml}, with the classes summarized below.
+\subsection{Mobile Application structure} \label{sec:nativestructure}
+The GUI of the Android application consist of a single WebView (used to load the web application). A UML-diagram representing the logic of the Android application can be seen in figure ~\ref{fig:nativeuml}. The contained classes are summarized below, with a short explanation followed by code examples 
 
-\begin{description}
-	\item[MainActivity] is the main activity of the program. It is in charge of starting activities upon request from the web application, and registers 
-	\item[IntentFactory] provides intents for native functions such as capturing an image or picking an image from the gallery. 
+
+\subsubsection{MainActivity} is the main Activity of the Android application. It contains logic for handling the application's Activity lifecycle, and is in charge of starting any Activities needed to provide the Web Application with data from native functions, such as the device camera. Activities are started by a call to the processIntent function. It takes an Intent and a Callback as arguments. The callback is provided a unique id, and is stored in a map. The Intent is started with the use of the startActivityForResult function provided by the Android SDK, and is assigned a request id equal to the id of the Callback. 
+\\\\
+	
+\emph{Ex. Starting an Activity for result}
+\begin{lstlisting}
+// Request a unique integer to use as id
+int requestCode = uniqueInteger.getUniqueInteger();
+
+// Store the Callback in a map with the unique integer as key	
+callbacks.put(requestCode, callback);
+   
+// Start the Activity defined in the Intent, 
+// assigning the unique integer as request code
+startActivityForResult(intent, requestCode);
+\end{lstlisting}
+	
+\subsubsection{IntentFactory} provides Intents for native functions such as capturing an image or picking an image from the gallery.
 	\\\\
-	\emph{Ex. getting intent from intent factory}
+	\emph{Ex. getting Intent from IntentFactory}
 	
 	\begin{lstlisting}
 // In Bridge:
@@ -35,28 +60,93 @@ public static Intent createCameraIntent(Context context) {
 }
 \end{lstlisting}
 	
-	\item[AndroidHardware] contains static methods, performing a single well-defined task. See the code below, for an example when requesting a file to save a captured image to.
-	\begin{lstlisting}
+\subsubsection{AndroidHardware} contains static methods, performing a single well-defined task. The code example below shows the function called to request a file for storing an image.
+	\\
+	\emph{Code example extracted from AndroidHardware:}
+\begin{lstlisting}
+public static File requestImageFile() {
+ String fileName = "tempPhoto";
+ File storageDir = 
+   Environment.getExternalStoragePublicDirectory(
+     Environment.DIRECTORY_PICTURES
+     );
+ File photoFile = null;
+ try {
+   photoFile = File.createTempFile(fileName, ".jpg", storageDir);
+ } catch (IOException e) {
+   e.printStackTrace();
+ }
+ return photoFile;
+}
+\end{lstlisting}
 	
-	\end{lstlisting}
+\subsubsection{Bridge} 
+Bridge serves as a bridge between the native application and web. When the web application requests data from a native function, Bridge receives the request from JsInterface, creates the corresponding Intent and Callback, and forwards them to MainActivity, see Ex. 1 below. Bridge also receives the result from the native function call, which it forwards to WebViewDataSender, see Ex. 2 below.
+\\\\
+\emph{Ex. 1 Processing a request for an image from the gallery}
+\begin{lstlisting}
+// Create a new intent
+Intent imageIntent = IntentFactory.createImageIntent(context);
+
+// Create callback for the intent
+Callback imagePickCallback = new ImagePickCallback(this, context, callback);
+
+// Send intent to mainActivity for processing
+mActivity.processIntent(imageIntent, imagePickCallback);
+\end{lstlisting}
+
+\emph{Ex. 2 Forwarding data returned from native function}
+\begin{lstlisting}
+public void processCallback(String callback, String argument) {
+        webViewDataSender.sendData(callback, argument);
+}
+\end{lstlisting}
 	
-	\item[Bridge] serves as a bridge between the native application and web. When a native function is requested, Bridge requests the corresponding Intent from IntentFactory, and creates a Callback of the corresponding type. The Intent is sent to MainActivity for execution, and the Callback is stored in MainActivity.
+\subsubsection{WebViewDataSender}
+WebViewDataSender is in charge of all communication with the WebView and it's encapsulated web application. Upon application start, it loads the web application and injects the JavaScriptInterface. The class also contains logic for executing JavaScript functions in the web application, used to return results from native function calls.
+\emph{Ex. sendData - used by bridge to send back results to the web application}
+\begin{lstlisting}
+public void sendData(final String javascriptFunction, final String arg) {
+        Log.d(TAG, "sendData");
+        webView.post(new Runnable() {
+            	@Override
+            	public void run() {
+        		webView.loadUrl("javascript:" + javascriptFunction + "('" + arg + "')");
+    		}
+	});
+}
+\end{lstlisting}
 	
-	\item[WebViewDataSender] is the class communicating back to the web application by invoking javascript-functions in the browser.
+\subsubsection{JsInterface}
+JsInterface is exposed to the web application as a JavaScriptInterface and acts as a receiver for function calls from the web application. If the web application requires data from a native function, the JavaScript in the web application can call upon the proper method in JsInterface, which in turn forwards the requests to Bridge.
+\emph{Ex. Two java functions exposed to the web application by JsInterface}
+\begin{lstlisting}
+    //Request an image from the device camera
+    @JavascriptInterface
+    public void requestCamera(String callback) {
+        Log.d(TAG, "requestImage");
+        bridge.requestCamera(callback);
+    }
+
+    // Request an image from the device storage
+    @JavascriptInterface
+    public void requestImage(String callback) {
+        Log.d(TAG, "requestImage");
+        bridge.requestImage(callback);
+    }
+\end{lstlisting}
+
 	
-	\item[JsInterface] is exposed to the web application as a JavaScriptInterface and acts as a receiver for function calls from the web application. Whenever native functionality is needed, the javascript in the web application can call upon it's methods. JsInterface forwards the function calls to Bridge, which in turn, contains the logic for each function.
-	
-	\item[Callback] contains logic specifying how to send results from a native function back to the web application.
-	
+\subsubsection{Callback} 
+Callback is an interface, specifying a single public method (done). Classes implementing callback contain code specifying how to send results from a requested native function call back to the web application. More specifically, the code defines which javascript function to return the data to, and how the data is to be returned. In our solution, there are two classes implementing Callback:
 	\begin{description}
-		\item[ImageCallback] is used when the web application requests an image from the camera.
+		\item[ImageCallback] is used when the web application requests an image from the camera
 		
-		\item[ImagePickCallback] is used when the web application requests an image from the gallery.
-		
+		\item[ImagePickCallback] is used when the web application requests an image from the gallery
 	\end{description}
-	\item[UniqueInteger] is used by MainActivity when storing callbacks. An unique integer is used as an id for an Intent and its related callback. Upon completion of an Intent, the Callback with the same id is executed.
 	
-\end{description}
+\subsubsection{UniqueInteger} 
+UniqueInteger contains a single public (synchronized) function getUniqueInteger, which is guaranteed to return a unique integer on each call. This is used by MainActivity when assigning requestIds to Intents and storing their corresponding Callbacks.
 
 \begin{figure}[h!]
 	\centering
@@ -65,15 +155,7 @@ public static Intent createCameraIntent(Context context) {
     \label{fig:nativeuml}
 \end{figure}
 
-In order to simplify development of the web application with support for both web browsers and the Android application, part of the logic follows the adapter pattern. The business logic of the web application stays the same, and only the communication with the unit (web browser or application), for example when uploading a picture, differs. Figure ~\ref{fig:nativewebuml} displays the basic structure of the web application. 
-
-\begin{figure}[h!]
-	\centering
-    \includegraphics[width=60mm,natwidth=400,natheight=300]{./img/androidwebuml.png}
-    \caption{Structure of the web application}
-	\label{fig:nativewebuml}
-\end{figure}
-
+\subsection{Function flow} \label{sec:nativeflow}
 A more detailed view of the program flow when the web application requests an image can be seen in figure ~\ref{fig:nativeflow}, further explained below.
 \begin{figure}[h!]
 	\centering
@@ -86,16 +168,16 @@ A more detailed view of the program flow when the web application requests an im
 	\item Current device adapter (AndroidDeviceAdapter) calls requestCamera on JsInterface, with the function name of the preferred callback function as argument
 	\item JsInterface forwards the function call to Bridge
 	\item Bridge creates the corresponding Intent and Callback, and calls processIntent on MainActivity with Intent and Callback as arguments
-	\item MainActivity Creates gets a unique id from UniqueInteger, stores the callback in a hashmap with the id as key, and starts the intent with the id as requestcode.
+	\item MainActivity gets a unique id from UniqueInteger, stores the callback in a hashmap with the id as key, and starts the intent with the id as requestcode.
 	\item Camera application starts
 	\item When user takes a picture, MainActivity gets notified by the Android system, pulls the Callback with the same id as the processed Intent, and forwards the callback and resulting image data to Bridge through processCallback
 	\item Bridge executes the callback which in turn calls sendData on WebViewDataSender, with the image data and callback name as arguments
-	\item WebViewDataSender executes the javascript callback function in the browser window
+	\item WebViewDataSender executes the JavaScript callback function in the browser window
 	\item The captured image is displayed to the user in the browser
 \end{enumerate}
 
-\subsection{Code evaluation}
-Evaluation of the developed application was performed as described in [...], and a summary of the results  can be seen in the table below.
+\subsection{Code evaluation} \label{sec:nativeeval}
+Evaluation of the developed application was performed as described in \ref{section-measuring-lines-of-code}, and a summary of the results  can be seen in the table below.
 
 \begin{tabular}{ | l | c | r | }
     \hline
@@ -110,10 +192,10 @@ Evaluation of the developed application was performed as described in [...], and
 \end{tabular}
 
 \section{PhoneGap}
-The developed PhoneGap application can be cloned from Github at [..], also a compressed version of all source code used in the thesis can be found at [..]. An overview of the application structure and functionality follows in section ~\ref{sec:phonegapstructure}. 
+The developed native application can be found on Github at [..], or in text form in the appendix. An overview of the application structure and functionality follows in section ~\ref{sec:phonegapstructure}, after which, the results of the code evaluation are stated in section \ref{sec:phonegapeval}
 
 \subsection{Application structure} \label{sec:phonegapstructure}
-A UML-diagram representing the PhoneGap application can be seen in figure ~\ref{fig:phonegapuml}, with the classes summarized below.
+The Android application developed using PhoneGap is a hybrid application, and is thus run within a WebView. The user interface of the developed application is a minimal HTML document containing a single inline frame, which is used to load the web application. The logic developed for the Android application is written in JavaScript, which is loaded in the WebView. A UML-diagram representing the logic of the Android application can be seen in figure ~\ref{fig:phonegapuml},  with the classes summarized below.
 \begin{figure}[h!]
 	\centering
     \includegraphics[width=120mm,natwidth=800,natheight=600]{./img/phonegapuml.png}
@@ -121,27 +203,21 @@ A UML-diagram representing the PhoneGap application can be seen in figure ~\ref{
     \label{fig:phonegapuml}
 \end{figure}
 
-\begin{description}
-	\item[Receiver] listens to messages posted to the browser window PhoneGap is running in. Receives messages from web application and calls the requested methods in the PhoneGap application.
-	\item[LocalDevice] is used to load the web application and initialize the device in the web application to the correct adapter.
-	\item[DeviceCamera] contains logic for invoking, and receiving results from the device camera. Also forwards the results to the web application.
-	\item[geolocation] contains logic for accessing the phones geo location (GPS-position) and forwarding the results to the web application.
-\end{description}
+\subsubsection{Receiver}
+The Receiver listens to messages posted to the (HTML) window loaded in the WebView. It is used to receive messages from web application and calls the requested methods in the Android application.
+\subsubsection{LocalDevice}
+LocalDevice contains a single method initiateWebApp, which is used to load the web application in an inline frame and initialize device in the web application to the correct adapter.
+\subsubsection{DeviceCamera}
+DeviceCamera contains logic for invoking and receiving results from the device camera. It's functions are called by Reciver upon requests from the web application.
+\subsubsection{geolocation}
+Geolocation contains logic for accessing the mobiles geo location (GPS-position). It's functions are called by Receiver upon requests from the web application.
 
-
-In order to simplify development of the web application with support for both web browsers and the PhoneGap application, part of the logic follows the adapter pattern. The business logic of the web application stays the same, and only the communication with the unit (web browser or application), for example when uploading a picture, differs. Figure ~\ref{fig:phonegapwebuml} displays the basic structure of the web application. 
-
-\begin{figure}[h!]
-	\centering
-    \includegraphics[width=60mm,natwidth=400,natheight=300]{./img/phonegapwebuml.png}
-    \caption{Structure of the web application}
-        \label{fig:phonegapwebuml}
-\end{figure}
-
+\subsection{Function flow}\label{sec:phonegapflow}
+A more detailed view of the program flow when the web application requests an image can be seen in figure ~\ref{fig:phonegapflow}, further explained below.
 \begin{figure}[h!]
 	\centering
     \includegraphics[width=120mm,natwidth=800,natheight=600]{./img/phonegapfunctionflow.png}
-    \caption{Function flowchart, single call in web application}
+    \caption{Function flowchart, single call in web application} \label{fig:phonegapflow}
 \end{figure}
 \begin{enumerate}
 	\item User action invokes a request for an image from the mobile camera 
@@ -154,8 +230,8 @@ In order to simplify development of the web application with support for both we
 	\item The captured image is displayed to the user in the browser	
 \end{enumerate}
 
-\subsection{Code evaluation}
-Evaluation of the developed application was performed as described in [...], and a summary of the results  can be seen in the table below.
+\subsection{Code evaluation}\label{sec:phonegapeval}
+Evaluation of the developed application was performed as described in section \ref{section-measuring-lines-of-code}, and a summary of the results  can be seen in the table below.
 
 \begin{tabular}{ | l | c | r | }
     \hline
