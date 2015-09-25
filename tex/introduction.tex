@@ -1,10 +1,10 @@
-\chapter{Introduction}\label{chapter-introduction}
-The first section, Motivation \ref{section-motivation}, of this chapter gives a motivation for the research. Explaining why the research and in which context this is relevant. Thereafter, the problem formulation, section \ref{section-problem-formulation}, is stated, which describes the problem that is researched, and the scope of the study. The following section, Contribution statement \ref{section-contribution-statement} contains the contribution to the research made by the researchers. The section also describes the knowledge gained by this research. Last, the section Report organization \ref{section-report-organization} explains what the following chapters contain and how they fit together.
+\chapter{Introduction}\label{ch:introduction}
+The first section, Motivation \ref{sec:motivation}, of this chapter gives a motivation for the investigation carried out in this paper. Explaining why and in which context this investigation is relevant. Thereafter, the problem formulation, section \ref{sec:problem-formulation}, is stated, which states the problem formulation and the scope of the study. The following section, Contribution statement \ref{sec:contribution-statement}, presents the contribution made by the members of the study. The section also describes the knowledge gained by the investigation. The last section, Report organization \ref{sec:report-organization}, explains what the following chapters contain, and how they fit together.
 
-\section{Motivation}\label{section-motivation}
-A web application has a lot of advantages compared to mobile applications. They run on all platforms, have instant updates and are simple to maintain \cite{michaels2013}. However, a web application can't access some native mobile features, such as the mobile's accelorometer. A company who wants to access such native features need to develop a mobile application. Developing a mobile application can be very expensive. A small to medium sized project for an Android mobile is estimated to cost from 20 000 - 40 000 dollars \cite{kohan2015}.
+\section{Motivation}\label{sec:motivation}
+A web application has a lot of advantages compared to mobile applications. They run on all platforms, have instant updates and are simple to maintain \cite{michaels2013}. However, a web application can't access some native mobile features, such as the mobile's accelorometer or camera application. A company who wants to access such native features need to develop a mobile application. Developing a mobile application can be very expensive. A small to medium sized project for an Android mobile application is estimated to cost from 20 000 - 40 000 dollars \cite{kohan2015}.
 
-If a company has a web application, they can choose to develop a separate mobile application from scratch. The users activity in the mobile and web application can be synchronized with the use of the same back-end, see figure ~\ref{figure-common-backend}. Development time will be spent on: 
+A company with a web application and the need or desire to extend the web application with mobile native features can develop a mobile application from scratch or by using their existing web application. If the company develop the mobile application from scratch the users activity in the mobile and web application can be synchronized with the use of the same back-end, see figure~\ref{fig:common-backend}. Development time will then be spent on: 
 \begin{itemize}
 \item Developing a new mobile application.
 \item Maintaining the mobile and web application.
@@ -12,9 +12,9 @@ If a company has a web application, they can choose to develop a separate mobile
 \end{itemize}
 
 % example exists at http://www.texample.net/tikz/examples/marketing-distribution-channel/
-\begin{figure}\label{figure-common-backend}
+\begin{figure}
 \centering
-\begin{tikzpicture}[node distance=1cm, auto]  
+\begin{tikzpicture}[node distance=1cm, auto] 
 \tikzset{
     mynode/.style={rectangle,rounded corners,draw=black, top color=white, bottom color=yellow!50,very thick, inner sep=1em, minimum size=3em, text centered},
     myarrow/.style={->, >=latex', shorten >=1pt, thick},
@@ -30,15 +30,14 @@ If a company has a web application, they can choose to develop a separate mobile
 \draw[myarrow] (backend.south)  -- ++(0,-1) -|  (web.north);
 \draw[myarrow] (web.north)  -- ++(0,1.506) -|  (backend.south);
 % There is a slight overlap of the arrows with the (manufacturer) south edge
-
 \end{tikzpicture} 
 \medskip
-\caption{Seperate mobile and web application connected with a common backend.} 
+\caption{Seperate mobile and web application connected with a common backend. \label{fig:common-backend} } 
 \end{figure}
 
-Another alternative, is to create a mobile application using the existing web application. The web application is run within a shell of the mobile application, see figure ~\ref{figure-encapsulated-web}. The web application can then access the mobile’s native functions. This means that the web application back-end does not need to be modified and instead of maintaining several platforms for every feature the mobile application only need to be maintained in regards of the use of the native functions. 
+If the company develops the mobile application by using the existing web application, the web application is run within a shell of the mobile application, see figure~\ref{fig:encapsulated-web}. The web application can then access the mobile’s native functions. This means that the web application back-end does not need to be modified and instead of maintaining several platforms for every feature the mobile application only need to be maintained in regards of the use of the native functions. 
 
-\begin{figure}\label{figure-encapsulated-web}
+\begin{figure}
 \centering
 \begin{tikzpicture}[node distance=1cm, auto]  
 \tikzset{
@@ -60,29 +59,31 @@ Another alternative, is to create a mobile application using the existing web ap
 
 \end{tikzpicture} 
 \medskip
-\caption{Seperate mobile and web application connected with a common backend.} 
+\caption{Seperate mobile and web application connected with a common backend. \label{fig:encapsulated-web}} 
 \end{figure}
 
-There are a number of researches of developing a mobile application using different methods. The researches focuses on aspects such as cost, effort and advantages and disadvantages for developing an entirely new mobile application. However, it is very hard to find research on extending an existing web application with mobile native features. 
+There are a number of researches of developing a mobile application using different methods. These researches focuses on aspects such as cost, effort and advantages and disadvantages for developing an entirely new mobile application. However, it is very hard to find research on extending an existing web application with mobile native features. 
 
-\section{Problem formulation}\label{section-problem-formulation}
-It can be very expensive for companies or organizations to develop a mobile application \cite{kohan2015}. To investigate an alternative to developing a mobile application from scratch, is therefore interesting.
-What are the advantages and disadvantages for two different development methods for encapsulating an existing web application in a mobile application to utilize native functions? An example of such a native function would be the mobile's accelerometer. The advantages and disadvantages will be evaluated by looking at development effort, and how the code can be structured in the mobile and web application. 
+%come back to later
+\section{Problem formulation}\label{sec:problem-formulation}
+It can be very expensive for companies or organizations to develop a mobile application \cite{kohan2015}. To investigate an alternative to developing a mobile application from scratch, is therefore interesting. What are the advantages and disadvantages for two different development methods for encapsulating an existing web application in a mobile application to utilize native functions? An example of such a native function would be the mobile's accelerometer. The advantages and disadvantages will be evaluated by looking at development effort, and how the code can be structured in the mobile and web application. 
 
 \subsection{Scope} \label{subsection-scope}
-To limit the scope of the research the development methods is only evaluted for the mobile operating system Android. Android was choosen since it has a market share of 80.7\% of all smartphone sales \ref{gartner2015}.
+To limit the scope of the research the development methods is only evaluted for the mobile operating system Android. Android was choosen since it has a market share of 80.7\% of all smartphone sales \cite{gartner2015}.
 
-The development methods that are researched is the PhoneGap framework and developing with the Android SDK. The methods will be evaluated and compared from a developers perspective. It is assumed that there is an existing web application and that there is a need or desire to extend the functionality of it's web-application with native functions.
+The two development methods that are investigated is developing the mobile application using two frameworks. The PhoneGap framework and developing with the Android framework only using the Android SDK. The development methods will be evaluated and compared from a developers perspective. It is assumed that there is an existing web application and that there is a need or desire to extend the functionality of the web application with native functions.
 
 \section{Model of communication}
-The company this research is done for has imposed a prerequisite. The prerequisite is that the communication between the mobile application layer and the web application layer has a master and slave relationship. To see the meaning of the terminology "web application layer" and "mobile application layer" see the section \ref{section-terminology}. The web application layer should act as the master and the mobile application layer should act as the slave. The motivation for this prerequisite is that it will minimize the logic in the mobile application layer. 
+The company this research is done for has imposed a prerequisite. The prerequisite is that the communication between the mobile application layer and the web application layer has a master and slave relationship. To see the meaning of the terminology "web application layer" and "mobile application layer" see the section \ref{section-terminology}. The web application layer should act as the master and the mobile application layer should act as the slave. The motivation for this is that it will minimize the logic in the mobile application layer. 
 
-\section{Contribution statement}\label{section-contribution-statement}
-Altough there has been research about developing a mobile application with the framework PhoneGap and using the Android SDK, the research focuses on building a mobile application from the ground up. In this research the development methods are compared while using an existing web application in the mobile application. The development effort is measured and compared and also a code structure is proposed. The research gives an insight into the development effort for the different methods and how the code can be structured.
+A prerequisite for this investigation is that the communication between the mobile application layer and the web application layer has a master and slave relationship. To see the meaning of the terminology "web application layer" and "mobile application layer" see the section \ref{section-terminology}. The web application layer should act as the master and the mobile application layer should act as the slave. The motivation for this is that it will minimize the logic in the mobile application layer. 
+
+\section{Contribution statement}\label{sec:contribution-statement}
+Altough there has been research about developing a mobile application with the framework PhoneGap and using the Android SDK, the research focuses on building a mobile application from scratch. In this investigaion the development methods are compared in the aspect of using an existing web application in the mobile application. The development effort is measured and compared and also a code structure is proposed. The research gives an insight into the development effort for the different methods and how the code can be structured.
 
 Throughout this work we have been working together very closely. We have reviewed and improved each others work continuously. During development we have often been pair programming. However, we can attribute parts of our work to one of us more then the other. Even though most of the work has been created together. 
 
 Philip designed the code of the web application and the mobile application built natively in Android. David designed the code for the PhoneGap application. David researched different techniques for the communication between the PhoneGap layer and the web application layer. David wrote the Approach \ref{chapter-approach} section and Philip wrote the Introduction section \ref{chapter-introduction} in this paper. 
 
-\section{Report organization}\label{section-report-organization}
-This thesis is presented in a number of chapters. Background, chapter \ref{chapter-background}, contains theoretical background to this thesis and information about the method used. The chapter approach \ref{chapter-method} describes our research method and how we measure and analyse the result. In evaluation\ref{chapter-evaluation} the results are presented following the outline in the chapter method. In discussion \ref{chapter-discussion} we analyse and discuss the results in approach. Finally the thesis is concluded in the conclusion \ref{chapter-conclusion}.
+\section{Report organization}\label{sec:report-organization}
+The background chapter~\ref{ch:approach} contains theoretical background to this thesis and information about the method used. The chapter approach~\ref{ch:method} describes our research method and how we measure and analyse the result. In evaluation~\ref{ch:evaluation} the results are presented following the outline in the chapter method. In discussion ~\ref{ch:discussion} we analyse and discuss the results in approach. Finally the thesis is concluded in the conclusion~\ref{ch:conclusions}.
