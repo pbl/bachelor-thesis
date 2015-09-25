@@ -33,7 +33,20 @@
 	keywordstyle=\color{blue},
 	commentstyle=\color{mygreen} 
 	}
-
+\lstdefinelanguage{JavaScript}{
+  keywords={break, case, catch, continue, debugger, default, delete, do, else, false, finally, for, function, if, in, instanceof, new, null, return, switch, this, throw, true, try, typeof, var, void, while, with},
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]",
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  sensitive=true
+}
 % to highlight with a black rectangle when a overfull hbox occurs to make it easy to spot
 \overfullrule=2cm
 %\geometry{showframe}
@@ -49,12 +62,13 @@
 
 \begin{document}
 %\makeFrontMatter
-%\input{./tex/introduction.tex}
+\input{./tex/introduction.tex}
 \input{./tex/background.tex}
-%\input{./tex/approach.tex}
+\input{./tex/approach.tex}
 \input{./tex/evaluation.tex}
 %\input{./tex/discussion.tex}
 %\input{./tex/conclusions.tex}
+\input{./tex/appendix.tex}
 \input{./tex/references.tex}
 %\input{./tex/figures.tex}
 \end{document}
