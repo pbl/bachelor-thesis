@@ -1,8 +1,6 @@
 \chapter{Background}\label{ch:background}
 The first section of this chapter, terminology \ref{section-terminology}, explains terms that are used throughout this thesis. The next section, Android development methods \ref{section-android-development-methods}, explains different methods of developing an Android mobile application. The following section, lines of code \ref{section-lines-of-code}, describes lines of code as a software metric and what it measures. Lastly, the section related work \ref{section-further-reading}, suggests further reading to this investigation. 
 
-
-
 \section{Terminology}\label{sec:terminology}
 \begin{description}
   \item[Development methods] \hfill \\
@@ -112,13 +110,11 @@ A disadvantage of developing in PhoneGap is when there is a use of many native f
 \subsection{Inline frame}\label{subsec:inline-frame}
 In a HTML document an inline frame is used to embed another HTML within the document. The HTML document that has the inline frame is called the parent document and the HTML document that is embeded is called the child document. Communication from the parent document to the child document is easily implemented since it has direct access and can invoke JavaScript functions in the inline frame. Communicating the other way however requires more preparations. There are more than one way to solve it, one way is using the postMessage method of the parent document, and implementing a message listener.
 
-%%% This is how far I've come
 \subsection{JQuery mobile}\label{subsec:jquery-mobile}
 JQuery mobile is a web or mobile application framework focused on making responsive web sites and mobile applications that are compatible with smartphones, tablets and desktop devices \cite{jquery-mobile15}. JQuery mobile is compatible with other frameworks, for example the JQuery mobile framework can be used together with the framework PhoneGap \cite{tech-republic-jquery-mobile-compatible14}. 
 
 \subsection{Appcelerator Titanium}\label{subsec:appcelerator-titanium}
 Titanium is a framework for developing mobile applications that are compatible with multiple mobile platforms such as iOS, Android, Windows Phone \cite{titanium15}. Eclipse reported 2012 that 2.8\% of mobile developers use Titanium for developing mobile applications. In Titanium the mobile application are developed from a JavaScript codebase. Titanium also allows API access to native UI components and native functionality that is not covered by Titaniums API. Developing with Titanium gives fast results but some developers have reported issues with the stability and memory management \cite{stay-away1-titanium15} \cite{stay-away2-titanium15}. 
-
 
 \section{Lines of code}\label{sec:lines-of-code}
 Source lines of code is a measurement tool for software development. Source lines of code, also abbreviated as SLOC, is very easy to obtain and is a fairly accurate predictor of development effort\cite[p.~63]{galorath2006}. Measuring SLOC simply means you count the number of lines of code. There are many different ways to measure SLOC, such as Halsted’s approach, function points, physical SLOC and Logical SLOC. 
