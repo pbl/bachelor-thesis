@@ -1,28 +1,24 @@
 \chapter{Background}\label{ch:background}
-The first section of this chapter, terminology \ref{section-terminology}, explains terms that are used throughout this thesis. The next section, Android development methods \ref{section-android-development-methods}, explains different methods of developing an Android mobile application. The following section, lines of code \ref{section-lines-of-code}, describes lines of code as a software metric and what it measures. Lastly, the section related work \ref{section-related-work}, suggests related work to this thesis for further reading. 
+The first section of this chapter, terminology \ref{section-terminology}, explains terms that are used throughout this thesis. The next section, Android development methods \ref{section-android-development-methods}, explains different methods of developing an Android mobile application. The following section, lines of code \ref{section-lines-of-code}, describes lines of code as a software metric and what it measures. Lastly, the section related work \ref{section-further-reading}, suggests further reading to this investigation. 
 
 \section{Terminology}\label{sec:terminology}
 \begin{description}
-  \item[Mobile application] \hfill \\
-    Refers to the application being developed, excluding code loaded from remote websites.
-  \item[Web application] \hfill \\
-    If nothing else is specified it refers to the client-side of the web application.
   \item[Development methods] \hfill \\
-    Refers to the methods of mobile application development methods being evaluated. I.e developing the mobile application with PhoneGap or natively in Android.
+    Refers to the two development methods that are investigated in this paper. I.e. developing the mobile application using the PhoneGap framework and with the Android framework using the Android SDK
   \item[Native function] \hfill \\
-     A hardware function which a device has. Lets say a mobile has a camera and an accelerator. When writing software for that mobile there are functions to interact with the camera and accelerator. Those functions are called native functions.
+     A hardware function which a device has. Writing software for a mobile that has a camera and accelerometer there are functions to interact with the camera and accelerometer, those functions are called native functions.
   \item[Web/Mobile application layer] \hfill \\
-	Refers to the application layer belonging specifically to the mobile application or the web application. A mobile application can encapsulate a web application which then is a a part of the mobile application. The mobile application then consists of a mobile and web application layer.
+		Refers to the application layer belonging specifically to the mobile application or the web application. A mobile application can encapsulate a web application which then is a part of the mobile application. Mobile application layer refers to the mobile application excluding the web application that is encapsulated in the mobile application. Web application layer refers to the web application that is encapsulated in the mobile application. 
 	\item[Native application] \hfill \\
 	A native application is an application that is developed to be used on a particular device or plattform. For example, a native application for Android is an application that is written to run on the Android operating system.
 \item[Web technologies] \hfill \\
-	In the context of this paper, web technologies refer to languages used when developing web applications, such as HTML, CSS and JavaScript.
+	Refers to languages used when developing web applications, i.e. HTML, CSS and JavaScript.
 \item[Hybrid application] \hfill \\
 	A hybrid application is a native application which is partially written with web technologies. The part of the application written with web technologies runs within a browser engine. The browser engine in Android is called WebView. A web application running in a web browser on a mobile does not have access to the mobiles native functions such as the accelerometer. However, a web application running within a WebView can access a device native functions. 
 \end{description}
 
 \section{Android development methods}\label{sec:android-development-methods}
-Android is an operating system used on a wide range of devices \cite{dell2011}. For example a mobile device or tv device. Android applications are usually developed in the programming language Java using the Android SDK.
+Android is an operating system used on a wide range of devices \cite{dell2011}. For example a mobile or tv. Android applications are usually developed in the programming language Java using the Android SDK.
 
 A software library for a system is a set of functions which can be used when developing applications for that system. A framework is a layered structure to help or simplify for the developer to develop software for a system. A framework differs from a library in the following way \cite{riehle2000}:
 
@@ -33,7 +29,7 @@ A software library for a system is a set of functions which can be used when dev
 \end{itemize}
 
 \subsection{Android application framework} \label{subsec:android-application-framework}
-The Android SDK includes a set of tools \cite{sdk2015}. Tools such as virtual device tools, development tools, debugging tools and buid tools. An Android application that is developed natively is an application that is developed using the Android SDK. The year 2012 60\% of all open source developers writing Android or IOs applications only used the official SDK \cite{eclipse2012}. For developing Android applications Android provides an application framework \cite{android-framework2015}. An introduction to some key classes in the Android SDK follows below, for more information, refer to the Android Developer website \cite{androiddevelopers2015}.
+The Android SDK includes a set of tools \cite{sdk2015}. Tools such as virtual device tools, development tools, debugging tools and buid tools. An Android application that is developed natively is an application that is developed using the Android SDK. Android provides an application framework for developing Android applications \cite{android-framework2015}. The year 2012 60\% of all open source developers writing Android or IOs applications only used the official SDK \cite{eclipse2012}. An introduction to some key classes in the Android SDK used in this investigation follows below. For further reading refer to the Android Developer website \cite{androiddevelopers2015}.
 
 \subsubsection{Activity}\label{subsubsec:activity}
 According to Androids developer site \cite{activity2015} "An Activity is a single, focused thing that the user can do.". In it's most simple form, an Android application consists of a single Activity, in charge of creating the window to render the application UI and interact with the user. In this paper, the mobile application will use this simple structure apart from when requesting data from native mobile functionality. In this situation, an Intent (described in the next section) is created, specifying the Activity to start. This Activity is started using the function startActivityForResult, provided by the Android SDK:
@@ -76,7 +72,7 @@ A WebView \cite{webview2015} is a View \cite{view2015} that can be used to rende
 The JavaScriptInterface \cite{jsi2015} allows exposing methods to JavaScript, by exposing a Java Object annotated by the @JavaScriptInterface tag. The JavaScriptInterface is added to a single WebView through the addJavaScriptInterface method, and is thus only exposed to JavaScript running in this WebView.
 
 \subsection{Development frameworks for Android applications}\label{subsec:development-frameworks-for-android-applications}
-Android has undertaken 15 powerful, open source and cross platform frameworks. The frameworks are usually aimed at web developers and are developed using web technologies \cite{mondal2013}.
+There are a number of frameworks for developing Android applications. Many are open source and cross plattform frameworks. The frameworks are usually aimed at web developers and are developed using web technologies \cite{mondal2013}. A few examples are:
 
 \begin{itemize}
 \item PhoneGap
@@ -86,14 +82,14 @@ Android has undertaken 15 powerful, open source and cross platform frameworks. T
 \item Titanium
 \end{itemize}
 
-After using the Android SDK the most widely used mobile framework for Android is JQuery mobile and PhoneGap. In 2012 28.6\% used JQuery mobile and 17.9\% used PhoneGap \cite{eclipse2012}. The frameworks listed above support Android and IOs but often target other platforms such as Blackberry and Windows Phone as well \cite{mondal2013}. 
+The most widely used mobile framework for Android, after using the Android SDK, is JQuery mobile and PhoneGap. In 2012 28.6\% used JQuery mobile and 17.9\% used PhoneGap \cite{eclipse2012}. The frameworks listed above support Android and IOs but often target other platforms such as Blackberry and Windows Phone as well \cite{mondal2013}. 
 
 \subsection{PhoneGap} \label{subsec:phonegap}
 PhoneGap is developed with web technologies. The code can be compiled to different platforms, such as Android or IOs specific code. The resulting application is a hybrid application. An example of a mobile application built in PhoneGap is Wikipedia's mobile application.
 
-One of the huge advantages developing in PhoneGap compared to developing using the Android SDK is that PhoneGap can be compiled to multiple platforms, see figure \ref{fig:phonegap-plattoforms}. Making PhoneGap an attractive development framework for companies with less development resources. If a mobile application is developed natively for Android, IOs and Windows Phone, maintaining the mobile application must be done in three different native applications. If the mobile application is instead developed in PhoneGap only one application needs to be maintained.
+An advantage when developing in PhoneGap compared to developing using the Android SDK is that PhoneGap can be compiled to multiple platforms, see figure \ref{fig:phonegap-plattforms}. Making PhoneGap an attractive development framework for companies with less development resources. If a mobile application is developed natively for Android, IOs and Windows Phone, maintaining the mobile application must be done in three different native applications. If the mobile application is instead developed in PhoneGap only one application needs to be maintained.
 
-\begin{figure}\label{fig:phonegap-plattforms}
+\begin{figure}
 \centering
 \begin{tikzpicture}[sibling distance=10em,
   every node/.style = {shape=rectangle, rounded corners,
@@ -106,16 +102,19 @@ One of the huge advantages developing in PhoneGap compared to developing using t
     child { node {Windows Phone} };
 \end{tikzpicture}
 \medskip
-\caption{PhoneGap can be compiled into multiple plattoforms.} 
+\caption{PhoneGap can be compiled into multiple plattoforms. \label{fig:phonegap-plattforms}} 
 \end{figure}
 
-A disadvantage of developing in PhoneGap is when there is a use of many native features. PhoneGap relies on a development framework and the provided features when building a mobile application. Hence, if the framework is not up to date with the latest new features, the developer will not be able to partake of the features until the framework is updated. If the application is dependent on many native features a hybrid application may have limitations\cite{kohan2015}.
+A disadvantage of developing in PhoneGap is when there is a use of many native features. The PhoneGap framework provides an API for accessing native functions when building a mobile application. Hence, if the framework is not up to date with the latest new features, the developer will not be able to partake of the features until the framework is updated. If the application is dependent on many native features a hybrid application may have limitations\cite{kohan2015}.
 
 \subsection{Inline frame}\label{subsec:inline-frame}
-An inline frame, is used to embed another document within the current HTML document. Communication from the parent document to the document inside the inline frame, is easily implemented since it has direct access to the window and can invoke JavaScript functions in the inline frame. Communicating the other way however requires more preparations. An example how to solve it is using the postMessage method of the parent window, and implementing a message listener.
+In a HTML document an inline frame is used to embed another HTML within the document. The HTML document that has the inline frame is called the parent document and the HTML document that is embeded is called the child document. Communication from the parent document to the child document is easily implemented since it has direct access and can invoke JavaScript functions in the inline frame. Communicating the other way however requires more preparations. There are more than one way to solve it, one way is using the postMessage method of the parent document, and implementing a message listener.
 
 \subsection{JQuery mobile}\label{subsec:jquery-mobile}
-%here we'll write about jquery mobile framework
+JQuery mobile is a web or mobile application framework focused on making responsive web sites and mobile applications that are compatible with smartphones, tablets and desktop devices \cite{jquery-mobile15}. JQuery mobile is compatible with other frameworks, for example the JQuery mobile framework can be used together with the framework PhoneGap \cite{tech-republic-jquery-mobile-compatible14}. 
+
+\subsection{Appcelerator Titanium}\label{subsec:appcelerator-titanium}
+Titanium is a framework for developing mobile applications that are compatible with multiple mobile platforms such as iOS, Android, Windows Phone \cite{titanium15}. Eclipse reported 2012 that 2.8\% of mobile developers use Titanium for developing mobile applications. In Titanium the mobile application are developed from a JavaScript codebase. Titanium also allows API access to native UI components and native functionality that is not covered by Titaniums API. Developing with Titanium gives fast results but some developers have reported issues with the stability and memory management \cite{stay-away1-titanium15} \cite{stay-away2-titanium15}. 
 
 \section{Lines of code}\label{sec:lines-of-code}
 Source lines of code is a measurement tool for software development. Source lines of code, also abbreviated as SLOC, is very easy to obtain and is a fairly accurate predictor of development effort\cite[p.~63]{galorath2006}. Measuring SLOC simply means you count the number of lines of code. There are many different ways to measure SLOC, such as Halsted’s approach, function points, physical SLOC and Logical SLOC. 
@@ -126,5 +125,9 @@ Logical SLOC measures the number of statements that carry over one or more physi
 
 To compare size between two different languages a size conversion table can be used. The table can be used to estimate how many SLOC a program coded in one programming language would have in another language. In the table constructed by Galorath and Evans you can compare a third generation language, a fourth generation language, Ada, Assembly or Pascal\cite[p.~163]{galorath2006}. A third generation language compared to another third generation language would have no conversion rate. 
 
-\section{Related work}\label{sec:related-work}
-% if anyone asks for a deeper research or surroundin topic here the work that we can recommend
+\section{Related work}\label{sec:further-reading}
+For information and analysis about choosing the right development approach for developing a mobile application we recommend two alternatives. The first recommendation is a paper by Michaels, ross \& cole named “Native mobile apps: The wrong choice for business? ” \cite{michaels2013}. The second recommendation is an article by Kohan and Montanez named “Native vs Hybrid / PhoneGap App Development Comparison” \cite{kohan2015}. 
+
+The paper by Michaels, ross \& cole compares the advantages and disadvantages with native applications, mobile web applications and hybrid applications. The paper analyzes aspects such as development cost and effort, maintainability and maintenance cost. 
+
+The article by Kohan and Montanez compares native to hybrid/PhoneGap application development.  The article evaluates  limitations, development cost and user experience for the development approaches.
