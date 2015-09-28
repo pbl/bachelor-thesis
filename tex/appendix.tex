@@ -1,6 +1,6 @@
 \newpage
 \appendix
-\section{\\ Mobile application developed using Android SDK} \label{App:AppendixA}
+\section{Mobile app developed using Android SDK} \label{App:AppendixA}
 % the \\ insures the section title is centered below the phrase: AppendixA
 
 \emph{AndroidHardware.java}
@@ -32,10 +32,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
-
-/**
- * Created by dauvid on 2015-02-17.
- */
 public class AndroidHardware {
     private static final String TAG="AndroidHardware";
 
@@ -88,9 +84,6 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * Created by dauvid on 2015-02-26.
- */
 public class Bridge {
     private Context context;
     private MainActivity mActivity;
@@ -109,7 +102,7 @@ public class Bridge {
         // Create a new intent
         Intent imageIntent = IntentFactory.createCameraIntent(context);
 
-        // Retrieve filepath to photo being captured
+        // Retrieve file path to photo being captured
         Uri photoFileUri = (Uri) imageIntent.getExtras().get(MediaStore.EXTRA_OUTPUT);
 
         // Create callback method
@@ -182,9 +175,6 @@ import android.util.Log;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 
-/**
- * Created by philip on 2015-02-26.
- */
 public class ImageCallback implements Callback {
     private Uri photoFileUri;
     private Bridge bridge;
@@ -213,7 +203,7 @@ public class ImageCallback implements Callback {
 
         // Convert bitmap to byte array
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bm.compress(Bitmap.CompressFormat.JPEG, 100, baos); //bm is the bitmap object
+        bm.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] b = baos.toByteArray();
         return Base64.encodeToString(b, Base64.DEFAULT);
     }
@@ -236,9 +226,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-/**
- * Created by dauvid on 2015-03-23.
- */
 public class ImagePickCallback implements Callback {
     private Bridge bridge;
     private static final String TAG = "ImagePickCallback";
@@ -269,7 +256,7 @@ public class ImagePickCallback implements Callback {
 
         // Convert bitmap to byte array
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bm.compress(Bitmap.CompressFormat.JPEG, 100, baos); //bm is the bitmap object
+        bm.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] b = baos.toByteArray();
         return Base64.encodeToString(b, Base64.DEFAULT);
     }
@@ -306,14 +293,8 @@ public class IntentFactory {
         // Create the intent for picking an image
         Intent getImageIntent = new Intent(Intent.ACTION_PICK);
         getImageIntent.setType("image/*");
-        // Ensure that there's a camera activity to handle the intent
 
         return getImageIntent;
-    }
-
-    public static Intent createGeolocationIntent (Context context) {
-        // Not implemented yet
-        return null;
     }
 }
 \end{lstlisting}
@@ -338,9 +319,6 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * Created by dauvid on 2015-02-03.
- */
 public class JsInterface {  
     private Bridge bridge;
     private static final String TAG = "JsInterface";
@@ -453,9 +431,6 @@ package pollux.trialbee.com.pollux;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-/**
- * Created by philip on 2015-02-27.
- */
 public class UniqueInteger {
     private int uniqueId;
 
@@ -479,9 +454,6 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-/**
- * Created by dauvid on 2015-02-20.
- */
 public class WebViewDataSender {
     private WebView webView;
     private Bridge bridge;
@@ -526,7 +498,7 @@ public class WebViewDataSender {
 \end{lstlisting}
 
 \newpage
-\section{\\ Mobile application developed using PhoneGap} \label{App:AppendixB}
+\section{Mobile app developed using PhoneGap} \label{App:AppendixB}
 \emph{app.js}
 \begin{lstlisting}[language=JavaScript]
 /*
@@ -725,8 +697,7 @@ var PolluxReceiver = {
 
 \newpage
 
-\section{\\ Web application developed for Android SDK version} \label{App:AppendixC}
-% the \\ insures the section title is centered below the phrase: Appendix B
+\section{Web app developed for Android SDK version} \label{App:AppendixC}
 \emph{application.js}
 \begin{lstlisting}[language=JavaScript]
 // This is a manifest file that'll be compiled into application.js, which will include all the files
@@ -1006,8 +977,7 @@ function addImgBase64(base64) {
 
 \newpage
 
-\section{\\ Web application developed for PhoneGap version} \label{App:AppendixD}
-% the \\ insures the section title is centered below the phrase: Appendix B
+\section{Web app developed for PhoneGap version} \label{App:AppendixD}
 \emph{application.js}
 \begin{lstlisting}[language=JavaScript]
 // This is a manifest file that'll be compiled into application.js, which will include all the files
