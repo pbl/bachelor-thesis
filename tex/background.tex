@@ -110,7 +110,7 @@ A disadvantage of developing in PhoneGap is when there is a use of many native f
 \subsection{Inline frame}\label{subsec:inline-frame}
 In a HTML document an inline frame is used to embed another HTML within the document. The HTML document that has the inline frame is called the parent document and the HTML document that is embeded is called the child document. Communication from the parent document to the child document is easily implemented since it has direct access and can invoke JavaScript functions in the inline frame. Communicating the other way however requires more preparations. There are more than one way to solve it, one way is using the postMessage method of the parent document, and implementing a message listener.
 
-A HTML document can be embeded in an inline frame if the HTTP response header X-Frame-Options is set to allow the embeding. There are three options the X-Frame-Options can be set to, resulting in different behavior. However, if X-Frame-Options is removed then the HTML document can be embeded anywhere.  
+A HTML document can be embeded in an inline frame if the HTTP response header X-Frame-Options is set to allow the embeding. There are three options the X-Frame-Options can be set to, resulting in different behavior. 
 \begin{description}
  \item[DENY] \hfill \\
 	The HTML document can't be displayed in an inline frame. 
@@ -119,6 +119,8 @@ A HTML document can be embeded in an inline frame if the HTTP response header X-
 \item[ALLOW-FROM uri] \hfill \\
 	The HTML document can only be displayed in an inline frame on the specified origin. 
 \end{description}
+
+If X-Frame-Options is removed then the HTML document can be embeded anywhere. This makes it possible to use the HTML document for malicous framing of content, called ClickJacking \cite{law2010}.
 
 \subsection{JQuery mobile}\label{subsec:jquery-mobile}
 JQuery mobile is a web or mobile application framework focused on making responsive web sites and mobile applications that are compatible with smartphones, tablets and desktop devices \cite{jquery-mobile15}. JQuery mobile is compatible with other frameworks, for example the JQuery mobile framework can be used together with the framework PhoneGap \cite{tech-republic-jquery-mobile-compatible14}. 

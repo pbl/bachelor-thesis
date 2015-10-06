@@ -1,4 +1,16 @@
 \chapter{Discussion} \label{ch:discussion}
+The problem formulation was:
+``What are the advantages and disadvantages for two different development methods for encapsulating an existing web application in a mobile application to utilize native functions? An example of such a native function would be the mobile's accelerometer. The advantages and disadvantages will be evaluated by looking at development effort, and how the code can be structured in the mobile and web application.’’
+
+Developing in the PhoneGap frame requires less development effort than in the Android framework, a reason for this might be that calls to native functions are handled on a higher abstraction. The downside of accessing the native functions on a higher abstraction is that you have less freedom in terms of customizing the behavior. That doesn’t make any difference for a simple mobile application such as the one developed but for a bigger and more advanced application it might be a problem. 
+
+Communication between web and mobile application was made at the cost of a security flaw in the PhoneGap framework. The developed mobile application encapsulated the web application by use of an inline frame. To be able to encapsulate the web application in an inline frame the web applications X-Frame-Options response header was removed which makes it possible to use the web application for ClickJacking, see~\ref{subsec:inline-frame}. 
+
+In the Android framework there is a closer relation to the Android System/Hardware, however this comes with a requirement of lots of code for basic functionality. This closer relation could for example mean a better control of the application lifecycle. Basic knowledge of Android is needed, if the developer has no prior knowledge of Android this means a starting cost. 
+
+Once the architectural structure was in place in the Android framework it was easy to add new functionality to the application. The structure is very modular separating creation of an intent, handling the result of an intent and the communication with the web application layer. To set up this behavior relatively many classes was needed since Java is an Object oriented language. The number of classes was one of the reasons that the developed mobile application in the Android framework had more than double the amount of logical lines of code. 
+
+
 \iffalse
 \section{Developing in Android}
 \subsection{Getting started}
