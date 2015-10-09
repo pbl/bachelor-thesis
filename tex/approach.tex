@@ -2,13 +2,13 @@
 The first section Research protocol~\ref{sec:research-protocol} describes the how the investigation of the problem formulation has been performed. The following section, Measuring Lines of Code~\ref{sec:measuring-lines-of-code}, states how the software metric logical lines of code has been used as a measurement of the result. The last section, Layer communication~\ref{sec:layer-communication}, explains how the relationship between the mobile and web application layer were evaluated. 
 
 
-\section{Research protocol} \label{sec:research-protocol}
+\section{Investigation protocol} \label{sec:investigation-protocol}
 To carry out the investigation proposed in the problem formulation a practical approach has been used. To evaluate and compare the two different frameworks, a mobile application described in~\ref{subsec:the-mobile-application} was developed using each framework. The mobile application needs an existing web application and therefore a simple web application described in~\ref{subsec:the-web-application} was developed first of all. The web application was developed in the framework Ruby on Rails.
 
-We have used ourself as the developers of the web application and as the developers of the mobile application in both methods. After the mobile applications were developed the architectures were visualized in UML diagrams and the different classes were described. The UML diagrams show the methods of the classes but hides the attributes of the classes for the sake of better clarity. 
+We report our experiences as developers of the web application and the mobile application in both methods. After the mobile applications were developed the architectures were visualized in UML diagrams and the different classes were described. The UML diagrams show the methods of the classes but hides the attributes of the classes for the sake of better clarity. 
 
 \subsection{The web application} \label{subsec:the-web-application}
-The used web application comprises of a single page and was developed for the web browser Google Chrome. The page displays a form with a text field, a take photo button, an upload photo button, a location button and a submit button, see figure~\ref{fig:webappfront}. When the upload photo or take photo or location button is pressed the web application uses the Google Chrome’s built in ability to take a photo or upload a photo or get the location.
+The front-end of the used web application consist of a single page and was developed for the web browser Google Chrome. The page displays a form with a text field, a "take photo" button, an "upload photo" button, a "location button" and a "submit button", see figure~\ref{fig:webappfront}. When the upload photo or take photo or location button is pressed the web application uses the Google Chrome’s built in ability to take or upload a photo,	 or get the location.
 
 \begin{figure}[h!]
 	\centering
@@ -39,7 +39,7 @@ In the project the following equipment tools and programs were used for developi
 \end{itemize}
 
 \section{Layer communication} \label{sec:layer-communication}
-A prerequisite is that the communication between the mobile application and web application layer has a master and slave relationship. To evaluate this communication a flow diagram of the web layer sending a request for native data and the mobile application layer responding with data is constructed. The flow diagram acts as a suggestion in how developer friendly the communication is combined with our personal developing experiences.
+A prerequisite is that the mobile application and web application layer has a master and slave relationship. To describe this communication a flow diagram of the web layer sending a request for native data and the mobile application layer responding with data is constructed. The flow diagram acts as a suggestion in how developer friendly the communication is combined with our personal developing experiences.
 
 \section{Measuring lines of code}\label{sec:measuring-lines-of-code}
 The resulting mobile applications are measured using the software metric logical lines of code. To count logical lines of code Project Code Meter has been used which ignores the following lines of code~\cite{project-code-meter2015}
