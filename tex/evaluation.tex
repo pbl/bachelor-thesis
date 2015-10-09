@@ -3,7 +3,7 @@ The evaluation is divided into four sections, first a section describing the web
 
 \section{Web Application}\label{sec:web-application}
 The front-end of the developed web application can be found online at \url{https://github.com/DavidNorrestam/PolluxWebPhoneGap} and \url{https://github.com/DavidNorrestam/PolluxWebNative}
-or in text form in appendix~\ref{app:web-app-source-code-android} and appendix~\ref{app:web-app-source-code-phonegap}, compatible with the mobile application developed using the Android framework and the PhoneGap Framework respectively.
+or in text form in appendix~\ref{app:web-app-source-code-android} and~\ref{app:web-app-source-code-phonegap}, compatible with the mobile application developed using the Android framework and the PhoneGap Framework respectively.
 To simplify the process of making the web application compatible with web browsers as well as the mobile application, the architecture follows the Adapter pattern \cite[p.~317]{martin2003}. The structure of the web application can be seen in figure \ref{fig:webuml}. Items within the red dotted box belong to the structure when the Android framework was used for developing the mobile application. Items within the blue dotted box belong to the structure when the PhoneGap framework was used for developing the mobile application.
 
 \begin{figure}[h!]
@@ -14,7 +14,7 @@ To simplify the process of making the web application compatible with web browse
 \end{figure}
 
 \section{Native android} \label{sec:native-android}
-The mobile application developed in the Android framework can be found on Github at \url{https://github.com/DavidNorrestam/PolluxMobileNative}, or in text form in appendix~\ref{app:mobile-app-source-code-android}. An overview of the application structure and functionality follows in section~\ref{subsec:mobile-application-structure-native}. After this, in section~\ref{subsec:function-flow-native}, a practical example is used to describe the flow of function calls when a native function is requested by the web application layer.
+The mobile application developed in the Android framework can be found on Github at \url{https://github.com/DavidNorrestam/PolluxMobileNative}. An overview of the application structure and functionality follows in section~\ref{subsec:mobile-application-structure-native}. After this, in section~\ref{subsec:function-flow-native}, a practical example is used to describe the flow of function calls when a native function is requested by the web application layer.
 
 
 \subsection{Mobile Application structure} \label{subsec:mobile-application-structure-native}
@@ -115,7 +115,7 @@ public void processCallback(String callback, String argument) {
 \end{lstlisting}
 	
 \subsubsection{WebViewDataSender}
-WebViewDataSender is in charge of all communication with the WebView and it's encapsulated web application. Upon application start, it loads the web application and injects the JavaScriptInterface. The class also contains logic for executing JavaScript functions in the web application, used to return results from native function calls.
+WebViewDataSender is in charge of all communication with the WebView and its encapsulated web application. Upon application start, it loads the web application and injects the JavaScriptInterface. The class also contains logic for executing JavaScript functions in the web application, used to return results from native function calls.
 \\\\
 \emph{Ex. sendData - used by bridge to send back results to the web application}
 \begin{lstlisting}
@@ -183,7 +183,7 @@ A more detailed view of the program flow when the web application requests an im
 \end{enumerate}
 
 \section{PhoneGap}\label{sec:phonegap}
-The mobile application developed in the PhoneGap framework can be found on Github at \url{https://github.com/DavidNorrestam/PolluxMobilePhoneGap}, or in text form in appendix~\ref{app:mobile-app-source-code-phonegap}. An overview of the application structure and functionality follows in section~\ref{subsec:application-structure-phonegap}. After this, in section~\ref{subsec:function-flow-phonegap}, a practical example is used to describe the flow of function calls when a native function is requested by the web application layer.
+The mobile application developed in the PhoneGap framework can be found on Github at \url{https://github.com/DavidNorrestam/PolluxMobilePhoneGap}. An overview of the application structure and functionality follows in section~\ref{subsec:application-structure-phonegap}. After this, in section~\ref{subsec:function-flow-phonegap}, a practical example is used to describe the flow of function calls when a native function is requested by the web application layer.
 
 
 \subsection{Mobile application structure} \label{subsec:application-structure-phonegap}
@@ -191,7 +191,7 @@ The Android application developed using PhoneGap is a hybrid application~\ref{se
 \begin{figure}[h!]
 	\centering
     \includegraphics[width=150mm,natwidth=1000,natheight=750]{./img/phonegapuml.png}
-    \caption{Structure of the phonegap application}
+    \caption{Structure of the PhoneGap application}
     \label{fig:phonegapuml}
 \end{figure}
 
@@ -233,7 +233,7 @@ The development effort was measured using lines of code as described in section~
     \hline
     \multicolumn{3}{|c|}{Lines of code - mobile application} \\
     \hline
-	Metric & PhoneGap application &  Web application \\
+	Metric & Using Android SDK &  Using PhoneGap \\
 	\hline
 	Files & 10 & 3\\
 	LLoC & 200 & 86\\	
