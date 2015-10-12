@@ -42,16 +42,16 @@ In the project the following equipment tools and programs were used for developi
 A prerequisite is that the mobile application and web application layer has a master and slave relationship. To describe this communication a flow diagram of the web layer sending a request for native data and the mobile application layer responding with data is constructed. The flow diagram acts as a suggestion in how developer friendly the communication is combined with our personal developing experiences.
 
 \section{Measuring lines of code}\label{sec:measuring-lines-of-code}
-The resulting mobile applications are measured using the software metric logical lines of code. To count logical lines of code Project Code Meter has been used which ignores the following lines of code~\cite{project-code-meter2015}
+The resulting mobile applications are measured using the software metric logical lines of code (LLoC). To count logical lines of code Project Code Meter~\cite{project-code-meter2015} has been used. Project Code Meter bases its calculation of LLoC on the Cocomo-II model~\cite{cocomo-ii-model}, and ignores the following lines of code:
 
 \begin{itemize}
-\item Auto-generated code lines.
-\item Header files.
-\item Ineffective code statements.
-\item Pragma compiler directives.
-\item Labels.
-\item Switch cases are not statements by themselves (so empty "case").
-\item Several statements on the same physical line are counted as several LLOC.
+\item Auto-generated code lines
+\item Header files
+\item Ineffective code statements
+\item Pragma compiler directives
+\item Labels
+\item Switch cases are not statements by themselves (so empty "case")
+\item Several statements on the same physical line are counted as several LLOC
 \end{itemize}
 
 The mobile application was written in two different programming languages, Java and JavaScript. To compare the measurement result of logical lines of code the conversion table described by Galorath and Evans~\cite[p.~163]{galorath2006} was used. JavaScript and Java are both third generation languages and therefore the conversion is roughly 1 to 1. 
