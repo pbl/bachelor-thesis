@@ -2,8 +2,8 @@
 The evaluation is divided into four sections, first a section describing the web application developed, section~\ref{sec:web-application}, followed by one section for each framework used to develop the mobile application, sections~\ref{sec:native-android} and \ref{sec:phonegap}. Last in this chapter, is a section presenting the development effort of each mobile application, section~\ref{sec:development-effort}.
 
 \section{Web Application}\label{sec:web-application}
-The front-end of the developed web application can be found online at \url{https://github.com/DavidNorrestam/PolluxWebPhoneGap} and \url{https://github.com/DavidNorrestam/PolluxWebNative}
-or in text form in appendix~\ref{app:web-app-source-code-android} and~\ref{app:web-app-source-code-phonegap}, compatible with the mobile application developed using the Android framework and the PhoneGap Framework respectively.
+The front-end of the developed web application can be found online at \url{https://github.com/DavidNorrestam/PolluxWebPhoneGap} and \url{https://github.com/DavidNorrestam/PolluxWebNative}, compatible with the mobile application developed using the Android framework and the PhoneGap Framework respectively.
+\\
 To simplify the process of making the web application compatible with web browsers as well as the mobile application, the architecture follows the Adapter pattern \cite[p.~317]{martin2003}. The structure of the web application can be seen in figure \ref{fig:webuml}. Items within the red dotted box belong to the structure when the Android framework was used for developing the mobile application. Items within the blue dotted box belong to the structure when the PhoneGap framework was used for developing the mobile application.
 
 \begin{figure}[h!]
@@ -197,7 +197,6 @@ The Android application developed using PhoneGap is a hybrid application~\ref{se
 
 \subsubsection{Receiver}
 Receiver listens to messages posted by the web application layer. A message contains a request for data from a native feature.
-\label{fig:phonegapflow}
 \subsubsection{LocalDevice}
 LocalDevice contains a single method initiateWebApp, which is used to load the web application in an IFrame and initialize device, see figure~\ref{fig:webuml}, in the web application to the correct adapter.
 
