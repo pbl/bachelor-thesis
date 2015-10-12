@@ -187,7 +187,7 @@ The mobile application developed in the PhoneGap framework can be found on Githu
 
 
 \subsection{Mobile application structure} \label{subsec:application-structure-phonegap}
-The Android application developed using PhoneGap is a hybrid application~\ref{sec:terminology}, and is thus run within a WebView on Android. The user interface of the developed application is a HTML document containing a single inline frame~\ref{subsec:inline-frame}, which is used to load the web application front-end. To be able to embed the web application front-end the X-Frame-Options response header were removed. The logic developed for the Android application is written in JavaScript, which is loaded in the WebView. A UML-diagram representing the logic of the Android application can be seen in figure~\ref{fig:phonegapuml}, with the classes summarized below.
+The Android application developed using PhoneGap is a hybrid application~\ref{sec:terminology}, and is thus run within a WebView on Android. The user interface of the developed application is a HTML document containing a single IFrame~\ref{sec:iframe}, which is used to load the web application front-end. To be able to embed the web application front-end the X-Frame-Options response header were removed. The logic developed for the Android application is written in JavaScript, which is loaded in the WebView. A UML-diagram representing the logic of the Android application can be seen in figure~\ref{fig:phonegapuml}, with the classes summarized below.
 \begin{figure}[h!]
 	\centering
     \includegraphics[width=150mm,natwidth=1000,natheight=750]{./img/phonegapuml.png}
@@ -199,7 +199,7 @@ The Android application developed using PhoneGap is a hybrid application~\ref{se
 Receiver listens to messages posted by the web application layer. A message contains a request for data from a native feature.
 \label{fig:phonegapflow}
 \subsubsection{LocalDevice}
-LocalDevice contains a single method initiateWebApp, which is used to load the web application in an inline frame and initialize device, see figure~\ref{fig:webuml}, in the web application to the correct adapter.
+LocalDevice contains a single method initiateWebApp, which is used to load the web application in an IFrame and initialize device, see figure~\ref{fig:webuml}, in the web application to the correct adapter.
 
 \subsubsection{DeviceCamera}
 DeviceCamera contains logic for invoking and receiving results from the device camera. Communication with the device camera is handled by functions provided by the PhoneGap framework. Its functions are called by Receiver upon requests from the web application layer.
@@ -220,7 +220,7 @@ A more detailed view of the program flow when the web application requests an im
 	\item The message gets processed by the PhoneGap receiver which forwards the call to DeviceCamera via the getPicture function.
 	\item DeviceCamera starts the camera application.
 	\item When user is finished taking a picture, the result is returned to DeviceCamera.
-	\item DeviceCamera returns the result to the inline frame by invoking DeviceCallback on the exposed JavaScript object, in the mobile application known as PolluxDevice.
+	\item DeviceCamera returns the result to the IFrame by invoking DeviceCallback on the exposed JavaScript object, in the mobile application known as PolluxDevice.
 	\item DeviceCallback calls the JavaScript callback function specified in its argument.
 	\item The captured image is displayed to the user in the WebView.
 \end{enumerate}
