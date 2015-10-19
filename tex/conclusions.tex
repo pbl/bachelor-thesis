@@ -1,16 +1,17 @@
 \chapter{Conclusions} \label{ch:conclusions}
-The aim of this thesis has been to investigate the process of developing an Android application which encapsulates, and extends an existing web application with native functionality. The investigation was performed by developing said Android application using two different development approaches, and evaluating the advantages and drawbacks of each approach. The difference between the approaches was the choice of framework. In one of the approaches Android framework was used, and in the other approach, PhoneGap framework was used.
-\\\\
-The development approaches were evaluated in a qualitative manner by recording the development effort required, and in a quantitative manner by examining the structure of the developed application. Development effort was estimated by measuring the number of logical lines of code (LLoC) of the developed application.
-\\\\
-The results show that it is preferable to use PhoneGap when it is important with low development effort. If the removal of the web applications X-Frame-Options is not accepted, another way of encapsulating the web application in the mobile application is needed. The developing in the PhoneGap framework is only done in web technologies which is likely a developer has if there is an existing web application. Therefore it is an advantage to use the PhoneGap framework over the Android framework if the developer has greater knowledge of web technologies than in Java.
-\\\\
-However, Android framework is to prefer if it is important to have more control over the application lifecycle, a closer relation to the Android system or hardware, and not be limited by a library. Android framework is also to prefer if the security flaw that is introduced with the use of an inline frame in the PhoneGap framework is not acceptable.
-\\\\
-Although the research has reached its aims, the choice of scope of the research introduces limitations to the study. First, because of the time limit and lack of resources, the study was only performed targeting the Android platform. Second, only a small project was investigated, this makes it hard to draw conclusions for medium and large size projects. Third, the result is based on the development of a single mobile application. To be able to draw conclusions in the general case, it would be necessary to investigate the development of multiple applications of different size and nature. Fourth, only very simple uses of native functionality was used, therefore it is hard to draw conclusions about the development effort when more advanced functionality is needed.
-\\\\
-\begin{itemize}
-\item Expand the research to include other platforms, such as iOS and Windows phone as well
-\item 
-\end{itemize}
-In contrast to Kohan and Montanez estimation that the development effort for a small to medium sized project for an Android mobile application would be the same in the PhoneGap and Android framework, we found that the development effort is significantly lower when the PhoneGap framework is used. The development effort in the PhoneGap framework was found to be less than half of the development effort in the Android framework. However, their estimation is based on that the mobile application is built from scratch.
+The aim of this thesis has been to investigate the process of developing an Android application which encapsulates, and extends an existing web application with native functionality. The investigation was performed by developing said Android application using two different frameworks, the Android framework and the PhoneGap framework, and evaluating the advantages and drawbacks of each framework.
+
+The development approaches were evaluated qualitatively by recording the development effort required, and quantitatively by examining the structure of the developed application. The development effort was estimated by measuring the number of logical lines of code (LLoC) of the developed application.
+
+The results show that it is preferable to use PhoneGap when low development effort is important. However, when security is important, the application structure proposed in this paper is not recommended, due to the risk of allowing the web application to be embedded in an iframe.
+When using the PhoneGap framework, development is only done using web technologies. Therefore, it is also preferable to use the PhoneGap framework if the developer has more experience working with web technologies than working with Java. 
+
+However, the Android framework is to prefer if it is important to have more control over the application lifecycle, a closer relation to the Android system or hardware, and not be limited by a library. The Android framework is also to prefer if the security risk that is introduced with the use of an inline frame in the PhoneGap framework is not acceptable.
+
+Although our investigation has reached its aims, the choice of scope of the investigation introduces limitations to the study. 
+First, because of the time limit and lack of resources, the study was only performed for the Android platform. 
+Second, only a small project was investigated, which makes it hard to draw conclusions for medium and large size projects. 
+Third, the result is based on the development of a single mobile application. To be able to draw conclusions in the general case, it would be necessary to investigate the development of multiple applications of different size and nature. 
+Fourth, only very simple native functionality was used, therefore it is hard to draw conclusions about the development effort when more advanced functionality is needed.
+
+One interesting conclusion we draw from our investigation is that the development effort is significantly lower when the PhoneGap framework is used. This contradicts Kohan and Montanez, who estimated that the development effort for a small to medium sized project for an Android mobile application would be the same in the PhoneGap and Android framework. However, their estimation is based on that the mobile application is built from scratch.
