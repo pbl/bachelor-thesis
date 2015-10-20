@@ -1,73 +1,23 @@
 \chapter{Discussion} \label{ch:discussion}
-The problem formulation was~\ref{sec:problem-formulation}:
-``What are the advantages and disadvantages for two different development methods for encapsulating an existing web application in a mobile application to utilize native functions? An example of such a native function would be the mobile's accelerometer. The advantages and disadvantages will be evaluated by looking at development effort, and how the code can be structured in the mobile and web application.’’
+The problem formulation in section~\ref{sec:problem-formulation} can be summarized to:
+What are the differences in code structure and development effort for two different development methods for encapsulating an existing web application in a mobile application to utilize native functions?
 
-Our results show that developing such a mobile application in the PhoneGap framework requires less development effort than in the Android framework. A reason for this might be that calls to native functions are handled on a higher abstraction. Another reason is that 10 class files were used in the Android framework compared to 4 files in the PhoneGap framework.
+Our results show that developing such a mobile application in the PhoneGap framework requires less development effort than in the Android framework. A reason for this might be that calls to native functions are handled on a higher abstraction level. Another reason is that 10 classes were used in the Android framework compared to an eqvuivalent to 4 classes in the PhoneGap framework.
 
-The structure that was suggested in the Android framework is modular, separating creation of a request for a native function, handling of the data passed back from the request and communication with the web application layer. The structure suggested in the PhoneGap framework also separates the communication with the web application layer but a request for a native function and handling of the data passed back is in the same file. 
+The structure that we suggested in the Android framework is modular, separating creation of a request for a native function, handling of the data passed back from the request and communication with the web application layer. The PhoneGap framework also separates the communication with the web application layer, but a request for a native function and handling of the data passed back is located in the same file. 
 
-The mobile application developed in the PhoneGap framework has fewer steps from receiving a request from the web application layer to pass the data back, see flowchart~\ref{fig:nativeflow} and~\ref{fig:phonegapflow}. This suggests that the application developed in the PhoneGap framework has a more simplistic structure then the application developed in Android framework.
+The mobile application developed in the PhoneGap framework has fewer steps from receiving a request from the web application layer to pass the data back, see flowchart~\ref{fig:nativeflow} and~\ref{fig:phonegapflow}. This suggests that the application developed in the PhoneGap framework has a less complex structure then the application developed in Android framework.
 
-The PhoneGap frameworks higher abstraction of calls to native functions allows for fewer logical lines of code but there is a downside. The downside is that you have less freedom in terms of customizing the behavior. The loss of freedom makes no difference for a simple mobile application such the one developed but as Kohan and Montanez points out for a bigger and more advanced application it might be a problem~\ref{subsec:phonegap}. 
+The PhoneGap framework has a higher abstraction level of calls to native functions. That allows for fewer logical lines of code, but there is a downside. The downside is that one has less freedom in terms of customizing the behavior. The loss of freedom makes no difference for a simple mobile application such the one developed, but as Kohan and Montanez points out for a more complex application it might be a problem, see section~\ref{subsec:phonegap}. 
 
-In the Android framework there is a closer relation to the Android System/Hardware, however this comes with a requirement of lots of code for basic functionality. That is one the reasons that the mobile application that was developed in the Android framework had more than double the logical lines of code. This closer relation means that the developer can have a better control of the application lifecycle. The closer relation also means that basic knowledge of Android is needed, if the developer has no prior knowledge of Android this means a starting cost. 
+In the Android framework there is a closer relation to the Android System/Hardware, however this comes with a requirement of boilerplate code. That is one of the reasons that the mobile application that was developed in the Android framework had more than double the logical lines of code. This closer relation means that the developer can have a better control over the application lifecycle. The closer relation also means that basic knowledge of Android is needed. If the developer has no prior knowledge of Android this means a starting cost. 
 
-Encapsulating the web application front-end in the PhoneGap framework was made at the cost of a security flaw. The web application front-end was encapsulated by use of an IFrame. To be able to use an IFrame the web applications X-Frame-Options response header was removed which makes it possible to use the web application for ClickJacking, see~\ref{sec:iframe}. 
+Encapsulating the web application front-end in the PhoneGap framework was made at the cost of a security flaw. The web application front-end was encapsulated by use of an IFrame. To be able to use an IFrame the web applications X-Frame-Options response header was removed which makes it possible to use the web application for ClickJacking, see section~\ref{sec:iframe}. 
 
-There are other ways of encapsulating the front-end of a web application in the PhoneGap framework then by using an IFrame. Another way would be to use a plugin that is available in the PhoneGap API called inAppBrowser. By using inAppBrowser a web page can be loaded into the mobile application and the mobile application layer can execute the web page’s JavaScript functions. If the web page would like to send a request to the mobile application layer the mobile application layer can listen to such requests by the use of polling.  This could be an alternative to using an IFrame that wouldn’t expose the web application to be used for ClickJacking. 
+There are other ways of encapsulating the front-end of a web application in the PhoneGap framework than by using an IFrame. Another way would be to use a plugin that is available in the PhoneGap API called inAppBrowser. By using inAppBrowser a web page can be loaded into the mobile application and the mobile application layer can execute the web page’s JavaScript functions. If the web page would like to send a request to the mobile application layer the mobile application layer can listen to such requests by the use of polling.  This could be an alternative to using an IFrame that would not expose the web application to be used for ClickJacking. 
 
-To compare the development effort the software metric logical lines of code were used. Logical lines of code were chosen since it is easy to understand, measurable between two programming languages and simple to calculate. Other ways of measuring lines of code or other software metrics, could have been used to measure development effort or other properties. To measure more properties and also measure development effort in other ways would have provided a more nuanced result and a fuller picture. For example Halsted's approach, described in~\ref{sec:lines-of-code}, could have been used to measure the development effort. Another property that could have been measured would have been cyclomatic complexity. Cyclomatic complexity measures the number of linearly independent paths through a program’s source code. 
+To compare the development effort the software metric logical lines of code were used. Logical lines of code were chosen since it is easy to understand, measurable between two programming languages and simple to calculate. Other ways of measuring lines of code or other software metrics could have been used to measure development effort or other properties. To measure more properties and also measure development effort in other ways would have provided a more nuanced result and a fuller picture. For example Halsted's approach, described in section~\ref{sec:lines-of-code}, could have been used to measure the development effort. Another property that could have been measured would have been cyclomatic complexity. Cyclomatic complexity measures the number of linearly independent paths through a program’s source code. 
 
-The result of this study is drawn from one small and simple project. This makes it hard to draw any conclusions about using the two development methods for medium and large projects. It raises the question whether developing in the PhoneGap framework in bigger projects or using more advanced features would still score lower in development effort. Would the proposed structure in the development methods provide a good bone structure for larger or more advanced projects? Or would the structure crumble? The measurement and proposed structure is based on this single project. To get a more reliable result it would be interesting to collect data from a number of projects where a mobile application has been developed in both development methods. Assuming the mobile application has been developed by encapsulating an existing web application.  
+The result of this study is drawn from one small and simple project. This makes it hard to draw any conclusions about using the two development methods for medium and large projects. It raises the question whether developing in the PhoneGap framework in bigger projects or using more advanced features would still score lower in development effort. One interesting question would be whether the proposed structure in the development methods provide a good bone structure for more complex projects? Or would the structure crumble? The measurement and proposed structure is based on this single project. To get a more reliable result it would be interesting to collect data from a number of projects where a mobile application has been developed in both development methods. Assuming the mobile application has been developed by encapsulating an existing web application.  
 
-The structure that is proposed in the web application to be able to run both in a web browser and in a mobile application makes use of the adapter pattern. This makes it easy to further extend web applications functionality. When a new function is needed who has no connection to native functionality such as a new page or a an animation, the function can be implemented as if the mobile application didn’t exist. When new functionality is needed which includes native functionality, such as getting information from the accelerometer, then the web application need at least three functions. One function to make the request to the mobile application and one function which determines the functionality on a browser. Finally a function which handles the data which is passed back from the request. 
-
-\iffalse
-\section{Developing in Android}
-\subsection{Getting started}
-\subsection{Debugging}
-Debugging when using the Android Studio IDE is a fairly simple process. For developers familiar with Java-debugging, the process is as good as similar, apart from the fact that the code is run on an emulator, or real device, rather than on directly by the JVM. Complications do occur when the application contains a WebView or other browser and the aim is the debug both the web and java code. However, with the help of the chrome inspect tool, the web code is easily debugged, and debugging of communication in between Java and JavaScript is easiest made by a combination of this tool and the built-in debugger. 
-\section{Developing in PhoneGap}
-\subsection{Getting started}
-Getting familliar with PhoneGap is quite confusing. This resulting in that it took around two days to set up a working development environment that felt comfortable. There were a few reasons for this. You need to install a lot dependencies such as nodejs, a server-side runtime environment, and Apache Cordova. Apache Cordova can be described as the engine of PhoneGap. There is also several different ways to develop the mobile application. You can compile and build the app for testing yourself or use a cloud service like https://build.phonegap.com/ to compile your code for you. The relationship between Apache Cordova and PhoneGap is also initially confusing. It was also very difficult to find a good “Getting started” guide.
-
-\subsection{Adding and debbuging native functionality}
-The documenation is clear and feels complete. If you require extra help the PhoneGap community is very active and there is lots of help to get from blog posts and Q\&A sites such as stackoverflow.com. This make’s it very simple to make use of the mobile’s native functions. 
-
-When using mobile native function a plugin need to be added to the project. The plugin can be supported by PhoneGap, a third party plugin or a plugin you write yourself. A PhoneGap plugin for using the mobile’s cambera is added by writing the following bash command in your project root folder:
-\begin{verbatim}
-$ cordova plugin add org.apache.cordova.camera
-\end{verbatim}
-The code for taking a picture with the camera in your mobile application is:
-\begin{verbatim}
-navigator.camera.getPicture(cameraSuccess, cameraError, cameraOptions);
-\end{verbatim}
-Where “cameraSucess” and “cameraError” is a callback function. 
-
-To build and run the project on your mobile for testing you run in the root folder of your project:
-\begin{verbatim}
-$ cordova build android; 
-$ cordova run android;
-\end{verbatim}
-
-For the debbuging the mobile application you can open desktop browser and where you can see the HTML, CSS and JavScript code and debugg the same way as a web application debugging is done in a web browser inspector. More can be read about debugging a PhoneGap application at \url{https://github.com/phonegap/phonegap/wiki/Debugging-in-PhoneGap}.
-
-
-
-Thoughts:
- - The development of the architectures of the different methods can not be ensured to be entirely independent. Thus the results might vary depending on the order the development methods get evaluated. Also they're both reliant on the webapplication, if this one gets developed early on, they will have to conform to its standards, thus limiting the developers freedom. 
-
-Positive / negative experiences
-\begin{itemize}
-    \item We are both skilled in java
-    \item Very basic knowledge of webprogramming
-    \item Our experience of developing in android
-    \item Our experience of developing using phonegap
-    \item Other
-\end{itemize}
-
-Diskussion (Discussion) möjliggör en längre diskussion och tolkning av resultaten från utvärderingsavsnittet, inklusive extrapoleringar och/eller förväntade resultat. Här passar det också att beskriva positiva och negativa erfarenheter relaterade till det arbete du har utfört.
-
-\section{Recommendations}
-%here we write a recommendation. If somebody would ask you you what to use to implement this specific application, you'd say what and why
-\fi
+The structure that is proposed in the web application to be able to run both in a web browser and in a mobile application makes use of the adapter pattern. This makes it easy to further extend web applications functionality. When a new function is needed who has no connection to native functionality such as a new page or a an animation, the function can be implemented as if the mobile application did not exist. When new functionality is needed which includes native functionality, such as getting information from the accelerometer, then the web application need at least three functions. One function to make the request to the mobile application and one function which determines the functionality on a browser. Finally a function which handles the data which is passed back from the request. 
