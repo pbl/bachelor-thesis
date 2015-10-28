@@ -18,6 +18,7 @@
 \usepackage{color}
 %for drawing figures
 \usepackage{tikz}
+\usepackage{blindtext}
 % for the web and mobile app with backend figures
 \usetikzlibrary{arrows,positioning}
 
@@ -60,6 +61,18 @@
 
 \input{./tex/preface.tex}
 \begin{document}
+interwordspace: \the\fontdimen2\font \    
+interwordstretch: \the\fontdimen3\font \    
+emergencystretch: \the\emergencystretch\par
+\blindtext
+
+\newpage
+\begin{sloppypar}
+interwordspace: \the\fontdimen2\font \    
+interwordstretch: \the\fontdimen3\font \    
+emergencystretch: \the\emergencystretch\par
+\blindtext
+
 \makefrontmatter
 \input{./tex/introduction.tex}
 \input{./tex/background.tex}
@@ -69,4 +82,5 @@
 \input{./tex/conclusions.tex}
 \input{./tex/references.tex}
 %\input{./tex/figures.tex}
+\end{sloppypar}
 \end{document}
