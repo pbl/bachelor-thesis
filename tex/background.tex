@@ -32,10 +32,10 @@ The first section of this chapter, section~\ref{sec:terminology}, explains terms
 Android is an operating system used on a wide range of devices \cite{dell2011}, for example a mobile or tv. Android applications are usually developed in programming language Java using the Android SDK.
 
 \subsection{Android application framework} \label{subsec:android-application-framework}
-The Android SDK includes a set of tools \cite{sdk2015}, for example virtual device tools, development tools, debugging tools and build tools. An Android application that is developed natively is an application developed using the Android SDK. Android provides an application framework for developing Android applications \cite{android-framework2015}. In the year 2012 60\% of all open source developers used only the official SDK for developing Android or IOs applications~\cite{eclipse2012}. To understand the proposed structure in the Android framework an introduction to some key classes in the Android SDK follows below. For further reading refer to the Android Developer website \cite{androiddevelopers2015}.
+The Android SDK includes a set of tools~\cite{androiddevelopers2015}, for example virtual device tools, development tools, debugging tools and build tools. An Android application that is developed natively is an application developed using the Android SDK. Android provides an application framework for developing Android applications \cite{android-framework2015}. In the year 2012 60\% of all open source developers used only the official SDK for developing Android or IOs applications~\cite{eclipse2012}. To understand the proposed structure in the Android framework an introduction to some key classes in the Android SDK follows below. For further reading refer to the Android Developer website \cite{androiddevelopers2015}.
 
 \subsubsection{Activity}\label{subsubsec:activity}
-According to the Androids developer site \cite{activity2015} "An Activity is a single, focused thing that the user can do.". In its most simple form, an Android application consists of a single Activity, in charge of creating the window to render the application UI and interact with the user. In this paper, the mobile application will use this simple structure, except from when requesting data from native mobile functionality. In this situation, an Intent (described in the next section) is created, specifying the Activity to start. This Activity is started using the function startActivityForResult, provided by the Android SDK:
+According to the Androids developer site~\cite{androiddevelopers2015} "An Activity is a single, focused thing that the user can do.". In its most simple form, an Android application consists of a single Activity, in charge of creating the window to render the application UI and interact with the user. In this paper, the mobile application will use this simple structure, except from when requesting data from native mobile functionality. In this situation, an Intent (described in the next section) is created, specifying the Activity to start. This Activity is started using the function startActivityForResult, provided by the Android SDK:
 \\\\
 Part of \emph{startActivityForResult()} definition from Android Developers website \cite{androiddevelopers2015}:\\
 \begin{quotation}
@@ -62,17 +62,17 @@ onActivityResult(int requestCode, int resultCode, Intent data){
 \end{lstlisting}
 
 \subsubsection{Intent}\label{subsubsec:intent}
-According to the Android Developers site \cite{intent2015}:
+According to the Android Developers site~\cite{androiddevelopers2015}:
 \begin{quotation}
 "An intent is an abstract description of an operation to be performed."
 \end{quotation}
 In this paper, Intents are used as a means to describe an Activity to be started, such as the mobile functions. Also, when starting an Activity for a result (see previous section), the resulting data is returned as an Intent. 
 
 \subsubsection{WebView}\label{subsubsec:webview}
-A WebView \cite{webview2015} is a View \cite{view2015} that can be used to render web content inside of an application. The application can invoke JavaScript in the WebView, but JavaScript in the WebView has no way of accessing the Java objects of an application. This can however be changed by exposing a Java Object with the use of the JavaScriptInterface, see the following section.
+A WebView is a View that can be used to render web content inside of an application~\cite{androiddevelopers2015}. The application can invoke JavaScript in the WebView, but JavaScript in the WebView has no way of accessing the Java objects of an application. This can however be changed by exposing a Java Object with the use of the JavaScriptInterface, see the following section.
 
 \subsubsection{JavaScriptInterface}\label{subsubsec:javascriptinterface}
-The JavaScriptInterface \cite{jsi2015} allows exposing methods to JavaScript, by exposing a Java Object annotated by the @JavaScriptInterface tag. The JavaScriptInterface is added to a single WebView through the addJavaScriptInterface method, and is thus only exposed to JavaScript running in this WebView.
+The JavaScriptInterface \cite{androiddevelopers2015} allows exposing methods to JavaScript, by exposing a Java Object annotated by the @JavaScriptInterface tag. The JavaScriptInterface is added to a single WebView through the addJavaScriptInterface method, and is thus only exposed to JavaScript running in this WebView.
 
 \subsection{Development frameworks for Android applications}\label{subsec:development-frameworks-for-android-applications}
 There are a number of frameworks for developing Android applications. Many are open source and cross platform frameworks. The frameworks are usually aimed at web developers and are developed using web technologies \cite{mondal2013}. A few examples are:
